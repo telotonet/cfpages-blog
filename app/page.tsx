@@ -24,19 +24,19 @@ export default function HomePage() {
         <div className="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="accent" className="mb-4">
-              Honest B2B SaaS & AI Tool Reviews
+              B2B Software Reviews & Comparisons
             </Badge>
             <h1
               id="hero-heading"
               className="mb-5 font-sans text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             >
-              Find the right{' '}
-              <span className="text-accent">software tool</span>{' '}
-              for your business
+              Pick the right{' '}
+              <span className="text-accent">software</span>{' '}
+              before you pay for it
             </h1>
             <p className="mb-8 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              In-depth reviews, honest comparisons, and practical guides for B2B SaaS tools.
-              No fluff — just what you need to make a decision.
+              Reviews and comparisons of B2B SaaS tools — email deliverability, CRM,
+              AI writing, and productivity. Pricing, limits, and what the landing page leaves out.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Button href="/articles/" size="lg">
@@ -129,21 +129,21 @@ export default function HomePage() {
       )}
 
       {/* ── Trust section ─────────────────────────────────────────────────── */}
-      <section aria-label="Our approach" className="border-t">
+      <section aria-label="How we work" className="border-t">
         <div className="mx-auto max-w-site px-4 py-12 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-3">
             {[
               {
-                title: 'Independent',
-                text: 'We test tools ourselves and write honest assessments based on real usage — not marketing copy.',
+                title: 'Hands-on tested',
+                text: 'Every tool covered here has been actively used — sign-up, setup, and real workflows. Not just a read-through of the pricing page.',
               },
               {
-                title: 'Transparent',
-                text: 'All affiliate links are clearly marked. Commission never influences our ratings or recommendations.',
+                title: 'Specific',
+                text: 'We focus on concrete details: what you get at each tier, what the limits actually are, and what the fine print says.',
               },
               {
-                title: 'Up to date',
-                text: 'Articles are updated when tools change their pricing, features, or terms. Last updated date is always shown.',
+                title: 'Updated',
+                text: 'SaaS pricing and features change. Articles are revised when something significant shifts, and the last updated date is always visible.',
               },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border bg-card p-5">
