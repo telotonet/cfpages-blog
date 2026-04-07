@@ -14,11 +14,11 @@ interface ComparisonTableProps {
 
 function CellValue({ value }: { value: string | boolean | null }) {
   if (value === true)
-    return <CheckCircle size={16} className="mx-auto text-green-500" aria-label="Да" />
+    return <CheckCircle size={16} className="mx-auto text-green-500" aria-label="Yes" />
   if (value === false)
-    return <XCircle size={16} className="mx-auto text-red-400" aria-label="Нет" />
+    return <XCircle size={16} className="mx-auto text-red-400" aria-label="No" />
   if (value === null || value === '')
-    return <Minus size={14} className="mx-auto text-muted-foreground/50" aria-label="Нет данных" />
+    return <Minus size={14} className="mx-auto text-muted-foreground/50" aria-label="N/A" />
   return <span>{value}</span>
 }
 
@@ -34,7 +34,7 @@ export function ComparisonTable({ tools, rows, caption }: ComparisonTableProps) 
         <thead>
           <tr className="border-b bg-muted/60">
             <th className="px-4 py-3 text-left font-sans font-semibold text-foreground">
-              Функция
+              Feature
             </th>
             {tools.map((tool) => (
               <th
