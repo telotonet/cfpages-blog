@@ -235,8 +235,6 @@ article h3 {
 
 .article-main {
   min-width: 0;
-  max-width: 46rem;
-  width: 100%;
 }
 
 .article-rail {
@@ -245,7 +243,14 @@ article h3 {
 
 .article-rail-inner {
   position: sticky;
-  top: 6.25rem;
+  top: 5.5rem;
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.article-rail-inner::-webkit-scrollbar {
+  display: none;
 }
 
 .article-header .text-border {
@@ -254,18 +259,14 @@ article h3 {
 
 @media (min-width: 1100px) {
   .article-reading-grid {
-    grid-template-columns: minmax(0, 46rem) 17rem;
-    justify-content: center;
-    gap: 2.25rem;
-  }
-
-  .article-main {
-    grid-column: 1;
+    grid-template-columns: minmax(0, 1fr) 17rem;
+    gap: 3rem;
+    max-width: 76rem;
+    margin-inline: auto;
   }
 
   .article-rail {
     display: block;
-    grid-column: 2;
   }
 }
 
