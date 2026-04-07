@@ -69,9 +69,6 @@
     @apply bg-background text-foreground;
     @apply font-sans;
     min-height: 100dvh;
-    background-image:
-      radial-gradient(circle at top, hsl(var(--accent) / 0.05), transparent 28rem),
-      linear-gradient(to bottom, hsl(var(--background)), hsl(var(--background)));
   }
 
   ::selection {
@@ -142,7 +139,7 @@ article h3 {
   font-size: clamp(1.0625rem, 1rem + 0.24vw, 1.17rem);
   line-height: 1.84;
   color: hsl(var(--foreground) / 0.94);
-  max-width: 42.5rem;
+  max-width: none;
   hanging-punctuation: first last;
 }
 
@@ -229,32 +226,14 @@ article h3 {
   border-radius: 1rem;
 }
 
-.article-page-shell {
-  position: relative;
-}
-
-.article-page-shell::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 32rem;
-  background:
-    radial-gradient(circle at top left, hsl(var(--accent) / 0.08), transparent 26rem),
-    linear-gradient(to bottom, hsl(var(--background) / 0.95), transparent);
-  pointer-events: none;
-}
-
 .article-reading-grid {
-  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: start;
 }
 
 .article-main {
-  position: relative;
-  z-index: 1;
   min-width: 0;
 }
 
@@ -264,7 +243,7 @@ article h3 {
 
 .article-rail-inner {
   position: sticky;
-  top: 6.25rem;
+  top: 5.5rem;
 }
 
 .article-header .text-border {
@@ -273,18 +252,16 @@ article h3 {
 
 @media (min-width: 1100px) {
   .article-reading-grid {
-    grid-template-columns: minmax(0, 44rem) minmax(16rem, 18rem);
-    justify-content: center;
+    grid-template-columns: minmax(0, 1fr) 17rem;
     gap: 3rem;
-  }
-
-  .article-main {
-    grid-column: 1;
+    max-width: 76rem;
+    margin-inline: auto;
+    align-items: start;
   }
 
   .article-rail {
     display: block;
-    grid-column: 2;
+    align-self: stretch;
   }
 }
 

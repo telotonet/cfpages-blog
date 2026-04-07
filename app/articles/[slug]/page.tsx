@@ -59,6 +59,7 @@ export default async function ArticlePage({ params }: PageProps) {
   const content = await compileMDXContent(article.content, {
     components: mdxComponents,
   })
+  const hasInlineAffiliateDisclosure = article.content.includes('<AffiliateDisclosureInline')
 
   const articleSchema = buildArticleSchema(article)
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -77,19 +78,13 @@ export default async function ArticlePage({ params }: PageProps) {
       )}
 
       <div className="article-page-shell">
-        <div className="mx-auto max-w-site px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
-          <div className="mx-auto max-w-[76rem]">
-            <ArticleHeader article={article} categoryName={category?.name} />
-
-            <div className="article-reading-grid">
-              <aside className="article-rail">
-                <div className="article-rail-inner">
-                  <TableOfContents items={toc} />
-                </div>
-              </aside>
-
+        <div className="px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
+          <div className="article-reading-grid">
               <div className="article-main">
-                {article.affiliateDisclosure && <AffiliateDisclosureInline />}
+                <ArticleHeader article={article} categoryName={category?.name} />
+                {article.affiliateDisclosure && !hasInlineAffiliateDisclosure && (
+                  <AffiliateDisclosureInline />
+                )}
                 <article
                   className="article-body prose prose-base max-w-none dark:prose-invert"
                   aria-label={`Статья: ${article.title}`}
@@ -102,7 +97,12 @@ export default async function ArticlePage({ params }: PageProps) {
                 <AuthorBox article={article} />
                 <RelatedArticles articles={relatedArticles} />
               </div>
-            </div>
+
+              <aside className="article-rail">
+                <div className="article-rail-inner">
+                  <TableOfContents items={toc} />
+                </div>
+              </aside>
           </div>
         </div>
       </div>
