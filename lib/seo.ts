@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import type { ArticleMeta, CategoryMeta } from './types'
 import { absoluteUrl, formatDateISO } from './utils'
 
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'AI Tools Hub'
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aitoolshub.com'
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Telotonet'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://telotonet.com'
 const SITE_DESCRIPTION =
   process.env.NEXT_PUBLIC_SITE_DESCRIPTION ??
-  'Expert reviews, comparisons, and guides for the best AI tools'
+  'B2B software reviews, comparisons, and guides for business teams'
 
 // ─── Base metadata ────────────────────────────────────────────────────────────
 
@@ -33,7 +33,7 @@ export function buildBaseMetadata(): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@aitoolshub',
+      site: '@telotonet',
     },
     robots: {
       index: true,

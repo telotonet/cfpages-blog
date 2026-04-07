@@ -33,11 +33,11 @@ export function Footer() {
               className="flex items-center gap-2 font-sans text-base font-bold text-foreground hover:text-accent transition-colors"
             >
               <span className="text-accent" aria-hidden="true">▸</span>
-              AI Tools Hub
+              Telotonet
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Honest reviews, comparisons, and guides for the best B2B SaaS and AI tools.
-              We help you choose the right software for your business.
+              Reviews and comparisons of B2B SaaS tools — email, sales, CRM, AI writing,
+              and productivity software.
             </p>
             <p className="mt-4 text-xs text-muted-foreground">
               This site contains affiliate links.{' '}
@@ -69,7 +69,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t pt-6 text-xs text-muted-foreground sm:flex-row">
-          <p>© {currentYear} AI Tools Hub. All rights reserved.</p>
+          <p>© {currentYear} Telotonet. All rights reserved.</p>
           <p>
             Content is for informational purposes only.{' '}
             <Link href="/editorial-policy/" className="underline hover:text-foreground">

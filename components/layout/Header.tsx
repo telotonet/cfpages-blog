@@ -16,10 +16,10 @@ export function Header() {
         <Link
           href="/"
           className="flex items-center gap-2 font-sans text-lg font-bold tracking-tight text-foreground hover:text-accent transition-colors"
-          aria-label="AI Tools Hub — go to homepage"
+          aria-label="Telotonet — go to homepage"
         >
           <span className="text-accent" aria-hidden="true">▸</span>
-          AI Tools Hub
+          Telotonet
         </Link>
 
         {/* Desktop nav */}

@@ -32,8 +32,8 @@ export default async function CategoryPage({ params }: PageProps) {
   const articles = getAllArticles({ category: slug })
 
   const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: 'Главная', href: '/' },
-    { name: 'Категории', href: '/categories/' },
+    { name: 'Home', href: '/' },
+    { name: 'Categories', href: '/categories/' },
     { name: category.name, href: `/categories/${category.slug}/` },
   ])
 
@@ -45,8 +45,8 @@ export default async function CategoryPage({ params }: PageProps) {
         <div className="mb-6">
           <Breadcrumbs
             items={[
-              { label: 'Главная', href: '/' },
-              { label: 'Категории', href: '/categories/' },
+              { label: 'Home', href: '/' },
+              { label: 'Categories', href: '/categories/' },
               { label: category.name },
             ]}
           />
@@ -59,14 +59,14 @@ export default async function CategoryPage({ params }: PageProps) {
           <p className="text-muted-foreground">
             {category.description}
             {articles.length > 0 && (
-              <span className="ml-2 text-sm">— {articles.length} материалов</span>
+              <span className="ml-2 text-sm">— {articles.length} {articles.length === 1 ? 'article' : 'articles'}</span>
             )}
           </p>
         </div>
 
         {articles.length === 0 ? (
           <div className="py-16 text-center">
-            <p className="text-muted-foreground">В этой категории пока нет статей.</p>
+            <p className="text-muted-foreground">No articles in this category yet.</p>
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
