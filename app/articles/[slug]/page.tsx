@@ -59,6 +59,7 @@ export default async function ArticlePage({ params }: PageProps) {
   const content = await compileMDXContent(article.content, {
     components: mdxComponents,
   })
+  const hasInlineAffiliateDisclosure = article.content.includes('<AffiliateDisclosureInline')
 
   const articleSchema = buildArticleSchema(article)
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -89,7 +90,9 @@ export default async function ArticlePage({ params }: PageProps) {
               </aside>
 
               <div className="article-main">
-                {article.affiliateDisclosure && <AffiliateDisclosureInline />}
+                {article.affiliateDisclosure && !hasInlineAffiliateDisclosure && (
+                  <AffiliateDisclosureInline />
+                )}
                 <article
                   className="article-body prose prose-base max-w-none dark:prose-invert"
                   aria-label={`Статья: ${article.title}`}
