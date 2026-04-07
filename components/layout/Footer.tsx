@@ -2,19 +2,19 @@ import Link from 'next/link'
 
 const FOOTER_LINKS = [
   {
-    title: 'Контент',
+    title: 'Content',
     links: [
-      { href: '/articles/', label: 'Все статьи' },
-      { href: '/categories/', label: 'Категории' },
+      { href: '/articles/', label: 'All Articles' },
+      { href: '/categories/', label: 'Categories' },
     ],
   },
   {
-    title: 'О сайте',
+    title: 'About',
     links: [
-      { href: '/about/', label: 'О нас' },
-      { href: '/contact/', label: 'Контакты' },
-      { href: '/editorial-policy/', label: 'Редполитика' },
-      { href: '/affiliate-disclosure/', label: 'Партнёрские ссылки' },
+      { href: '/about/', label: 'About Us' },
+      { href: '/contact/', label: 'Contact' },
+      { href: '/editorial-policy/', label: 'Editorial Policy' },
+      { href: '/affiliate-disclosure/', label: 'Affiliate Disclosure' },
     ],
   },
 ]
@@ -23,7 +23,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t bg-muted/30" aria-label="Подвал сайта">
+    <footer className="border-t bg-muted/30" aria-label="Site footer">
       <div className="mx-auto max-w-site px-4 py-12 sm:px-6">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand */}
@@ -36,13 +36,13 @@ export function Footer() {
               AI Tools Hub
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Честные обзоры, сравнения и гайды по лучшим AI-инструментам.
-              Помогаем выбрать подходящий инструмент для вашей задачи.
+              Honest reviews, comparisons, and guides for the best B2B SaaS and AI tools.
+              We help you choose the right software for your business.
             </p>
             <p className="mt-4 text-xs text-muted-foreground">
-              Сайт содержит партнёрские ссылки.{' '}
+              This site contains affiliate links.{' '}
               <Link href="/affiliate-disclosure/" className="underline hover:text-foreground">
-                Подробнее
+                Learn more
               </Link>
             </p>
           </div>
@@ -69,11 +69,11 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t pt-6 text-xs text-muted-foreground sm:flex-row">
-          <p>© {currentYear} AI Tools Hub. Все права защищены.</p>
+          <p>© {currentYear} AI Tools Hub. All rights reserved.</p>
           <p>
-            Контент носит информационный характер.{' '}
+            Content is for informational purposes only.{' '}
             <Link href="/editorial-policy/" className="underline hover:text-foreground">
-              Редполитика
+              Editorial Policy
             </Link>
           </p>
         </div>

@@ -21,7 +21,7 @@ export function buildBaseMetadata(): Metadata {
     openGraph: {
       siteName: SITE_NAME,
       type: 'website',
-      locale: 'ru_RU',
+      locale: 'en_US',
       images: [
         {
           url: absoluteUrl('/og-default.png'),
@@ -96,10 +96,10 @@ export function buildArticleMetadata(article: ArticleMeta): Metadata {
 
 export function buildCategoryMetadata(category: CategoryMeta, articleCount: number): Metadata {
   const url = absoluteUrl(`/categories/${category.slug}/`)
-  const title = `${category.name} — лучшие AI инструменты`
+  const title = `${category.name} — Reviews & Comparisons`
   const description =
     category.excerpt ??
-    `${category.description} Читайте обзоры, сравнения и гайды. Найдено ${articleCount} статей.`
+    `${category.description} Reviews, comparisons, and guides. ${articleCount} article${articleCount === 1 ? '' : 's'}.`
 
   return {
     title,

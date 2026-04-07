@@ -5,8 +5,8 @@ import { getAllArticles } from '@/lib/articles'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Категории',
-  description: 'Все категории обзоров и статей по AI-инструментам.',
+  title: 'Categories',
+  description: 'Browse all categories of B2B SaaS and AI tool reviews on Telotonet.',
   alternates: { canonical: '/categories/' },
 }
 
@@ -23,18 +23,18 @@ export default function CategoriesPage() {
   return (
     <div className="mx-auto max-w-site px-4 py-10 sm:px-6">
       <div className="mb-6">
-        <Breadcrumbs items={[{ label: 'Главная', href: '/' }, { label: 'Категории' }]} />
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Categories' }]} />
       </div>
 
       <div className="mb-8">
         <h1 className="mb-2 font-sans text-3xl font-bold tracking-tight text-foreground">
-          Категории
+          Categories
         </h1>
-        <p className="text-muted-foreground">Выберите направление — найдите нужный инструмент</p>
+        <p className="text-muted-foreground">Browse by topic — find the tool you need</p>
       </div>
 
       {categories.length === 0 ? (
-        <p className="text-muted-foreground">Категории пока не добавлены.</p>
+        <p className="text-muted-foreground">No categories added yet.</p>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => {
@@ -52,7 +52,7 @@ export default function CategoriesPage() {
                   {category.description}
                 </p>
                 <span className="text-xs text-muted-foreground">
-                  {count} {count === 1 ? 'статья' : count < 5 ? 'статьи' : 'статей'}
+                  {count} {count === 1 ? 'article' : 'articles'}
                 </span>
               </Link>
             )

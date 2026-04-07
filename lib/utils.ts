@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatDate(dateString: string, options?: Intl.DateTimeFormatOptions): string {
   const date = new Date(dateString)
-  return date.toLocaleDateString('ru-RU', {
+  return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -40,8 +40,8 @@ export function absoluteUrl(path: string): string {
 
 // Article type labels (for display)
 export const ARTICLE_TYPE_LABELS: Record<string, string> = {
-  'best-of': 'Топ подборка',
-  'review': 'Обзор',
-  'comparison': 'Сравнение',
-  'tutorial': 'Гайд',
+  'best-of': 'Best Of',
+  'review': 'Review',
+  'comparison': 'Comparison',
+  'tutorial': 'Guide',
 }

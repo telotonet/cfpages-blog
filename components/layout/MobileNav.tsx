@@ -7,9 +7,9 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
-  { href: '/articles/', label: 'Статьи' },
-  { href: '/categories/', label: 'Категории' },
-  { href: '/about/', label: 'О нас' },
+  { href: '/articles/', label: 'Articles' },
+  { href: '/categories/', label: 'Categories' },
+  { href: '/about/', label: 'About' },
 ]
 
 export function MobileNav() {
@@ -31,7 +31,7 @@ export function MobileNav() {
     <div className="md:hidden">
       <button
         onClick={() => setOpen(!open)}
-        aria-label={open ? 'Закрыть меню' : 'Открыть меню'}
+        aria-label={open ? 'Close menu' : 'Open menu'}
         aria-expanded={open}
         aria-controls="mobile-nav"
         className="flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
@@ -50,7 +50,7 @@ export function MobileNav() {
           {/* Drawer */}
           <nav
             id="mobile-nav"
-            aria-label="Мобильная навигация"
+            aria-label="Mobile navigation"
             className="fixed inset-x-0 top-[57px] z-50 border-b bg-background px-4 pb-6 pt-4 shadow-lg"
           >
             <ul className="flex flex-col gap-1">

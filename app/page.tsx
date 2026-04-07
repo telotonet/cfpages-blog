@@ -24,27 +24,27 @@ export default function HomePage() {
         <div className="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="accent" className="mb-4">
-              Честные обзоры AI-инструментов
+              Honest B2B SaaS & AI Tool Reviews
             </Badge>
             <h1
               id="hero-heading"
               className="mb-5 font-sans text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             >
-              Найдите лучший{' '}
-              <span className="text-accent">AI-инструмент</span>{' '}
-              для вашей задачи
+              Find the right{' '}
+              <span className="text-accent">software tool</span>{' '}
+              for your business
             </h1>
             <p className="mb-8 text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Подробные обзоры, объективные сравнения и практические гайды.
-              Без воды — только то, что важно для принятия решения.
+              In-depth reviews, honest comparisons, and practical guides for B2B SaaS tools.
+              No fluff — just what you need to make a decision.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Button href="/articles/" size="lg">
-                Все статьи
+                All Articles
                 <ArrowRight size={16} aria-hidden="true" />
               </Button>
               <Button href="/categories/" size="lg" variant="outline">
-                Категории
+                Browse Categories
               </Button>
             </div>
           </div>
@@ -57,13 +57,13 @@ export default function HomePage() {
           <div className="mx-auto max-w-site px-4 py-12 sm:px-6">
             <div className="mb-6 flex items-center justify-between">
               <h2 id="featured-heading" className="font-sans text-lg font-semibold text-foreground">
-                Рекомендуем
+                Featured
               </h2>
               <Link
                 href="/articles/"
                 className="text-sm text-muted-foreground hover:text-accent transition-colors"
               >
-                Все статьи →
+                All articles →
               </Link>
             </div>
             <ArticleCard article={heroArticle} featured />
@@ -76,13 +76,13 @@ export default function HomePage() {
         <div className="mx-auto max-w-site px-4 py-12 sm:px-6">
           <div className="mb-6 flex items-center justify-between">
             <h2 id="latest-heading" className="font-sans text-lg font-semibold text-foreground">
-              Последние статьи
+              Latest Articles
             </h2>
             <Link
               href="/articles/"
               className="text-sm text-muted-foreground hover:text-accent transition-colors"
             >
-              Все статьи →
+              All articles →
             </Link>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -99,13 +99,13 @@ export default function HomePage() {
           <div className="mx-auto max-w-site px-4 py-12 sm:px-6">
             <div className="mb-6 flex items-center justify-between">
               <h2 id="categories-heading" className="font-sans text-lg font-semibold text-foreground">
-                Категории
+                Categories
               </h2>
               <Link
                 href="/categories/"
                 className="text-sm text-muted-foreground hover:text-accent transition-colors"
               >
-                Все категории →
+                All categories →
               </Link>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -129,21 +129,21 @@ export default function HomePage() {
       )}
 
       {/* ── Trust section ─────────────────────────────────────────────────── */}
-      <section aria-label="О нашем подходе" className="border-t">
+      <section aria-label="Our approach" className="border-t">
         <div className="mx-auto max-w-site px-4 py-12 sm:px-6">
           <div className="grid gap-6 sm:grid-cols-3">
             {[
               {
-                title: 'Независимость',
-                text: 'Мы тестируем инструменты самостоятельно и пишем честные оценки на основе реального опыта.',
+                title: 'Independent',
+                text: 'We test tools ourselves and write honest assessments based on real usage — not marketing copy.',
               },
               {
-                title: 'Прозрачность',
-                text: 'Все партнёрские ссылки чётко обозначены. Комиссия не влияет на оценки и рекомендации.',
+                title: 'Transparent',
+                text: 'All affiliate links are clearly marked. Commission never influences our ratings or recommendations.',
               },
               {
-                title: 'Актуальность',
-                text: 'Статьи регулярно обновляются при изменении функциональности или ценообразования инструментов.',
+                title: 'Up to date',
+                text: 'Articles are updated when tools change their pricing, features, or terms. Last updated date is always shown.',
               },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border bg-card p-5">

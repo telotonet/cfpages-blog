@@ -11,9 +11,9 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
   if (articles.length === 0) return null
 
   return (
-    <section aria-label="Похожие статьи" className="mt-12 border-t pt-10">
+    <section aria-label="Related articles" className="mt-12 border-t pt-10">
       <h2 className="mb-6 font-sans text-xl font-semibold text-foreground">
-        Читайте также
+        Read next
       </h2>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
@@ -32,7 +32,7 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
                 <span>{formatDate(article.publishedAt)}</span>
                 <span className="flex items-center gap-1">
                   <Clock size={11} aria-hidden="true" />
-                  {article.readingTime} мин
+                  {article.readingTime} min
                 </span>
               </div>
             </Link>

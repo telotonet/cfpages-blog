@@ -1,8 +1,8 @@
 {
   "slug": "ai-writing",
-  "name": "AI-копирайтинг",
-  "description": "Инструменты для создания текстового контента с помощью искусственного интеллекта: от маркетинговых текстов до лонгридов.",
-  "excerpt": "Обзоры и сравнения AI-инструментов для написания текстов, статей, постов и маркетингового контента.",
+  "name": "AI Writing",
+  "description": "Reviews of AI writing tools for marketing copy, long-form content, blog posts, and email — who they're for, what they cost, and how they actually perform.",
+  "excerpt": "Reviews and comparisons of AI writing tools for content, marketing, and email.",
   "color": "#6366f1",
   "icon": "pen"
 }

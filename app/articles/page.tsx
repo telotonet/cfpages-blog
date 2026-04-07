@@ -5,9 +5,9 @@ import { ArticlesClient } from './ArticlesClient'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Все статьи',
+  title: 'All Articles',
   description:
-    'Обзоры, сравнения и гайды по лучшим AI-инструментам. Находите подходящие инструменты для своих задач.',
+    'Reviews, comparisons, and guides for the best B2B SaaS and AI tools. Find the right software for your business.',
   alternates: { canonical: '/articles/' },
 }
 
@@ -20,17 +20,17 @@ export default function ArticlesPage() {
     <div className="mx-auto max-w-site px-4 py-10 sm:px-6">
       <div className="mb-6">
         <Breadcrumbs
-          items={[{ label: 'Главная', href: '/' }, { label: 'Статьи' }]}
+          items={[{ label: 'Home', href: '/' }, { label: 'Articles' }]}
         />
       </div>
 
       <div className="mb-8">
         <h1 className="mb-2 font-sans text-3xl font-bold tracking-tight text-foreground">
-          Все статьи
+          All Articles
         </h1>
         <p className="text-muted-foreground">
-          Обзоры, сравнения и гайды по AI-инструментам
-          <span className="ml-2 text-sm">— {articles.length} материалов</span>
+          Reviews, comparisons, and guides for B2B SaaS tools
+          <span className="ml-2 text-sm">— {articles.length} articles</span>
         </p>
       </div>
 
