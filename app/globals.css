@@ -1,0 +1,326 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* Soft editorial paper tones tuned for long-form reading */
+    --background: 38 27% 97%;
+    --foreground: 222 21% 14%;
+
+    --muted: 35 22% 93%;
+    --muted-foreground: 220 10% 43%;
+
+    --border: 220 14% 85%;
+
+    /* Slate-indigo accent with lower glare than saturated blue */
+    --accent: 231 57% 52%;
+    --accent-foreground: 0 0% 100%;
+    --accent-subtle: 230 45% 95%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 20% 10%;
+
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --danger: 0 72% 51%;
+  }
+
+  .dark {
+    --background: 222 20% 7%;
+    --foreground: 210 20% 94%;
+
+    --muted: 222 17% 13%;
+    --muted-foreground: 218 11% 58%;
+
+    --border: 222 14% 18%;
+
+    --accent: 239 83% 72%;
+    --accent-foreground: 0 0% 100%;
+    --accent-subtle: 239 40% 14%;
+
+    --card: 222 20% 9%;
+    --card-foreground: 210 20% 94%;
+
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --danger: 0 72% 55%;
+  }
+}
+
+/* ─── Base styles ────────────────────────────────────────────────────────────── */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    @apply font-sans;
+    min-height: 100dvh;
+    background-image:
+      radial-gradient(circle at top, hsl(var(--accent) / 0.05), transparent 28rem),
+      linear-gradient(to bottom, hsl(var(--background)), hsl(var(--background)));
+  }
+
+  ::selection {
+    background-color: hsl(var(--accent) / 0.15);
+    color: hsl(var(--foreground));
+  }
+
+  /* Focus styles — accessible, clean */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar — subtle, themed */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+/* ─── Anchor links on headings ───────────────────────────────────────────────── */
+
+.anchor-link {
+  position: absolute;
+  left: -1.5rem;
+  color: hsl(var(--accent) / 0.4);
+  font-weight: 400;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  user-select: none;
+}
+
+h2:hover .anchor-link,
+h3:hover .anchor-link {
+  opacity: 1;
+}
+
+/* Headings need position:relative so anchor-link can be positioned absolutely */
+article h2,
+article h3 {
+  position: relative;
+}
+
+/* ─── Code highlighting overrides ────────────────────────────────────────────── */
+
+.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* ─── Article prose overrides ────────────────────────────────────────────────── */
+
+/* Article body uses serif for readability */
+.article-body {
+  font-family: var(--font-lora), Georgia, serif;
+  font-size: clamp(1.0625rem, 1rem + 0.24vw, 1.17rem);
+  line-height: 1.84;
+  color: hsl(var(--foreground) / 0.94);
+  max-width: 42.5rem;
+  hanging-punctuation: first last;
+}
+
+.article-body :where(p, li) {
+  text-wrap: pretty;
+}
+
+.article-body :where(p) {
+  margin-top: 1.12em;
+  margin-bottom: 1.12em;
+}
+
+.article-body :where(h2, h3, h4) {
+  font-family: var(--font-inter), ui-sans-serif, sans-serif;
+  letter-spacing: -0.024em;
+  color: hsl(var(--foreground));
+}
+
+.article-body :where(h2) {
+  margin-top: 2.65em;
+  margin-bottom: 0.85em;
+  font-size: clamp(1.7rem, 1.45rem + 0.7vw, 2.15rem);
+  line-height: 1.14;
+}
+
+.article-body :where(h3) {
+  margin-top: 1.95em;
+  margin-bottom: 0.72em;
+  font-size: clamp(1.24rem, 1.12rem + 0.35vw, 1.48rem);
+  line-height: 1.25;
+}
+
+.article-body :where(h4) {
+  margin-top: 1.65em;
+  margin-bottom: 0.6em;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--muted-foreground));
+}
+
+.article-body :where(ul, ol) {
+  margin-top: 1.1em;
+  margin-bottom: 1.25em;
+  padding-left: 1.2em;
+}
+
+.article-body :where(li + li) {
+  margin-top: 0.52em;
+}
+
+.article-body :where(strong) {
+  color: hsl(var(--foreground));
+  font-weight: 650;
+}
+
+.article-body :where(a) {
+  color: hsl(var(--accent));
+  text-decoration-thickness: 0.08em;
+  text-decoration-color: hsl(var(--accent) / 0.35);
+  text-underline-offset: 0.16em;
+}
+
+.article-body :where(a:hover) {
+  color: hsl(var(--foreground));
+  text-decoration-color: hsl(var(--accent) / 0.8);
+}
+
+.article-body :where(table) {
+  font-size: 0.95em;
+}
+
+.article-body :where(blockquote) {
+  font-size: 1.02em;
+}
+
+.article-body :where(hr) {
+  margin-top: 2.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-body :where(img) {
+  border-radius: 1rem;
+}
+
+.article-page-shell {
+  position: relative;
+}
+
+.article-page-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 32rem;
+  background:
+    radial-gradient(circle at top left, hsl(var(--accent) / 0.08), transparent 26rem),
+    linear-gradient(to bottom, hsl(var(--background) / 0.95), transparent);
+  pointer-events: none;
+}
+
+.article-reading-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.article-main {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.article-rail {
+  display: none;
+}
+
+.article-rail-inner {
+  position: sticky;
+  top: 6.25rem;
+}
+
+.article-header .text-border {
+  color: hsl(var(--border));
+}
+
+@media (min-width: 1100px) {
+  .article-reading-grid {
+    grid-template-columns: minmax(0, 44rem) minmax(16rem, 18rem);
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .article-main {
+    grid-column: 1;
+  }
+
+  .article-rail {
+    display: block;
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .article-body {
+    font-size: 1rem;
+    line-height: 1.78;
+  }
+
+  .article-body :where(h2) {
+    margin-top: 2.3em;
+    font-size: 1.55rem;
+  }
+
+  .article-body :where(h3) {
+    font-size: 1.15rem;
+  }
+}
+
+/* ─── Transitions ────────────────────────────────────────────────────────────── */
+
+/* Smooth theme transitions — only on color/background properties */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* Reset transitions for interactive elements to avoid janky UX */
+button,
+a,
+input,
+textarea,
+select {
+  transition-property: background-color, border-color, color, opacity, transform, box-shadow;
+  transition-duration: 150ms;
+}
