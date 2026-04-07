@@ -41,7 +41,7 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <Badge variant="accent">{ARTICLE_TYPE_LABELS[article.articleType]}</Badge>
               {article.featured && (
-                <Badge variant="warning">Рекомендуем</Badge>
+                <Badge variant="warning">Featured</Badge>
               )}
             </div>
             <h2 className="mb-2 font-sans text-xl font-bold leading-tight tracking-tight text-foreground group-hover:text-accent transition-colors lg:text-2xl">
@@ -55,7 +55,7 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
               <span aria-hidden="true">·</span>
               <span className="flex items-center gap-1">
                 <Clock size={12} aria-hidden="true" />
-                {article.readingTime} мин
+                {article.readingTime} min
               </span>
             </div>
           </div>
@@ -101,7 +101,7 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
           <span aria-hidden="true">·</span>
           <span className="flex items-center gap-1">
             <Clock size={12} aria-hidden="true" />
-            {article.readingTime} мин
+            {article.readingTime} min
           </span>
         </div>
       </div>

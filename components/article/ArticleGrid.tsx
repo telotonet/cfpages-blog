@@ -10,7 +10,7 @@ export function ArticleGrid({ articles, showFeatured = false }: ArticleGridProps
   if (articles.length === 0) {
     return (
       <div className="py-16 text-center">
-        <p className="text-muted-foreground">Статей пока нет.</p>
+        <p className="text-muted-foreground">No articles yet.</p>
       </div>
     )
   }

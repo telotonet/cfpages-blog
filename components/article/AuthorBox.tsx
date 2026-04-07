@@ -9,7 +9,7 @@ interface AuthorBoxProps {
 export function AuthorBox({ article }: AuthorBoxProps) {
   return (
     <aside
-      aria-label="Об авторе"
+      aria-label="About the author"
       className="mt-10 rounded-xl border bg-muted/30 p-6"
     >
       <div className="flex items-start gap-4">
@@ -37,16 +37,16 @@ export function AuthorBox({ article }: AuthorBoxProps) {
               </span>
             )}
             <span className="text-xs text-muted-foreground">
-              · Опубликовано {formatDate(article.publishedAt)}
+              · Published {formatDate(article.publishedAt)}
             </span>
             {article.updatedAt && (
               <span className="text-xs text-muted-foreground">
-                · Обновлено {formatDate(article.updatedAt)}
+                · Updated {formatDate(article.updatedAt)}
               </span>
             )}
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            Автор обзоров и сравнений AI-инструментов. Тестирует продукты и пишет честные материалы.
+            Reviews and comparisons of B2B SaaS tools. Tests products and writes about what actually matters.
           </p>
         </div>
       </div>

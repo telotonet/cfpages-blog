@@ -63,8 +63,8 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const articleSchema = buildArticleSchema(article)
   const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: 'Главная', href: '/' },
-    { name: 'Статьи', href: '/articles/' },
+    { name: 'Home', href: '/' },
+    { name: 'Articles', href: '/articles/' },
     ...(category ? [{ name: category.name, href: `/categories/${category.slug}/` }] : []),
     { name: article.title, href: `/articles/${article.slug}/` },
   ])
@@ -87,7 +87,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 )}
                 <article
                   className="article-body prose prose-base max-w-none dark:prose-invert"
-                  aria-label={`Статья: ${article.title}`}
+                  aria-label={`Article: ${article.title}`}
                 >
                   {content}
                 </article>

@@ -10,8 +10,8 @@ interface ProsConsProps {
 export function ProsCons({
   pros,
   cons,
-  prosTitle = 'Плюсы',
-  consTitle = 'Минусы',
+  prosTitle = 'Pros',
+  consTitle = 'Cons',
 }: ProsConsProps) {
   return (
     <div className="not-prose my-8 grid gap-4 lg:grid-cols-2">

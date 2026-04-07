@@ -50,7 +50,7 @@ function FAQItemComponent({ item, index }: { item: FAQItem; index: number }) {
   )
 }
 
-export function FAQBlock({ items, title = 'Часто задаваемые вопросы' }: FAQBlockProps) {
+export function FAQBlock({ items, title = 'Frequently Asked Questions' }: FAQBlockProps) {
   if (!items?.length) return null
 
   return (

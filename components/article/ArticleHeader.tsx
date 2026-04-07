@@ -13,8 +13,8 @@ interface ArticleHeaderProps {
 
 export function ArticleHeader({ article, categoryName }: ArticleHeaderProps) {
   const breadcrumbItems = [
-    { label: 'Главная', href: '/' },
-    { label: 'Статьи', href: '/articles/' },
+    { label: 'Home', href: '/' },
+    { label: 'Articles', href: '/articles/' },
     ...(article.category && categoryName
       ? [{ label: categoryName, href: `/categories/${article.category}/` }]
       : []),
@@ -31,7 +31,7 @@ export function ArticleHeader({ article, categoryName }: ArticleHeaderProps) {
       {/* Badges */}
       <div className="mb-5 flex flex-wrap items-center gap-2.5">
         <Badge variant="accent">{ARTICLE_TYPE_LABELS[article.articleType]}</Badge>
-        {article.featured && <Badge variant="warning">Рекомендуем</Badge>}
+        {article.featured && <Badge variant="warning">Featured</Badge>}
         {article.tags?.slice(0, 3).map((tag, index) => (
           <Badge key={`${tag}-${index}`} variant="muted">
             {tag}
@@ -62,14 +62,14 @@ export function ArticleHeader({ article, categoryName }: ArticleHeaderProps) {
             <span aria-hidden="true" className="hidden text-border sm:inline">|</span>
             <span className="flex items-center gap-1.5">
               <RefreshCw size={14} aria-hidden="true" />
-              Обновлено: <time dateTime={article.updatedAt}>{formatDate(article.updatedAt)}</time>
+              Updated: <time dateTime={article.updatedAt}>{formatDate(article.updatedAt)}</time>
             </span>
           </>
         )}
         <span aria-hidden="true" className="hidden text-border sm:inline">|</span>
         <span className="flex items-center gap-1.5">
           <Clock size={14} aria-hidden="true" />
-          {article.readingTime} мин чтения
+          {article.readingTime} min read
         </span>
       </div>
 
@@ -83,7 +83,6 @@ export function ArticleHeader({ article, categoryName }: ArticleHeaderProps) {
             priority
             className="object-cover"
             sizes="(max-width: 1280px) 100vw, 1280px"
-            onError={() => {}}
           />
         </div>
       )}

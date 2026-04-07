@@ -34,7 +34,7 @@ export function ToolSummaryCard({
     >
       {variant === 'top-pick' && (
         <div className="bg-accent px-4 py-1.5 text-xs font-semibold text-accent-foreground">
-          Наш выбор
+          Top Pick
         </div>
       )}
 
@@ -51,7 +51,7 @@ export function ToolSummaryCard({
             </div>
 
             {rating !== undefined && (
-              <div className="mt-1 flex items-center gap-1" aria-label={`Рейтинг: ${rating} из 5`}>
+              <div className="mt-1 flex items-center gap-1" aria-label={`Rating: ${rating} out of 5`}>
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
@@ -78,7 +78,7 @@ export function ToolSummaryCard({
               ? { target: '_blank', rel: 'noopener noreferrer nofollow' }
               : {})}
           >
-            Перейти
+            Visit
             <ExternalLink size={11} aria-hidden="true" />
           </Link>
         </div>
@@ -89,12 +89,12 @@ export function ToolSummaryCard({
           <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
             {pricing && (
               <span>
-                <span className="font-medium text-foreground">Цена:</span> {pricing}
+                <span className="font-medium text-foreground">Price:</span> {pricing}
               </span>
             )}
             {bestFor && (
               <span>
-                <span className="font-medium text-foreground">Подходит для:</span> {bestFor}
+                <span className="font-medium text-foreground">Best for:</span> {bestFor}
               </span>
             )}
           </div>
