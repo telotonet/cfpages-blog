@@ -47,9 +47,9 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   if (items.length < 2) return null
 
   return (
-    <nav aria-label="Содержание статьи">
+    <nav aria-label="Table of contents">
       <p className="mb-3 px-2 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-        Содержание
+        Contents
       </p>
       <ol className="space-y-0.5">
         {items.map((item, index) => {

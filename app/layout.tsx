@@ -7,13 +7,13 @@ import { buildBaseMetadata } from '@/lib/seo'
 import './globals.css'
 
 const inter = Inter({
-  subsets: ['latin', 'cyrillic'],
+  subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
 
 const lora = Lora({
-  subsets: ['latin', 'cyrillic'],
+  subsets: ['latin'],
   variable: '--font-lora',
   display: 'swap',
 })
@@ -23,7 +23,7 @@ export const metadata: Metadata = buildBaseMetadata()
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="ru"
+      lang="en"
       suppressHydrationWarning
       className={`${inter.variable} ${lora.variable}`}
     >
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent-foreground focus:shadow-lg"
           >
-            Перейти к содержимому
+            Skip to main content
           </a>
           <Header />
           <main id="main-content" className="flex-1">

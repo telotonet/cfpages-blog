@@ -11,18 +11,18 @@ export default function NotFound() {
         404
       </p>
       <h1 className="mb-3 font-sans text-2xl font-bold text-foreground sm:text-3xl">
-        Страница не найдена
+        Page not found
       </h1>
       <p className="mb-8 max-w-sm text-muted-foreground">
-        Возможно, ссылка устарела или страница была перемещена.
-        Попробуйте начать с главной.
+        The link may be outdated or the page may have moved.
+        Try starting from the homepage.
       </p>
       <div className="flex flex-wrap justify-center gap-3">
         <Button href="/" size="lg">
-          На главную
+          Go home
         </Button>
         <Button href="/articles/" size="lg" variant="outline">
-          Все статьи
+          All articles
         </Button>
       </div>
     </div>

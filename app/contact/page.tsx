@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'Контакты',
-  description: 'Свяжитесь с редакцией AI Tools Hub по вопросам сотрудничества или обратной связи.',
+  title: 'Contact',
+  description: 'Get in touch with the Telotonet editorial team for corrections, partnerships, or article suggestions.',
   alternates: { canonical: '/contact/' },
 }
 
@@ -11,37 +11,37 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-site px-4 py-10 sm:px-6">
       <div className="mb-6">
-        <Breadcrumbs items={[{ label: 'Главная', href: '/' }, { label: 'Контакты' }]} />
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
       </div>
 
       <div className="mx-auto max-w-[72ch]">
         <h1 className="mb-4 font-sans text-3xl font-bold tracking-tight text-foreground">
-          Контакты
+          Contact
         </h1>
         <p className="mb-8 text-muted-foreground">
-          Есть вопрос, нашли ошибку или хотите предложить тему для обзора?
+          Found an error, have a question, or want to suggest a review topic?
         </p>
 
         <div className="grid gap-5 sm:grid-cols-2">
           {[
             {
-              title: 'По вопросам контента',
-              text: 'Нашли неточность, хотите предложить тему или статью для рассмотрения.',
-              hint: 'Тема письма: [Контент]',
+              title: 'Content & editorial',
+              text: 'Found an inaccuracy, want to suggest a topic, or submit an article for consideration.',
+              hint: 'Subject: [Content]',
             },
             {
-              title: 'Партнёрство и реклама',
-              text: 'Обсудить нативное размещение, партнёрскую программу или другое сотрудничество.',
-              hint: 'Тема письма: [Партнёрство]',
+              title: 'Partnerships & advertising',
+              text: 'Discuss sponsored content, affiliate programs, or other collaboration opportunities.',
+              hint: 'Subject: [Partnership]',
             },
             {
-              title: 'Технические вопросы',
-              text: 'Сайт работает некорректно, сломана ссылка или другие технические проблемы.',
-              hint: 'Тема письма: [Техника]',
+              title: 'Technical issues',
+              text: 'Site not working correctly, broken link, or other technical problems.',
+              hint: 'Subject: [Technical]',
             },
             {
-              title: 'Другое',
-              text: 'Любые другие вопросы, которые не попадают в вышеперечисленные категории.',
+              title: 'Other',
+              text: 'Anything that does not fit the categories above.',
               hint: '',
             },
           ].map((item) => (
@@ -59,18 +59,18 @@ export default function ContactPage() {
 
         <div className="mt-8 rounded-xl border bg-muted/40 p-6">
           <p className="text-sm text-muted-foreground">
-            Мы не публикуем платные обзоры и не продаём места в рейтингах.
-            Все материалы — результат самостоятельного тестирования и редакторской работы.
+            We do not publish paid reviews or sell spots in rankings.
+            All content is the result of independent testing and editorial work.
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            Прочитайте нашу{' '}
+            Please read our{' '}
             <a
               href="/editorial-policy/"
               className="text-accent underline hover:no-underline"
             >
-              редакционную политику
+              editorial policy
             </a>{' '}
-            перед тем, как отправлять предложение.
+            before reaching out with a proposal.
           </p>
         </div>
       </div>

@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
-  title: 'О нас',
+  title: 'About Us',
   description:
-    'Мы пишем честные обзоры и сравнения AI-инструментов, основанные на реальном опыте тестирования.',
+    'Telotonet publishes honest, hands-on reviews and comparisons of B2B SaaS and AI tools for business owners and marketers.',
   alternates: { canonical: '/about/' },
 }
 
@@ -12,54 +12,55 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-site px-4 py-10 sm:px-6">
       <div className="mb-6">
-        <Breadcrumbs items={[{ label: 'Главная', href: '/' }, { label: 'О нас' }]} />
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
       </div>
 
       <div className="mx-auto max-w-[72ch]">
         <h1 className="mb-6 font-sans text-3xl font-bold tracking-tight text-foreground">
-          О нас
+          About Us
         </h1>
 
         <div className="prose prose-base dark:prose-invert max-w-none article-body">
           <p>
-            <strong>AI Tools Hub</strong> — независимый ресурс, посвящённый анализу и сравнению
-            AI-инструментов. Мы помогаем профессионалам, разработчикам и предпринимателям
-            разобраться в растущем рынке искусственного интеллекта.
+            <strong>Telotonet</strong> is an independent review and comparison site focused on
+            B2B SaaS tools — email deliverability, sales automation, CRM, AI writing, and
+            productivity software. We help business owners, marketers, and operators cut through
+            the noise and pick the right tools.
           </p>
 
-          <h2>Что мы делаем</h2>
+          <h2>What we do</h2>
           <p>
-            Мы тестируем инструменты в реальных рабочих процессах, а не просто пересказываем
-            маркетинговые тексты. Каждый обзор строится на практическом использовании — мы
-            проверяем производительность, интерфейс, ценообразование и поддержку.
+            We test tools in real workflows, not just read the landing page. Every review is
+            built on actual usage — we evaluate onboarding, UI, pricing, support, and whether
+            the product actually does what it claims.
           </p>
 
-          <h2>Принципы работы</h2>
+          <h2>Our principles</h2>
           <ul>
             <li>
-              <strong>Независимость.</strong> Мы никогда не продаём места в рейтингах и не пишем
-              позитивные отзывы в обмен на оплату.
+              <strong>Independent.</strong> We never sell spots in rankings or accept paid reviews.
             </li>
             <li>
-              <strong>Прозрачность.</strong> Все партнёрские ссылки явно обозначены. Если мы
-              получаем комиссию за рекомендацию — это написано в начале статьи.
+              <strong>Transparent.</strong> All affiliate links are clearly marked. Commission
+              does not influence our ratings or recommendations.
             </li>
             <li>
-              <strong>Актуальность.</strong> AI-инструменты быстро меняются. Мы регулярно
-              обновляем статьи и указываем дату последнего обновления.
+              <strong>Current.</strong> SaaS tools change fast. We update articles when pricing
+              or features shift, and always show the last updated date.
             </li>
           </ul>
 
-          <h2>Для кого этот сайт</h2>
+          <h2>Who this site is for</h2>
           <p>
-            Для тех, кто хочет принять взвешенное решение: стоит ли подписываться на инструмент,
-            какой вариант лучше подходит для конкретной задачи, чем отличаются конкуренты.
+            Anyone who wants to make an informed decision: whether a tool is worth paying for,
+            which option fits a specific use case, and how competing products actually compare
+            in practice.
           </p>
 
-          <h2>Контакты</h2>
+          <h2>Get in touch</h2>
           <p>
-            По вопросам сотрудничества, исправлений или предложений темы статей:{' '}
-            <a href="/contact/">страница контактов</a>.
+            For corrections, partnership inquiries, or article suggestions:{' '}
+            <a href="/contact/">contact page</a>.
           </p>
         </div>
       </div>

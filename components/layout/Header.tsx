@@ -3,9 +3,9 @@ import { ThemeToggle } from './ThemeToggle'
 import { MobileNav } from './MobileNav'
 
 const NAV_LINKS = [
-  { href: '/articles/', label: 'Статьи' },
-  { href: '/categories/', label: 'Категории' },
-  { href: '/about/', label: 'О нас' },
+  { href: '/articles/', label: 'Articles' },
+  { href: '/categories/', label: 'Categories' },
+  { href: '/about/', label: 'About' },
 ]
 
 export function Header() {
@@ -16,14 +16,14 @@ export function Header() {
         <Link
           href="/"
           className="flex items-center gap-2 font-sans text-lg font-bold tracking-tight text-foreground hover:text-accent transition-colors"
-          aria-label="AI Tools Hub — на главную"
+          aria-label="AI Tools Hub — go to homepage"
         >
           <span className="text-accent" aria-hidden="true">▸</span>
           AI Tools Hub
         </Link>
 
         {/* Desktop nav */}
-        <nav aria-label="Основная навигация" className="hidden md:flex">
+        <nav aria-label="Main navigation" className="hidden md:flex">
           <ul className="flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>

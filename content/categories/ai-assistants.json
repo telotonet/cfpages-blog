@@ -1,8 +1,8 @@
 {
   "slug": "ai-assistants",
-  "name": "AI-ассистенты",
-  "description": "Чат-боты и универсальные AI-ассистенты, которые помогают решать широкий круг задач: от анализа данных до программирования.",
-  "excerpt": "Сравнения ChatGPT, Claude, Gemini и других универсальных AI-ассистентов.",
+  "name": "AI Assistants",
+  "description": "Reviews and comparisons of AI chatbots and general-purpose assistants — ChatGPT, Claude, Gemini, and similar tools for business use.",
+  "excerpt": "Honest comparisons of ChatGPT, Claude, Gemini, and other AI assistants for business.",
   "color": "#8b5cf6",
   "icon": "bot"
 }

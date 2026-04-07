@@ -1,8 +1,8 @@
 {
   "slug": "productivity",
-  "name": "Продуктивность",
-  "description": "AI-инструменты для повышения личной и командной эффективности: заметки, управление задачами, организация рабочего процесса.",
-  "excerpt": "Обзоры AI-инструментов для повышения продуктивности и организации работы.",
+  "name": "Productivity",
+  "description": "Reviews of productivity and project management tools — task managers, note-taking apps, and workflow automation software for teams and individuals.",
+  "excerpt": "Reviews of productivity tools for teams and solo operators.",
   "color": "#059669",
   "icon": "zap"
 }

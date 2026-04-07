@@ -25,7 +25,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
         <div
           className="mb-8 flex flex-wrap gap-2"
           role="group"
-          aria-label="Фильтр по категориям"
+          aria-label="Filter by category"
         >
           <button
             type="button"
@@ -38,7 +38,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
                 : 'border text-muted-foreground hover:border-accent hover:text-accent'
             )}
           >
-            Все ({articles.length})
+            All ({articles.length})
           </button>
           {categories.map((cat) => {
             const count = articles.filter((a) => a.category === cat.slug).length
@@ -65,7 +65,7 @@ export function ArticlesClient({ articles, categories }: ArticlesClientProps) {
       {/* Articles grid */}
       {filtered.length === 0 ? (
         <div className="py-16 text-center">
-          <p className="text-muted-foreground">В этой категории пока нет статей.</p>
+          <p className="text-muted-foreground">No articles in this category yet.</p>
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
