@@ -1,6 +1,9 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { ArticleMeta } from '@/lib/types'
 import { formatDate } from '@/lib/utils'
+
+const AUTHOR_AVATAR = 'https://avatars.githubusercontent.com/u/84102215?v=4'
 
 interface AuthorBoxProps {
   article: ArticleMeta
@@ -13,12 +16,15 @@ export function AuthorBox({ article }: AuthorBoxProps) {
       className="mt-10 rounded-xl border bg-muted/30 p-6"
     >
       <div className="flex items-start gap-4">
-        {/* Avatar placeholder */}
-        <div
-          className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-accent/10 font-sans text-lg font-bold text-accent"
-          aria-hidden="true"
-        >
-          {article.author.charAt(0).toUpperCase()}
+        {/* Author avatar */}
+        <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full" aria-hidden="true">
+          <Image
+            src={AUTHOR_AVATAR}
+            alt={article.author}
+            fill
+            className="object-cover"
+            sizes="48px"
+          />
         </div>
 
         <div>
