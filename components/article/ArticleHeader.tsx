@@ -22,7 +22,7 @@ export function ArticleHeader({ article, categoryName }: ArticleHeaderProps) {
   ]
 
   return (
-    <header className="article-header mx-auto mb-10 max-w-[46rem] lg:mb-12">
+    <header className="article-header mb-10 lg:mb-12">
       {/* Breadcrumbs */}
       <div className="mb-6">
         <Breadcrumbs items={breadcrumbItems} />

@@ -80,8 +80,6 @@ export default async function ArticlePage({ params }: PageProps) {
       <div className="article-page-shell">
         <div className="mx-auto max-w-site px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
           <div className="mx-auto max-w-[76rem]">
-            <ArticleHeader article={article} categoryName={category?.name} />
-
             <div className="article-reading-grid">
               <aside className="article-rail">
                 <div className="article-rail-inner">
@@ -90,6 +88,7 @@ export default async function ArticlePage({ params }: PageProps) {
               </aside>
 
               <div className="article-main">
+                <ArticleHeader article={article} categoryName={category?.name} />
                 {article.affiliateDisclosure && !hasInlineAffiliateDisclosure && (
                   <AffiliateDisclosureInline />
                 )}
