@@ -242,7 +242,7 @@ async function main() {
   // ── Step 2: write article ───────────────────────────────────────────────
   console.log('Generating article...')
   const articleMsg = await client.messages.create({
-    model: 'claude-opus-4-5',
+    model: 'claude-haiku-4-5',
     max_tokens: 5000,
     messages: [
       {
