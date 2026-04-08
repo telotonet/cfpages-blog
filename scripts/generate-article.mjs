@@ -226,7 +226,7 @@ async function main() {
   } else {
     console.log('Asking Claude to pick a topic...')
     const topicMsg = await client.messages.create({
-      model: 'claude-opus-4-5',
+      model: 'claude-haiku-4-5',
       max_tokens: 128,
       messages: [{ role: 'user', content: topicPickerPrompt(existingArticles, categories) }],
     })
