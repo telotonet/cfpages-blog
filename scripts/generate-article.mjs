@@ -252,11 +252,18 @@ async function main() {
     ],
   })
 
-  const mdxContent = articleMsg.content
+  let mdxContent = articleMsg.content
     .filter((b) => b.type === 'text')
     .map((b) => b.text)
     .join('')
     .trim()
+
+  // Force-fix wrong internal link paths — Claude sometimes writes /blog/ instead of /articles/
+  const before = mdxContent
+  mdxContent = mdxContent.replaceAll('telotonet.com/blog/', 'telotonet.com/articles/')
+  if (mdxContent !== before) {
+    console.warn('Fixed: replaced /blog/ → /articles/ in generated content')
+  }
 
   if (!mdxContent.startsWith('---')) {
     throw new Error(
