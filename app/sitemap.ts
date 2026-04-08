@@ -7,7 +7,7 @@ import { getAllCategories } from '@/lib/categories'
 import { absoluteUrl } from '@/lib/utils'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aitoolshub.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://telotonet.com'
 
   const staticPages: MetadataRoute.Sitemap = [
     {
