@@ -67,10 +67,7 @@ export function getAllArticles(options: GetArticlesOptions = {}): ArticleMeta[] 
     .filter((a) => options.featured === undefined || a.featured === options.featured)
 
   const sorted = articles.sort((a, b) => {
-    // Featured articles first
-    if (a.featured && !b.featured) return -1
-    if (!a.featured && b.featured) return 1
-    // Then by date, newest first
+    // Newest first always; featured badge is shown at UI level, not used for ordering
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   })
 
