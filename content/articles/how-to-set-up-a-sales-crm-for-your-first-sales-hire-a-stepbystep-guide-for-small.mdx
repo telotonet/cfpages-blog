@@ -1,0 +1,244 @@
+---
+title: "How to Set Up a Sales CRM for Your First Sales Hire: A Step-by-Step Guide for Small Business Owners"
+description: "Set up your first sales CRM the right way. Step-by-step guide to configure contacts, pipelines, and workflows before your first sales hire starts."
+excerpt: "A practical walkthrough for setting up a CRM before your first sales rep joins, covering data preparation, pipeline design, and automation basics."
+publishedAt: "2026-04-11"
+author: "Alex"
+category: "sales-crm"
+coverImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Sales CRM dashboard on laptop screen with pipeline stages visible"
+tags: ["sales-crm", "small-business", "setup-guide", "first-hire"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "Should I choose Pipedrive or HubSpot for my first sales hire?"
+    answer: "Pipedrive wins for small teams because the interface is faster to learn, deals move visually through stages, and the pricing stays flat at $14/user/month. HubSpot's free tier works if you need email and basic automation, but you'll hit feature limits quickly as your team grows."
+  - question: "How long does it take to set up a CRM properly?"
+    answer: "Core setup takes 4-6 hours: importing contacts, building your pipeline, and creating basic workflows. Running through a test deal with a mock contact adds another 1-2 hours. Don't rush this before your hire starts, or you'll waste their first week fixing your structure."
+  - question: "What data do I need before setting up my CRM?"
+    answer: "You need: existing prospect/customer names and emails (from a spreadsheet or previous sales efforts), the deal size range your company targets, and a clear picture of your sales process (how many stages from first contact to closed deal)."
+---
+
+<AffiliateDisclosureInline />
+
+Your first sales hire is arriving Monday. You've set aside budget, cleared their desk, and ordered the equipment. But you haven't set up your CRM yet. 
+
+This is a common move. Founders often assume the CRM will be ready to use out of the box. It won't be. A blank CRM is just an empty database. Without the right structure, your new sales rep will spend their first two weeks building the system instead of selling.
+
+This guide walks you through the specific steps to build a working CRM before day one. We'll cover data prep, pipeline design, contact import, and basic automation. You'll know exactly what your rep will see when they log in.
+
+## What You Need Before Starting
+
+Gather these before opening your CRM.
+
+A customer relationship management system requires three things to be useful: a place to store contact information, a structure for tracking deals, and rules for how deals move forward. You need to define all three before data goes in.
+
+First, collect your existing contact list. This might be in a spreadsheet, an old email inbox export, or a forgotten Airtable base. Aim for at least 20-50 existing prospects or customers. You need real data to test your pipeline against, not fake entries.
+
+Second, identify your deal stages. This is non-negotiable. If you can't describe your sales process in 3-5 clear steps, your CRM will be chaos. Here's a realistic example: "Cold contact, Discovery call, Proposal sent, Negotiation, Closed won/lost." Write these down. You'll use them in every step below.
+
+Third, decide on your CRM platform. For a first sales hire at a 5-50 person company, Pipedrive ($14/user/month) or HubSpot's free tier are the standard choices. Both import contacts easily, both let you build custom pipelines, and both integrate with email and calendar tools. Pipedrive is faster to configure; HubSpot feels more "free" because the free tier is actually functional. If you need help deciding, review [Pipedrive vs HubSpot: Which CRM Works Better for Small Sales Teams](https://telotonet.com/articles/pipedrive-vs-hubspot-which-crm-works-better-for-small-sales-teams/) to understand the tradeoffs.
+
+Fourth, prepare your contact export. If you're pulling from a spreadsheet, create columns for: First Name, Last Name, Email, Company, Phone, Industry (optional). Remove duplicates. Remove entries with no email address. You should have clean, deduplicated data before you touch your CRM.
+
+Finally, get basic admin access and your company domain email set up. Your CRM should be connected to your actual business email, not a personal Gmail account.
+
+## Step 1: Create Your Account and Set Company Information
+
+Log into your chosen CRM platform. If you picked Pipedrive, go to pipedrive.com and click "Sign up free." If you picked HubSpot, go to hubspot.com/free.
+
+Complete the signup form with your business email and password. This account will be the owner account, and you should keep it separate from your sales rep's account. You'll use it for configuration and reporting.
+
+After signup, you'll land in the onboarding screen. Don't rush through it. Instead, look for the "Settings" or "Administration" section. In Pipedrive, it's a gear icon in the bottom left. In HubSpot, it's a gear in the top right.
+
+In settings, fill in:
+- Company name (exactly as you want it displayed)
+- Company phone number
+- Company address
+- Your timezone (this affects when reports and reminders fire)
+- Default currency (USD, EUR, GBP, etc.)
+- Fiscal year start (most companies use January; some use their actual fiscal year)
+
+Save these settings. They won't change your pipeline structure, but they ensure all currency values, dates, and timezone-based automations work correctly later.
+
+Now add yourself as a user. In most CRMs, the admin creating the account is automatically added as "Owner" or "Admin." Confirm this is true. You should see your name and email listed under "Users" or "Team" in settings.
+
+## Step 2: Build Your Pipeline and Deal Stages
+
+This is the critical step. A bad pipeline will slow your sales rep down immediately.
+
+Go to the "Pipeline" or "Deals" settings section. In Pipedrive, click on "Pipelines" in settings. In HubSpot, go to "Deals" settings and find "Deal stages."
+
+Delete any default pipeline stages that don't match your business. Most CRMs ship with generic stages like "Negotiation" and "Contract Sent." You probably don't need them, and extra stages confuse people.
+
+Create your actual stages. Here's what a B2B SaaS company might use:
+
+1. Cold prospect (new contact, no conversation)
+2. Discovery call scheduled (meeting on calendar)
+3. Demo/discovery completed (they've heard the pitch)
+4. Proposal sent (pricing and contract delivered)
+5. Negotiation (they're asking for changes)
+6. Closed won (they signed)
+7. Closed lost (deal fell through)
+
+Notice: I included closed lost as a stage. This matters. You want to track losses, not hide them. It's the only way to understand your real conversion rate.
+
+For each stage, set the following in Pipedrive:
+- Stage name (the seven above)
+- Probability (what percentage of deals at this stage actually close)
+- Mark as "won" or "lost" (only the final stages should be marked)
+
+For probability, use realistic estimates. If your data is thin, use these defaults:
+- Cold prospect: 5%
+- Discovery call scheduled: 10%
+- Demo completed: 25%
+- Proposal sent: 40%
+- Negotiation: 60%
+- Closed won: 100%
+- Closed lost: 0%
+
+Save your pipeline. You should now have a single, clean pipeline with 6-7 stages. Don't create multiple pipelines yet. One clean pipeline is better than three half-built ones.
+
+## Step 3: Create Custom Fields for Your Contacts and Deals
+
+Out of the box, CRMs track basic contact info: name, email, phone, company. You need more.
+
+Think about what your sales rep actually needs to know about a prospect to move a deal forward. Add a custom field for each of these. Go to Settings, then "Custom fields" or "Fields."
+
+For contacts, add:
+- "Industry" (dropdown: your actual industries)
+- "Prospect source" (dropdown: website, referral, cold outreach, event, etc.)
+- "Annual revenue" (number field)
+- "Competitor" (optional, but useful: which competitor do they currently use?)
+
+For deals, add:
+- "Deal size" (number field: the deal value in your currency)
+- "Decision maker" (text field: name of the person who approves the buy)
+- "Competition" (dropdown: are they evaluating you against anyone?)
+- "Next action" (dropdown: email, call, proposal, presentation, etc.)
+- "Reason lost" (dropdown, only visible in the Closed lost stage: budget, feature gap, went with competitor, etc.)
+
+Don't add 20 fields. Add the 8-10 that your sales rep will actually fill out. Too many fields kill adoption.
+
+Save each field and set a default value where it makes sense. For example, "Prospect source" might default to "Cold outreach" if that's how most deals start at your company.
+
+## Step 4: Import Your Contact List
+
+Go to the "Import" or "Contacts" section. Most CRMs have a dedicated import tool.
+
+In Pipedrive, it's under "Contacts" then "Import."
+In HubSpot, it's "Contacts" then the menu button, then "Import."
+
+Select your contact CSV file. The CRM will preview it and ask you to map columns: which column is "First name?" which is "Email?" etc.
+
+Do this carefully. If you map the phone column to email, you'll have broken data that's annoying to fix later. Compare the preview to your spreadsheet and verify each mapping.
+
+Import the contacts. In Pipedrive, this is instant. In HubSpot, it might take a few minutes depending on volume. You should see your contacts appear in the contact list.
+
+Now go back to your contact list and spot-check 10-15 random entries. Open them and verify:
+- Name is correct
+- Email is correct
+- Company name is filled in
+- Phone number is there (if applicable)
+
+If you spot errors (a phone number mapped to the email field, for example), you'll need to re-import. Most CRMs let you re-import the same file and overwrite the previous import.
+
+Once contacts are clean, you're ready to create deals.
+
+## Step 5: Create Sample Deals and Test Your Pipeline
+
+Don't import deals. Instead, create 3-4 test deals manually. This forces you to walk through your sales rep's actual workflow.
+
+Open your contact list and pick a real prospect. Click into their contact record. Look for a button that says "Create deal" or "New deal."
+
+Create a deal with these details:
+- Deal title: "Prospect Name - [Product/service]" (e.g., "Acme Corp - Annual license")
+- Pipeline: select your main pipeline
+- Stage: "Cold prospect"
+- Deal value: enter a realistic deal size
+- Expected close date: 30-60 days out
+- Decision maker: (use the contact field you created)
+
+Save the deal. You should see it appear in your pipeline view, a Kanban-style board where stages are columns and deals are cards.
+
+Now, drag that deal to "Discovery call scheduled." This is what your sales rep will do dozens of times a day. It should feel smooth, not clunky. If it feels slow or confusing, your pipeline design is off.
+
+Fill in the "Next action" field. Then move the deal to the next stage. Repeat this until the deal is closed (either won or lost).
+
+This test run should take 5-10 minutes per deal. Do it three times with three different deals. By the third time, you'll understand the rhythm your rep will follow.
+
+## Step 6: Set Up Email Integration and a Basic Workflow
+
+Your CRM is useless if your rep can't see emails inside it. Connect your email to the CRM.
+
+In Pipedrive, go to Settings > Integrations > Email. Choose your email provider (Gmail or Outlook). Authorize the connection. Once done, emails to and from prospects will automatically log in the deal record.
+
+In HubSpot, go to Settings > Integrations > Gmail or Outlook and follow the same flow.
+
+This is not optional. Without email integration, your rep will have deals in the CRM and email in their inbox, and they'll never be in sync.
+
+Next, create one simple automation: send a follow-up reminder if a deal hasn't moved in 7 days.
+
+In Pipedrive, go to Settings > Automations. Click "Create automation." Set the trigger to "Deal not moved for 7 days" and the action to "Notify assignee."
+
+In HubSpot, go to Automation > Create workflow. Create a trigger "Last activity more than 7 days ago" and an action "Send email notification."
+
+This automation ensures no deal gets forgotten. It's your safety net. Your rep might be juggling five conversations, and a deal will slip. This reminder surfaces it.
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Creating too many pipeline stages**
+
+Founders often build pipelines with 8+ stages, thinking more detail is better. It's not. More stages mean more decisions about where a deal belongs. Your rep wastes time deciding whether a prospect is in "Initial contact" or "First conversation." Stick to 5-6 stages. You can add more later if you find real gaps.
+
+**Mistake 2: Importing contacts without cleaning them first**
+
+A CRM with 500 duplicate or invalid contacts is worse than a CRM with 100 clean contacts. Before import, deduplicate and remove any contact without an email address. If your data is messy, do a manual review of the first 20 imported records and re-import if needed.
+
+**Mistake 3: Not testing the pipeline before your rep starts**
+
+Your rep will take the CRM as a given. If the pipeline is broken (stages don't make sense, fields are missing, integrations aren't working), they'll work around it, and you'll have bad data from day one. Test it yourself. Push at least three deals through the entire pipeline before handing it off.
+
+**Mistake 4: Setting unrealistic deal probabilities**
+
+If you tell your CRM that a deal in "Proposal sent" has a 40% close rate, but your actual close rate is 10%, your pipeline forecast will be wildly optimistic. Either research your actual conversion rates (if you have historical data) or admit you don't know yet and use conservative estimates. You can update probabilities after six months of real data.
+
+## Results to Expect
+
+After completing these steps, you'll have a working CRM. Your sales rep will walk in Monday morning and see:
+
+- A contact list with 20-50 real prospects
+- A clear, 5-6 stage pipeline
+- Three test deals already progressing through stages
+- Custom fields specific to your business
+- Email automatically logging into deal records
+- A reminder system so nothing falls through cracks
+
+Your rep should be able to log in, understand how to create a deal, move it through stages, and log an email, all within their first hour.
+
+Over the first month, expect your rep to populate the pipeline with 30-50 new deals. The real value appears in month two and three, when you can see which stages have high velocity and which are bottlenecks. A typical small business sees 10-20 deals in progress at any time, with 2-4 closing per month.
+
+You won't see ROI data for 60-90 days. A CRM is infrastructure. The first month is about establishing baseline numbers. The real insight comes when you can say, "Our discovery calls close 30% of the time, and proposals close 50% of the time."
+
+After your first rep has been in the system for three months, revisit your pipeline. You'll probably find one or two stages that need adjustment. That's normal. A CRM improves through iteration, not perfect planning.
+
+<FAQBlock
+  faqs={[
+    { question: "Should I choose Pipedrive or HubSpot for my first sales hire?", answer: "Pipedrive wins for small teams because the interface is faster to learn, deals move visually through stages, and the pricing stays flat at $14/user/month. HubSpot's free tier works if you need email and basic automation, but you'll hit feature limits quickly as your team grows." },
+    { question: "How long does it take to set up a CRM properly?", answer: "Core setup takes 4-6 hours: importing contacts, building your pipeline, and creating basic workflows. Running through a test deal with a mock contact adds another 1-2 hours. Don't rush this before your hire starts, or you'll waste their first week fixing your structure." },
+    { question: "What data do I need before setting up my CRM?", answer: "You need: existing prospect/customer names and emails (from a spreadsheet or previous sales efforts), the deal size range your company targets, and a clear picture of your sales process (how many stages from first contact to closed deal)." }
+  ]}
+/>
+
+## Quick Recap
+
+- Gather your contact list, define your deal stages, and pick your CRM platform before you start building.
+- Set up company info and user accounts in your CRM admin.
+- Build a clean 5-6 stage pipeline that matches your actual sales process.
+- Add 8-10 custom fields for contacts and deals that your rep will actually use.
+- Import your cleaned contact list and spot-check 10-15 entries.
+- Create 3-4 test deals and walk them through your pipeline.
+- Connect email integration and set up a basic 7-day inactive deal reminder.
+- Expect your rep to be functional on day one and productive by week two.
