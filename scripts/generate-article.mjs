@@ -305,8 +305,7 @@ Unsplash photo IDs:
 - Sales/CRM: photo-1560472354-b33ff0c44a43
 - Communication: photo-1423666639041-f56000c27a9a
 - Planning: photo-1611532736597-de2d4265fba3
-- AI/tech: photo-1677442135703-1787eea5ce01`
-}
+- AI/tech: photo-1677442135703-1787eea5ce01
 
 Start the article body right after the closing --- of the frontmatter. Begin with <AffiliateDisclosureInline /> on its own line, then a blank line, then the article text.`
 }
