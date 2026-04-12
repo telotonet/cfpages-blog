@@ -1,0 +1,260 @@
+---
+title: "How to Set Up a Sales Pipeline in Pipedrive: A Step-by-Step Guide for First-Time Users"
+description: "Set up your first Pipedrive sales pipeline in 30 minutes. Step-by-step guide with real configuration settings for small teams."
+excerpt: "A practical walkthrough for setting up stages, deals, and automation in Pipedrive without the fluff."
+publishedAt: "2026-04-12"
+author: "Alex"
+category: "sales-crm"
+coverImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Sales pipeline workflow on laptop screen"
+tags: ["Pipedrive", "Sales CRM", "Sales Pipeline", "Small Business"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "How long does it take to set up a Pipedrive pipeline?"
+    answer: "A basic pipeline takes 20-40 minutes depending on your deal complexity. If you're adding custom fields and automation, expect 60-90 minutes. Most teams get their first deals moving within a day."
+  - question: "Can I change my pipeline stages after I've added deals?"
+    answer: "Yes. You can edit, delete, or reorder stages anytime. Existing deals move to the most similar stage or stay in their current stage depending on your settings. Plan your stages before adding 50+ deals to avoid confusion, but changes aren't permanent."
+  - question: "What's the difference between pipelines and stages in Pipedrive?"
+    answer: "A pipeline is a complete sales process (e.g., 'Enterprise Sales'). Stages are the steps within it (e.g., Prospect, Qualified, Proposal, Won). You can have multiple pipelines, each with different stages, based on your sales process."
+---
+
+<AffiliateDisclosureInline />
+
+Pipedrive's strength is its simplicity. Unlike HubSpot, which piles on features you won't use, Pipedrive lets you build exactly what you need: a visible sales pipeline that moves deals from prospect to closed.
+
+But simplicity only works if you set it up right from the start. A bad pipeline wastes time. A good one saves hours every week by showing you exactly which deals need attention and why they're stuck.
+
+This guide walks you through building a working pipeline in 30-40 minutes, with specific settings and real-world examples.
+
+## What You Need Before Starting
+
+You need three things to set up Pipedrive correctly:
+
+**1. A Pipedrive account.** The Essential plan ($14.90/user/month when billed yearly) covers everything you need. Free trial is 14 days, which is enough to test this entire setup.
+
+**2. Your sales process documented.** This doesn't need to be formal. Write down the stages a deal goes through from first contact to money in the bank. For a B2B SaaS company, that might be: Prospect, Discovery Call, Proposal, Negotiation, Won. For a services company, it might be: Lead, Qualified, Proposal, Contract, Completed. Spend five minutes on this. The pipeline won't work without it.
+
+**3. Access to one user account.** You don't need multiple team members set up yet. The person building the pipeline should have admin access. You can add team members later.
+
+Optional but helpful: a list of 5-10 real or sample deals to test with. This makes the difference between a pipeline you understand and one you'll never use correctly.
+
+## Step 1: Create Your First Pipeline and Define Stages
+
+Log in to Pipedrive. Go to Settings (bottom left, gear icon) and select Manage Pipelines. Click Add Pipeline.
+
+Name your first pipeline something specific to your business. "Sales Pipeline" is generic and unhelpful if you ever add a second pipeline. Use "Enterprise Deals" or "Self-Service" or "Partner Channel" instead. For this example, use "Core Sales."
+
+Now you'll define stages. This is the core of your pipeline. Click Add Stage and enter your first stage name.
+
+Here's a practical stage structure for a B2B company with a 6-12 week sales cycle:
+
+**Stage 1: Prospect.** Incoming lead, no qualification yet. People land here after a form submission, email signup, or sales call.
+
+**Stage 2: Qualified.** You've had a 15-minute conversation. They have a real problem, a budget, and a timeline. Not every prospect qualifies. This stage prevents deal clutter.
+
+**Stage 3: Proposal Sent.** You've sent a proposal, quote, or formal scope. They're evaluating.
+
+**Stage 4: Negotiation.** They want to move forward but need changes to pricing, terms, or scope. This stage is important: it shows deals that are stuck waiting for your response or theirs.
+
+**Stage 5: Won.** Deal closed. Money confirmed.
+
+Click Add Stage after each one. The order matters: Pipedrive moves deals left-to-right, so order them as they happen in reality.
+
+When you're done, you'll have five stages visible as columns in your pipeline view. This becomes your sales board.
+
+Pro tip: add a "Lost" stage at the end. Some deals won't close. Move them here instead of deleting them. You'll learn from lost deals (why did they leave? what did the competitor offer?) and they won't clutter your active pipeline.
+
+## Step 2: Set Up Deal Fields and Deal Creation Defaults
+
+A deal in Pipedrive is a potential revenue opportunity. Each deal needs fields to track what matters: deal size, customer name, decision maker, close date.
+
+Go back to Settings and find Manage Fields. You're looking at the Deal section (the default tab).
+
+Pipedrive includes basic fields: Deal Name, Person, Organization, Expected Close Date, Deal Value. These are mandatory and you can't remove them. Keep them.
+
+Now add custom fields for your business. Click Add Custom Field.
+
+For a typical B2B software company, add these:
+
+**Decision Maker Contact.** Text field. Store the name of the person with signing authority.
+
+**Budget Range.** Dropdown with options: Under $5k, $5-25k, $25-50k, $50k+. This helps you prioritize.
+
+**Competitor Known.** Dropdown: None, Aware, Competing. When they mention a competitor, this field tells you immediately.
+
+**Pain Point.** Text. One-liner on their main problem. Keeps everyone aligned.
+
+**Close Reason.** Dropdown for lost deals: Budget Cut, Chose Competitor, Timing, Technical Fit, Other. You'll populate this when you move a deal to Lost. It's gold for post-mortems.
+
+Don't overdo it. More than 10 custom fields becomes clutter. Add only what changes how you sell.
+
+For each field, decide if it's required at deal creation. For new deals, make only Decision Maker Contact and Budget Range required. Everything else can be filled in later. Required fields slow down deal entry and create friction.
+
+## Step 3: Configure Deal Won Probability by Stage
+
+This is optional but worth five minutes. In Settings, go to Manage Fields and look for Stage. You'll see a Probability column next to each stage name.
+
+Set these probabilities:
+
+- Prospect: 10%
+- Qualified: 25%
+- Proposal Sent: 40%
+- Negotiation: 70%
+- Won: 100%
+
+These percentages show up in your sales forecast. They estimate revenue based on deals in each stage, weighted by probability. Prospects are unlikely to close (hence 10%), but negotiation-stage deals are very likely (70%).
+
+Pipedrive calculates your revenue forecast automatically using these percentages. If you have a $10k deal in Negotiation, it counts as $7k in your forecast. This is useful for planning and setting monthly targets.
+
+Don't overthink the numbers. They won't be perfect. But they beat guessing.
+
+## Step 4: Add Your First Deals and Assign Ownership
+
+Now test the pipeline with real deals. From the main pipeline view (click Deals at the top), click Add Deal.
+
+Fill in:
+
+- **Deal Name:** "Acme Corp - Enterprise License" (be specific, not just "Acme")
+- **Person:** Select or create the primary contact's name
+- **Organization:** Company name
+- **Expected Close Date:** When you think they'll sign
+- **Deal Value:** Total contract value in your currency
+- **Stage:** Start with Prospect or Qualified, depending on where you are in the conversation
+
+For required custom fields (Decision Maker, Budget Range), fill those in too.
+
+Click Save. The deal appears in your pipeline as a card.
+
+Now assign it. Click the deal card and look for Owner in the right sidebar. You can assign it to yourself or another team member. This prevents deals from falling through cracks because no one owns them.
+
+Add 5-10 deals across different stages. Spread them out: put some in Prospect, some in Qualified, some in Proposal Sent. This tests whether your stages actually match your sales process. If most deals get stuck in one stage, that stage might be too long or poorly named.
+
+Once deals are in, your pipeline view shows columns of deals, left-to-right, from early-stage to closed. This is the whole point: visual clarity on where deals are.
+
+## Step 5: Set Up Automations for Deal Movement
+
+Pipedrive's automation engine saves time. You can trigger actions based on stage changes, deal values, or time passing.
+
+Go to Settings and find Automations. Click Add Automation.
+
+Here are two automations worth setting up immediately:
+
+**Automation 1: Send internal notification when deal reaches Proposal Sent.**
+
+Trigger: Deal moved to stage "Proposal Sent"
+
+Action: Notify owner + (your name)
+
+This ensures you're aware when proposals go out. You can follow up after a week if they don't move it forward.
+
+**Automation 2: Move deal to Lost if it stays in Negotiation for 60 days.**
+
+Trigger: Deal in stage "Negotiation" for 60+ days
+
+Action: Move deal to stage "Lost"
+
+This prevents zombie deals. If something hasn't moved in two months, it's probably not happening. Moving it to Lost forces a conversation: do we want to keep trying, or do we accept the loss?
+
+Both automations are under the Essential plan. Don't create more than five until you're comfortable with them. Too many automations become noise.
+
+Test an automation by manually moving a deal to the trigger stage. Check that the notification arrives or action fires within a few minutes.
+
+## Step 6: Customize Your Pipeline View for Your Team
+
+The default pipeline view shows all deals in all stages at once. This works for a small team but becomes messy fast.
+
+Customize it in two ways:
+
+**Filter by owner.** Click the filter icon (funnel symbol) and select "Owner is [your name]." Now you see only your deals. This is the view you'll use daily.
+
+**Filter by deal value.** Some teams focus on deals over $5k and ignore smaller wins. Add a filter: "Deal Value is greater than 5000" if that matters to you.
+
+Save your filtered view by clicking Save View. Give it a name: "My Active Deals" or "Deals Over $5k." Now you can switch between views without rebuilding filters.
+
+One more thing: set your stage column width. Wider columns show deal cards better. Narrower columns let you see more stages at once. Adjust based on your screen size and team size.
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Too many stages or stages that overlap.**
+
+New users often create 10+ stages because they're trying to track everything (first email sent, demo scheduled, contract sent, contract signed, onboarding started, etc.). Pipedrive isn't built for that level of granularity. Keep stages to 4-6 covering the major decision points. Use deal activities (tasks, notes) to track micro-steps within a stage.
+
+*Fix:* Combine stages. "Demo Scheduled" and "Demo Completed" collapse into "In Evaluation." Keep the pipeline clean. Save detailed tracking for activities, not stages.
+
+**Mistake 2: Deals stuck in the same stage for months.**
+
+If half your deals sit in "Proposal Sent" for 30+ days, your sales process is broken, not your pipeline. Either proposals are taking too long (you need to speed up approval), or deals are dead but no one's closing them.
+
+*Fix:* Review your sales process before blaming the software. If proposals legitimately take 30 days, rename the stage "Proposal Sent (30 Day Wait)" as a reminder. Or add a sub-stage in your notes. Move dead deals to Lost immediately.
+
+**Mistake 3: Forgetting to fill in deal values.**
+
+Some teams leave Deal Value blank to "fill in later." This means your forecast is useless and you can't prioritize by opportunity size. A $50k deal should move faster than a $2k deal.
+
+*Fix:* Make Deal Value mandatory at creation or at least by Proposal stage. If you don't know the size yet, estimate. Rough estimates beat zeros.
+
+**Mistake 4: Not using deal owners.**
+
+Unowned deals are invisible. No one follows up, no one chases, they just sit there. This is the number one reason pipelines fail at small companies.
+
+*Fix:* Assign an owner to every deal immediately. Even if it's a shared account, pick one owner. Use Pipedrive's automated assignments to route new deals based on round-robin or territory.
+
+## Results to Expect
+
+After setup, here's what should happen in your first week:
+
+**Day 1-2:** Pipeline is live. You see all your deals in one view. This alone clarifies your sales situation. Most founders realize they have fewer qualified deals than they thought.
+
+**By Day 5:** Your team has moved some deals to new stages. Notifications fire when you defined them. You're getting used to the rhythm: check the pipeline each morning, see what moved overnight, decide what needs attention.
+
+**By Week 2:** You've had your first pipeline review (15-30 minute meeting). You walked your team through the board, talked about each deal in Negotiation and Proposal, and identified three deals worth pushing this week. This is the real value of a pipeline: it creates accountability and focus.
+
+**By Week 4:** You notice patterns. Deals in Qualified take an average of 8 days to move to Proposal. Deals in Proposal have a 40% win rate. These metrics are invisible without a pipeline. Now you see them.
+
+Expected numbers after one month of real use:
+
+- 20-40 active deals (depending on sales velocity)
+- 2-3 deals moving to Won per week (if you're active)
+- Average deal size and close time becoming visible
+- A forecast that's within 20-30% of reality (it improves over time)
+
+These numbers aren't impressive. They're honest. The pipeline's job is accuracy and visibility, not motivation. If you're shocked at how few deals you have in Qualified, that's the pipeline working. It shows you where to focus: more outreach, better qualification, faster proposal turnaround.
+
+The timeline to see real value: 4-6 weeks. That's how long it takes for enough deals to move through the pipeline to create patterns.
+
+---
+
+<FAQBlock
+  faqs={[
+    {
+      question: "How long does it take to set up a Pipedrive pipeline?",
+      answer: "A basic pipeline takes 20-40 minutes depending on your deal complexity. If you're adding custom fields and automation, expect 60-90 minutes. Most teams get their first deals moving within a day."
+    },
+    {
+      question: "Can I change my pipeline stages after I've added deals?",
+      answer: "Yes. You can edit, delete, or reorder stages anytime. Existing deals move to the most similar stage or stay in their current stage depending on your settings. Plan your stages before adding 50+ deals to avoid confusion, but changes aren't permanent."
+    },
+    {
+      question: "What's the difference between pipelines and stages in Pipedrive?",
+      answer: "A pipeline is a complete sales process (e.g., 'Enterprise Sales'). Stages are the steps within it (e.g., Prospect, Qualified, Proposal, Won). You can have multiple pipelines, each with different stages, based on your sales process."
+    }
+  ]}
+/>
+
+## Quick Recap
+
+- Define your 4-6 sales stages before creating any deals. Keep them simple and sequential.
+- Add only critical custom fields (Decision Maker, Budget Range, Close Reason). Limit to 5-7 total.
+- Set stage probabilities for accurate revenue forecasting.
+- Assign an owner to every deal. Unowned deals disappear.
+- Use automation sparingly: notifications for important stage changes and auto-move for stalled deals.
+- Filter your daily view by owner or deal size to stay focused.
+- Expect four weeks before the pipeline becomes genuinely useful. Stick with it.
+- Review deals in Negotiation and Proposal weekly. Move stuck deals to Lost or close them.
+
+If you're comparing Pipedrive against other options, check out our guide on [Pipedrive vs HubSpot: Which CRM Works Better for Small Sales Teams](https://telotonet.com/articles/pipedrive-vs-hubspot-which-crm-works-better-for-small-sales-teams/). It covers the tradeoffs and helps you decide if Pipedrive is the right choice for your team.
+
+One final note: the pipeline only works if you use it. The best setup means nothing if no one updates deals or reviews the board. Commit to a weekly 20-minute pipeline review with your team. That's when the insights appear and momentum builds.
