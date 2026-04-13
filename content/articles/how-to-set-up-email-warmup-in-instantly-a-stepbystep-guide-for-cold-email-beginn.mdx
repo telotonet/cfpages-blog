@@ -1,0 +1,170 @@
+---
+title: "How to Set Up Email Warmup in Instantly: A Step-by-Step Guide for Cold Email Beginners"
+description: "Step-by-step guide to setting up email warmup in Instantly. Learn configuration, best practices, and what results to expect."
+excerpt: "Email warmup prepares your domain for cold email campaigns. Here's exactly how to set it up in Instantly without mistakes."
+publishedAt: "2026-04-13"
+author: "Alex"
+category: "email-tools"
+coverImage: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Email inbox on a laptop screen showing incoming messages"
+tags: ["cold-email", "email-warmup", "instantly", "sales-outreach", "deliverability"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "How long does email warmup take in Instantly?"
+    answer: "Warmup typically takes 7-14 days. Instantly gradually increases email volume sent through your account each day. You'll see engagement patterns stabilize after 2-3 weeks, which is when you should launch real cold email campaigns."
+  - question: "Can I send cold emails while warming up my domain?"
+    answer: "Yes, but it's not recommended during the first 7 days. Light prospecting is fine after day 7 if you're using a dedicated sending domain. If possible, separate warmup traffic from campaign traffic to avoid confusing engagement metrics."
+  - question: "What email domain should I use for warmup in Instantly?"
+    answer: "Use a dedicated domain purchased specifically for cold email. Never warm up your main company domain if you use it for customer support or internal communication. Warmup activities can impact your primary domain's reputation if mixed with other email types."
+---
+
+<AffiliateDisclosureInline />
+
+Email warmup is non-negotiable if you're doing cold email at scale. Without it, your messages land in spam folders before anyone reads them. Instantly automates this process, but it requires correct setup or it won't work properly.
+
+This guide walks you through the exact steps to configure warmup in Instantly, what settings matter, and what you should actually expect to see happen.
+
+## What You Need Before Starting
+
+Gather these before you open Instantly:
+
+**A dedicated sending domain.** Buy one specifically for cold email. This can't be your main company domain. Godaddy, Namecheap, or Google Domains all work. Cost is typically $10-15/year.
+
+**DNS access to that domain.** You need to add SPF, DKIM, and DMARC records. If your domain registrar doesn't give you easy DNS editing, move to one that does. This takes 10 minutes max.
+
+**An Instantly account.** The platform costs $25/month for the Starter plan (limited to 100 emails/day warmup). If you plan to scale beyond that, budget for the Growth plan at $99/month (1,000 emails/day).
+
+**A warm email inbox.** This is the account that will send warmup emails internally. You'll need a Gmail or Microsoft 365 account with a clean sending history. If you're using an old work email that's been idle for months, that's fine. If it's flagged for spam already, create a new one.
+
+**Realistic expectations.** Warmup is not magic. It will not fix a poorly written cold email template or get you responses from the wrong list. It only solves deliverability.
+
+## Step 1: Add Your Domain to Instantly and Verify DNS
+
+Log into Instantly. Go to Settings, then Domains. Click "Add Domain" and enter your dedicated cold email domain (e.g., outreach.yourcompany.com).
+
+Instantly will give you four DNS records to add: SPF, DKIM, DMARC, and an MX record. Copy each one.
+
+Go to your domain registrar's DNS settings. For most registrars, this is under "DNS Management" or "Advanced Settings." Add each record exactly as Instantly specifies. Copy-paste, don't retype. One character wrong and authentication fails.
+
+The SPF record will look like this: `v=spf1 include:sendingserver.instantly.com ~all`
+
+The DKIM record is longer: `default._domainkey.outreach.yourcompany.com IN CNAME dkim.sendingserver.instantly.com`
+
+After adding all four, wait 10-30 minutes for DNS propagation. Then go back to Instantly and click "Verify Domain." It should confirm within seconds. If it fails, check that you copied the records exactly.
+
+## Step 2: Connect Your Warm Inbox Account
+
+In Instantly, go to Email Accounts. Click "Add Email Account."
+
+Select your email provider (Gmail or Outlook). Choose the warm inbox account you created earlier. Do not use a personal Gmail account you've had for 15 years if it's only sent emails to family. Instantly needs a relatively clean account, but it doesn't need to be brand new.
+
+Grant Instantly permission to send on behalf of that account. Gmail will show a warning that Instantly is accessing your account. This is normal. Click Allow.
+
+Instantly will verify the connection. This takes about 30 seconds.
+
+## Step 3: Configure Warmup Settings
+
+Go to Email Warmup in the Instantly dashboard. Click "Start Warmup" and select the domain and inbox you just connected.
+
+Set your warmup schedule. Instantly shows you options:
+
+Aggressive: 500 emails/day for 14 days. Use this only if you have a brand new domain and need to launch campaigns quickly.
+
+Standard: 200 emails/day for 21 days. This is the safer default. Most teams use this.
+
+Conservative: 50 emails/day for 30 days. Use this if your domain is brand new or if you're uncertain about deliverability history.
+
+For most cold email beginners, choose Standard. It takes three weeks but significantly reduces spam folder risk without looking suspicious to ISPs.
+
+Set your warmup times. Instantly defaults to business hours (8am-6pm in your timezone). Keep this setting. Don't send warmup emails at 2am. ISPs notice unnatural sending patterns.
+
+Enable "Reply Engagement." This tells Instantly to mimic human behavior by occasionally replying to warmup emails, opening them, and moving them to folders. This is what makes warmup effective. Disable it only if you have a compliance reason not to.
+
+## Step 4: Verify Warmup Is Running
+
+Warmup starts immediately after you save settings. You won't see dramatic changes on day one.
+
+Check your warm inbox (the Gmail or Outlook account). You should see warmup emails coming in from Instantly's warmup network over the next 24 hours. These are legitimate emails from real accounts designed to build your domain's reputation. You'll see 50-200 depending on your tier.
+
+If you see zero emails after 24 hours, something went wrong. Go back to Email Accounts and re-verify your inbox connection. Check that your domain DNS actually propagated (use MXToolbox.com to verify SPF and DKIM records).
+
+In the Instantly dashboard, go to Warmup Status. You'll see a graph showing emails sent and opened. By day 2-3, this should be climbing. If the graph stays flat, your inbox account isn't connected properly.
+
+## Step 5: Monitor Warmup Progress and Watch Engagement Rates
+
+During the warmup phase, track these metrics in Instantly:
+
+**Open rate.** You should see 25-40% of warmup emails opened by day 3. If it's below 15%, your domain may already have reputation issues. If it's 0%, your inbox isn't actually receiving emails.
+
+**Reply rate.** Expect 2-5% of warmup emails to generate replies. These are automated responses from the warmup network. This is good. It signals to ISPs that your domain is trustworthy.
+
+**Bounce rate.** Should be below 2%. Anything higher means your inbox has connection issues.
+
+Go to the Warmup dashboard daily for the first week. You're looking for upward trends in opens and replies. If opens are declining, stop and investigate. If the graph is climbing steadily, you're on track.
+
+## Step 6: Transition to Cold Email Campaigns (After Warmup Completes)
+
+After your warmup period ends (14-21 days depending on tier), your domain is ready for real cold email.
+
+In Instantly, go to Campaigns and create a new campaign. Connect your warm inbox account. Use your dedicated cold email domain for sending.
+
+Start with a small test: 50-100 emails to your highest-quality prospects. Monitor opens and replies for 3-5 days. You should see 25-35% open rates if your email is good. If opens drop below 20%, your copy or list quality is the problem, not warmup.
+
+Scale slowly. Add 50 more emails every 3-5 days. Don't jump from 100 to 1,000 emails on day one of campaigns. ISPs watch for sudden volume spikes even after warmup.
+
+## Common Mistakes to Avoid
+
+**Mixing warmup and campaign traffic on the same domain.** Some teams try to warm up their primary company domain (the one they use for customer emails). This backfires. ISPs see a sudden shift in sending behavior and flag the domain. Use a dedicated domain only for cold email, starting from zero warmup.
+
+**Starting campaigns before warmup finishes.** Three days into warmup, you get impatient and launch a 500-email campaign. Warmup only works if the ISP sees consistent, natural engagement patterns. Interrupting that with sudden campaign volume teaches ISPs to distrust your domain. Wait until warmup is done.
+
+**Using a warm inbox with existing reputation damage.** If you're reusing an old Gmail account that was previously flagged for spam, warmup can't fix that. The damage is tied to the account itself, not just your domain. Create a new warm inbox if the existing one has been inactive for 6+ months or has bounced heavily in the past.
+
+**Setting warmup to "Aggressive" and expecting day-three campaigns.** Aggressive warmup exists for emergencies, not standard use. It can trigger ISP spam filters because the sending pattern looks unnatural. Use Standard or Conservative unless you have a specific deadline and can accept higher spam folder risk.
+
+## Results to Expect
+
+**Week 1:** Warmup emails arrive in your warm inbox. Open rates climb from 0% to 20-30%. You'll see a few replies. This is normal. Your domain is establishing credibility.
+
+**Week 2:** Open rates plateau around 35-40%. Reply rates hit 3-5%. Bounce rate stays below 1%. You're on track.
+
+**Week 3:** Warmup finishes. You launch a test campaign. If your email copy and list are solid, expect 25-35% open rates and 2-5% reply rates. These are realistic numbers for cold email. If you're hitting 50%+ open rates, your list is probably too warm or too small.
+
+**Month 2 and beyond:** After establishing domain reputation, open rates stabilize around 30-35% for good email copy and decent list quality. Spam folder placement drops to under 5% of sends.
+
+The financial payoff depends on your product and reply quality. If you're booking meetings at a 1-2% conversion rate from cold emails, warmup pays for itself in the first campaign that generates one qualified meeting.
+
+Don't expect immediate ROI. Expect better deliverability and lower spam folder rates, which make cold email a viable channel instead of a waste of time.
+
+<FAQBlock
+  faqs={[
+    { 
+      question: "How long does email warmup take in Instantly?", 
+      answer: "Warmup typically takes 7-14 days depending on your tier. Instantly gradually increases email volume each day to build domain reputation naturally. You'll see stable engagement patterns after 2-3 weeks, which is the right time to launch real cold email campaigns." 
+    },
+    { 
+      question: "Can I send cold emails while warming up my domain?", 
+      answer: "Light prospecting is fine after day 7, but heavy campaigns during warmup are risky. Warmup works by showing ISPs a consistent pattern of engagement. Sending campaign emails at the same time can disrupt that pattern and reduce warmup effectiveness. Wait until warmup is complete if possible." 
+    },
+    { 
+      question: "What email domain should I use for warmup in Instantly?", 
+      answer: "Use a dedicated domain purchased specifically for cold email. Never warm up your main company domain if you use it for customer support or internal communication. Warmup activities can damage your primary domain's reputation if mixed with other email types. A dedicated domain costs $10-15/year." 
+    }
+  ]}
+/>
+
+## Quick Recap
+
+- Buy a dedicated domain for cold email and verify DNS records in Instantly (SPF, DKIM, DMARC, MX).
+- Connect a clean warm inbox account to Instantly for warmup traffic.
+- Choose Standard warmup tier (200 emails/day for 21 days) for most teams.
+- Monitor open and reply rates daily during warmup. Target 25-40% opens and 2-5% replies by day 3.
+- Wait for warmup to complete before launching cold email campaigns.
+- Start campaigns small (50-100 emails) and scale gradually every 3-5 days.
+- Expect 25-35% open rates and 2-5% reply rates in actual campaigns after warmup.
+- Never mix warmup and campaign traffic, and never interrupt warmup to launch campaigns early.
+
+If you're building a cold email operation from scratch, warmup is table stakes. It's also worth comparing how Instantly compares to other platforms. See [Instantly vs Smartlead: Which Cold Email Platform Delivers Better Inbox Placement](https://telotonet.com/articles/instantly-vs-smartlead-which-cold-email-platform-delivers-better-inbox-placement/) for a head-to-head review of inbox deliverability across tools.
