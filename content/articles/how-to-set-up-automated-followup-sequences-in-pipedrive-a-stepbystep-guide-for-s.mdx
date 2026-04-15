@@ -1,0 +1,198 @@
+---
+title: "How to Set Up Automated Follow-Up Sequences in Pipedrive: A Step-by-Step Guide for Sales Teams"
+description: "Set up automated follow-up sequences in Pipedrive to nurture leads consistently. Step-by-step guide with specific settings and real examples."
+excerpt: "A practical walkthrough for building automated follow-up sequences in Pipedrive so your sales team can nurture leads without manual work."
+publishedAt: "2026-04-15"
+author: "Alex"
+category: "sales-crm"
+coverImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Sales professional reviewing CRM dashboard with follow-up tasks"
+tags: ["Pipedrive", "sales automation", "follow-up sequences", "lead nurturing", "CRM"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "Can I create different follow-up sequences for different deal stages?"
+    answer: "Yes. Pipedrive allows you to set up automation rules based on deal stage, person type, organization industry, and custom fields. You can create separate sequences that trigger only when deals move to specific stages like 'Negotiation' or 'Proposal Sent'."
+  - question: "What's the maximum number of automated follow-ups I can schedule?"
+    answer: "Pipedrive doesn't have a hard limit on the number of automations you create, but performance depends on your plan. The Professional plan ($59/month per user) and above support most automation needs. Each automation can contain multiple steps with different delay intervals."
+  - question: "Will automated follow-ups work if I don't have email integrated in Pipedrive?"
+    answer: "No. You need to connect your email account (Gmail, Outlook, or Microsoft 365) to Pipedrive for email-based follow-ups to work. Calendar integration is also recommended so Pipedrive can see when you're actually available for meetings and calls."
+---
+
+<AffiliateDisclosureInline />
+
+Automated follow-up sequences in Pipedrive solve a specific problem: sales reps forget to follow up on time, deals stall, and revenue gets left on the table. A study from HubSpot shows that 80% of sales require five or more follow-up attempts before closing. Manual tracking fails at scale.
+
+Pipedrive's automation engine handles this. Once configured correctly, it sends emails, assigns tasks, and moves deals forward without human intervention. Your team stops managing a follow-up checklist and starts closing deals.
+
+This guide walks you through the actual setup, not theory. You'll have a working automated sequence running by the end.
+
+## What You Need Before Starting
+
+Before touching Pipedrive's automation settings, confirm you have everything in place:
+
+1. A Pipedrive account with Professional plan or higher ($59/month per user minimum). The Essential plan ($24/month) doesn't include automation rules.
+
+2. Your email account connected to Pipedrive. Go to Settings > Integrations > Email and connect Gmail, Outlook, or Microsoft 365. Pipedrive will verify your account and sync your email.
+
+3. A populated CRM with at least one contact and one deal. If you're starting fresh, see [How to Set Up a Sales Pipeline in Pipedrive: A Step-by-Step Guide for First-Time Users](https://telotonet.com/articles/how-to-set-up-a-sales-pipeline-in-pipedrive-a-stepbystep-guide-for-firsttime-use/).
+
+4. Defined deal stages in your pipeline. Standard stages include Lead, Qualification, Proposal, Negotiation, and Won. Automations trigger based on stage movement, so clear stages are mandatory.
+
+5. A written follow-up sequence template. Know what you want to say in email 1, email 2, and email 3 before you start building. Winging it in Pipedrive wastes time.
+
+One more thing: automations run on the account timezone setting. Verify your timezone in Settings > Personal Preferences > Timezone. If it's wrong, your follow-ups send at 3 AM.
+
+## Step 1: Navigate to Automation Rules and Create Your First Rule
+
+Open Pipedrive and go to Settings in the bottom left corner. Click on Tools > Automation to access the automation engine. You'll see a blank canvas with a "Create your first rule" button.
+
+Click it. Pipedrive opens a rule builder with three sections: When, If, and Then.
+
+The "When" section defines what triggers the automation. You have several options: deal stage change, activity completed, person added, deal created, or custom field update. For most follow-up sequences, select "When deal stage changes to" and pick your starting stage. For example, if you want to automate follow-ups for deals that move into Proposal stage, select "When deal stage changes to Proposal."
+
+Name your rule something clear: "Proposal Stage - Day 1 Email Follow-up" works better than "Auto Rule 1."
+
+## Step 2: Set Your Trigger Conditions and Time Delay
+
+After selecting the deal stage, you'll see conditional options. The "If" section is optional but powerful. Leave it blank for now if you want the automation to run for every deal that enters that stage. If you want to target specific deals (like only deals over $10,000 or from a certain industry), add conditions here.
+
+For your first sequence, keep it simple. Don't add conditions.
+
+Now set the timing. Pipedrive lets you delay actions by hours or days. Click on "Then" to reveal action options. Select "Send email" from the dropdown.
+
+Set a delay. For day 1 of your follow-up, choose "Immediately" or "After 1 hour." The one-hour delay gives the deal assignee time to see the stage change notification. For day 2, you'll create a second rule with "After 1 day" or "After 2 days" depending on your sales cycle.
+
+## Step 3: Write and Configure Your First Email Template
+
+After selecting "Send email," you'll see a template selection field. Pipedrive offers pre-built templates or custom options. For follow-up sequences, use custom. Click "Create new template."
+
+You'll write your email in a text editor. Keep it short: 3 to 4 sentences. Long automated emails feel robotic and get ignored.
+
+Here's a real example for day 1 after a proposal is sent:
+
+"Hi [person_name],
+
+I wanted to follow up on the proposal we sent over on [date]. Do you have any initial questions or concerns? I'm happy to walk through any section in more detail.
+
+Best,
+[sender_name]"
+
+Pipedrive inserts dynamic fields using [brackets]. Available fields include [person_name], [deal_title], [organization_name], [sender_name], and custom fields you've created. Use these instead of writing names manually.
+
+Add a subject line: "Quick follow-up on [deal_title]" is direct and tells the recipient what's coming.
+
+Don't personalize with lengthy details yet. Your goal is consistent touch, not custom messaging. You personalize on the phone.
+
+Save the template. Name it "Day 1 - Proposal Follow-up" so you can reuse it across multiple automation rules.
+
+## Step 4: Assign the Email to the Right Person and Test the Rule
+
+Before your rule goes live, decide who sends the email. In the "Send email" action, select "Deal owner" from the dropdown. This ensures the rep assigned to the deal sends the follow-up, not a generic sales address.
+
+If you want all follow-ups sent from a team inbox, select "Specific user" and pick that person. Most teams prefer deal owner so prospects see a consistent sender.
+
+Below that, check "Add a task to the deal owner's inbox" if you want to remind the rep that the email was sent. This is useful if you want them to follow up with a phone call within 24 hours. It prevents the automation from feeling like a complete replacement for human interaction.
+
+Now test. Click "Save and test" at the bottom. Pipedrive shows you what the rule will do without actually triggering it. If you have a test deal already in Proposal stage, you can run this rule against it to see the email preview.
+
+## Step 5: Create Your Day 2 and Day 3 Rules
+
+One email doesn't close deals. Build a second rule that triggers two days later.
+
+Go back to Automation and click "Create new rule" again. Select the same deal stage (Proposal) as your trigger. This time, change the "Then" delay to "After 2 days."
+
+Write a different email. This one is slightly more direct:
+
+"Hi [person_name],
+
+Circling back on the proposal from [date]. I haven't heard feedback yet and want to make sure it landed okay. Can we schedule 15 minutes this week to discuss?
+
+Best,
+[sender_name]"
+
+This email hints at urgency without being pushy. It also includes a call to action: scheduling a call.
+
+Save this rule. Create a third rule with "After 4 days" if your sales cycle is longer, or skip it if your pipeline moves faster. Three follow-ups in four days is enough for most B2B sales.
+
+## Step 6: Enable Rules and Monitor Performance
+
+All your rules are built. Now enable them. Go back to your Automation list and toggle each rule to "On." Disabled rules (toggled off) don't run.
+
+Watch what happens. Create a test deal and manually move it to the Proposal stage. Your automation emails should arrive in the deal owner's sent folder, and the deal should show those activities in the activity timeline.
+
+Check for deliverability issues. If emails don't arrive, your email integration is broken. Go to Settings > Integrations > Email and reconnect your email account.
+
+After 24 hours, check your CRM for email opens and replies. Pipedrive tracks when prospects open emails (if their email client loads images) and flags replies. Use this data to refine your template wording.
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Automating too many emails too fast**
+
+Teams often set up rules that fire off five emails in three days. This looks like spam. Prospects ignore them and your domain reputation suffers if you're using a shared email system.
+
+Fix: Space emails 2 to 3 days apart. Three emails over a week is the right rhythm for most sales cycles.
+
+**Mistake 2: Sending the same email multiple times**
+
+If you copy a template word-for-word for day 1, day 2, and day 3, prospects notice. They see repetition and perceive you as lazy.
+
+Fix: Change the subject line and body for each email. Day 1 is "checking in." Day 2 is "making sure you got it." Day 3 is "one last attempt before I move on."
+
+**Mistake 3: Not personalizing deal stage triggers**
+
+One automation rule for all deals in a stage means high-value deals get the same follow-up as low-value ones. A $5,000 deal and a $50,000 deal need different follow-up intensity.
+
+Fix: Use the "If" conditions to segment. Create one sequence for deals over $25,000 (more aggressive follow-up) and another for deals under $10,000 (lighter touch).
+
+**Mistake 4: Forgetting to add human follow-up tasks**
+
+Automation sends emails. It doesn't call. If your rules only send emails, your reps become passive.
+
+Fix: When creating the email action, also add "Create task" with instructions like "Call [person_name] if no reply by [date]." This blends automation with human work.
+
+## Results to Expect
+
+Realistic outcomes depend on your follow-up quality and sales cycle. Here's what most teams see in the first 30 days:
+
+Your email open rate should land between 35% and 55% for B2B follow-ups. This assumes your subject lines are clear and your email is connected properly. If opens are below 20%, your email address is in spam filters. Check [How to Set Up Email Deliverability Monitoring in Gmail and Outlook: A Step-by-Step Guide for Cold Email Senders](https://telotonet.com/articles/how-to-set-up-email-deliverability-monitoring-in-gmail-and-outlook-a-stepbystep-/) for diagnostics.
+
+Your reply rate from automated follow-ups is typically 2% to 8%. This feels low, but remember these are warm leads already in a deal stage, not cold outreach. A 5% reply rate on 40 deals per week is two additional conversations you didn't have to manually schedule.
+
+Your deal velocity improves because deals move faster through stages. When reps stop managing follow-up timing manually, they spend more time on calls and proposals. Pipedrive's own data shows that teams using automations close 20% more deals within the same timeframe.
+
+Timeline: give automations two full sales cycles (typically 6 to 8 weeks) before measuring success. One cycle doesn't give you enough data. By week 8, you'll see patterns in which emails get replies and which fall flat.
+
+## FAQ
+
+<FAQBlock
+  faqs={[
+    {
+      question: "Can I create different follow-up sequences for different deal stages?",
+      answer: "Yes. Pipedrive allows you to set up automation rules based on deal stage, person type, organization industry, and custom fields. You can create separate sequences that trigger only when deals move to specific stages like 'Negotiation' or 'Proposal Sent'. Use the 'When deal stage changes to' trigger with different stages for each automation."
+    },
+    {
+      question: "What's the maximum number of automated follow-ups I can schedule?",
+      answer: "Pipedrive doesn't have a hard limit on the number of automations you create, but performance depends on your plan. The Professional plan ($59/month per user) and above support most automation needs. Each automation can contain multiple steps with different delay intervals. Most teams run 3 to 5 sequences per sales pipeline effectively."
+    },
+    {
+      question: "Will automated follow-ups work if I don't have email integrated in Pipedrive?",
+      answer: "No. You need to connect your email account (Gmail, Outlook, or Microsoft 365) to Pipedrive for email-based follow-ups to work. Calendar integration is also recommended so Pipedrive can see when you're actually available for meetings and calls. Without email, only task-based automations will function."
+    }
+  ]}
+/>
+
+## Quick Recap
+
+- Ensure you have Professional plan or higher, email integrated, and clear deal stages before starting
+- Create your first automation rule triggered by deal stage change (e.g., when deal moves to Proposal)
+- Set a time delay (immediately, 1 hour, 1 day, or 2 days) before the first email sends
+- Write a short, personalized email template with dynamic fields like [person_name] and [deal_title]
+- Assign emails to the deal owner so the right rep sends the follow-up
+- Create second and third rules for day 2 and day 4 with different email templates
+- Enable all rules, test with a real deal, and monitor open rates and replies
+- Space emails 2 to 3 days apart and vary content to avoid looking like spam
+- Expect 35-55% open rates and 2-8% reply rates from warm deal follow-ups
+- Measure results over two full sales cycles (6 to 8 weeks) before declaring success
