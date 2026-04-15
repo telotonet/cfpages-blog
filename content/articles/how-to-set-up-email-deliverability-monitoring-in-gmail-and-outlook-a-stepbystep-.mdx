@@ -1,0 +1,231 @@
+---
+title: "How to Set Up Email Deliverability Monitoring in Gmail and Outlook: A Step-by-Step Guide for Cold Email Senders"
+description: "Set up email deliverability monitoring in Gmail and Outlook to track bounce rates, delivery status, and inbox placement for cold email campaigns."
+excerpt: "Monitor your cold email deliverability in Gmail and Outlook with native tools and third-party integrations to catch delivery problems before they hurt your sender reputation."
+publishedAt: "2026-04-15"
+author: "Alex"
+category: "email-tools"
+coverImage: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Email interface showing deliverability metrics and inbox status"
+tags: ["cold-email", "email-deliverability", "gmail", "outlook", "sender-reputation"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "What's the difference between bounce rate and delivery rate?"
+    answer: "Delivery rate is the percentage of emails that reach the recipient's mail server without rejection. Bounce rate is the percentage that fail to deliver: hard bounces (invalid address) and soft bounces (temporary issues like full inbox). You need both metrics to understand your sender health."
+  - question: "Can I monitor deliverability if I'm using Gmail's free account?"
+    answer: "Gmail's free account has limited native monitoring beyond read receipts. You'll need a third-party tool like Instantly, Lemlist, or Brevo connected to your Gmail account via API to track detailed metrics like bounce rates and spam folder placement."
+  - question: "How often should I check my deliverability metrics?"
+    answer: "Check daily if you're sending 500+ emails per week. Check weekly if you're sending fewer. Watch for sudden drops in delivery rate or spikes in bounce rates, as these signal authentication issues, IP reputation problems, or list quality decay."
+---
+
+<AffiliateDisclosureInline />
+
+Cold email works only if your emails actually land in inboxes. Without monitoring, you're flying blind. A sender with a 95% delivery rate will book five times more meetings than one delivering at 85%, but most founders and sales leads have no idea what their actual delivery rate is.
+
+Gmail and Outlook don't make deliverability transparent by default. Neither platform shows you bounce rates, spam folder placement, or authentication diagnostics without some setup work. You need to configure monitoring manually or integrate a tool that does it for you.
+
+This guide walks through the real steps to set up proper monitoring so you catch problems before your sender reputation tanks.
+
+## What You Need Before Starting
+
+You'll need access to the following:
+
+1. **A Gmail or Outlook account** you control and use for sending cold emails. This must be the actual sending account, not just a view-only account.
+2. **Admin access to your domain's DNS records** if you plan to authenticate emails properly. You'll need to add SPF, DKIM, and DMARC records. If your domain registrar is GoDaddy, Namecheap, or Route 53, you can do this yourself. If your company uses an IT team, get them involved now.
+3. **A tracking link tool or email platform** like Lemlist, Instantly, or Brevo. Gmail and Outlook alone can't show you bounce rates or spam folder data. You need something in between to capture delivery events. These tools intercept delivery notices from mailbox providers and log them.
+4. **A spreadsheet or database to record baseline metrics** before you start monitoring. You need a before-and-after comparison to know if your setup is working.
+5. **Access to your email account's security settings** to allow third-party integrations. Gmail requires you to enable "Less secure app access" or use OAuth (app passwords). Outlook requires an app password.
+
+## Step 1: Enable Authentication Records (SPF, DKIM, DMARC)
+
+Authentication is the foundation of deliverability. If your emails aren't authenticated, they get filtered regardless of content.
+
+Go to your domain registrar (GoDaddy, Namecheap, Route 53, Cloudflare DNS, etc.) and log in.
+
+Find your DNS settings. The location varies by registrar. On GoDaddy it's "Manage DNS". On Namecheap it's "Advanced DNS". On Route 53 it's "Hosted zones".
+
+**Add an SPF record.** SPF tells receiving mail servers which IP addresses are allowed to send email from your domain. Create a new TXT record with these values:
+
+Name/Host: `@` (or your domain root)
+Value: `v=spf1 include:_spf.google.com include:sendgrid.net ~all`
+
+This example includes Google Workspace and SendGrid. If you're using Brevo or another platform, add their SPF string (check their docs). The `~all` at the end means "soft fail" - emails fail authentication but still get delivered. Change it to `-all` (hard fail) only if you're absolutely certain all your sending sources are listed.
+
+**Add a DKIM record.** DKIM signs your email with a cryptographic key, proving the email came from your domain. Gmail automatically generates DKIM keys if you use Google Workspace. Outlook/Microsoft 365 does the same. If you're using a third-party platform like Brevo or Instantly, they provide the DKIM record to add.
+
+Ask your email platform for the DKIM public key. They'll give you a string like `v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQK...`. Create a new TXT record:
+
+Name/Host: `default._domainkey` (or whatever your platform specifies)
+Value: Paste the full DKIM string
+
+**Add a DMARC record.** DMARC tells receiving servers what to do if SPF or DKIM fail. Create a new TXT record:
+
+Name/Host: `_dmarc`
+Value: `v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@yourdomain.com`
+
+Use `p=quarantine` if you're testing. Change it to `p=reject` once you're confident all legitimate emails are authenticated. The `rua` field sends daily reports to your email so you can see what failed and why.
+
+DNS propagation takes 15 minutes to 48 hours. Check status using MXToolbox.com or similar. Don't proceed until all records show green.
+
+## Step 2: Configure Gmail's Security Settings for Third-Party Access
+
+If you're sending from Gmail, you need to allow a monitoring tool to read your inbox and track delivery receipts.
+
+Go to https://myaccount.google.com/security and log in with the Gmail account you use for cold email.
+
+Scroll down to "Less secure apps and services" or navigate directly to https://myaccount.google.com/lesssecureapps. Note: Google has deprecated this setting for non-Workspace accounts and is phasing it out. If you see a message saying the setting isn't available, move to the next option.
+
+**If less secure app access is available:** Turn it on. This allows tools like Lemlist, Instantly, and Brevo to connect to your Gmail account without going through OAuth. Accept the risk warning.
+
+**If less secure app access is not available (Google Workspace accounts):** Use app passwords instead. Go to https://myaccount.google.com/apppasswords. You must have two-factor authentication enabled first.
+
+Select "Mail" and "Windows Computer" (or your device type).
+
+Google generates a 16-character password specific to that app. Copy it. This is what you'll paste into your cold email platform's Gmail connection, not your actual Gmail password.
+
+Keep this password somewhere safe but separate from your Gmail password itself.
+
+## Step 3: Connect Your Gmail or Outlook Account to a Monitoring Platform
+
+This is where you actually get deliverability data. Gmail and Outlook won't show you bounce rates on their own.
+
+Choose a monitoring platform. Lemlist, Instantly, and Brevo all capture delivery events in real time and log bounce rates, open rates, and click rates. If you're already using one of these for sending, you're already monitoring. If not, pick one.
+
+Open your chosen platform's integration settings. Most have a "Connect Gmail" or "Connect Outlook" button somewhere in settings or integrations.
+
+**For Gmail:** Click "Connect Gmail". You'll be asked to log in and grant permission for the app to read and send mail. Grant it. If you set up app passwords in Step 2, you'll paste the 16-character password instead.
+
+**For Outlook:** Go to the integrations page and select "Microsoft Outlook". You'll be redirected to Microsoft's login page. Log in and grant permission. Outlook will ask you to create an app password (separate from your account password). Use that.
+
+Once connected, the platform should show a green "Connected" status. If it shows an error, check that you've enabled the right security settings in the previous step.
+
+The tool now has permission to read incoming delivery notifications from Gmail's or Outlook's SMTP servers, which include bounce notices from other mail services.
+
+## Step 4: Set Up Bounce and Delivery Tracking
+
+Now configure which events get tracked. Go to your platform's settings (Lemlist, Instantly, Brevo, or whichever you chose) and find "Deliverability" or "Tracking" settings.
+
+Enable bounce tracking. This captures both hard bounces (invalid emails) and soft bounces (temporary failures like "mailbox full" or "server temporarily unavailable"). The platform logs these as "bounced" status.
+
+Enable delivery tracking. Some platforms distinguish between "delivered" (reached the mailbox provider) and "failed" (rejected before reaching the server). Make sure both are on.
+
+Enable spam/junk tracking if available. Some advanced platforms can detect when your email landed in the spam folder instead of the inbox. This requires additional setup with Gmail's Postmaster Tools or Microsoft's SNDS (if available to you).
+
+Set up alerts. Most platforms let you create rules like "Alert me if bounce rate exceeds 5%" or "Alert me if delivery rate drops below 90%". Set these now so you catch problems in real time instead of discovering them a week later.
+
+Example configuration in Lemlist:
+- Hard bounce alert: Trigger when more than 5 hard bounces in 100 emails sent
+- Soft bounce alert: Trigger when more than 10 soft bounces in 100 emails sent
+- Delivery failure alert: Trigger when fewer than 85 emails are delivered in 100 sent
+
+## Step 5: Monitor Deliverability in Gmail and Outlook Directly (Native Tools)
+
+While your third-party tool captures the analytics, Gmail and Outlook have native features worth using too.
+
+**In Gmail:** Open Gmail and look at your sent folder. Click an email you sent to a cold prospect. Look for a small icon next to the recipient's address. If there's a checkmark, it was delivered. If there's an exclamation mark or X, it bounced. This is slower than platform tracking but useful for spot-checking individual sends.
+
+For Google Workspace accounts, go to Postmaster Tools (postmaster.google.com). This requires ownership verification of your domain. Once verified, Postmaster Tools shows you feedback loops, authentication status, and how often your emails land in spam vs. the inbox. This is the best native Gmail monitoring tool.
+
+**In Outlook:** Check the message delivery status in your sent folder, but Outlook's native reporting is weaker than Gmail's. For Microsoft 365 accounts, go to the Microsoft 365 admin center and look for "Message Trace" under Mail Flow. You can query individual emails and see delivery status, any bounces, or rejection reasons. This is manual but precise.
+
+Use both your third-party platform's dashboard and these native tools in tandem. The third-party tool shows you trends (bounce rate over time). The native tools show you details (why this specific email bounced).
+
+## Step 6: Create a Monitoring Baseline and Dashboard
+
+Now that monitoring is live, create a simple tracking system so you can see if your deliverability is improving or degrading.
+
+Use a spreadsheet or simple database to log weekly metrics. Record:
+- Total emails sent
+- Delivered count and percentage
+- Hard bounces (invalid emails)
+- Soft bounces (temporary failures)
+- Opens and clicks (secondary metrics, but useful)
+- Date and any changes made (new list source, new email template, etc.)
+
+Example weekly log:
+| Week | Sent | Delivered | Delivery % | Hard Bounce | Soft Bounce | Note |
+|------|------|-----------|------------|-------------|-------------|------|
+| Apr 7 | 500 | 465 | 93% | 15 | 20 | First week, cold list from Apollo |
+| Apr 14 | 500 | 485 | 97% | 8 | 7 | Improved after SPF/DKIM fix |
+| Apr 21 | 500 | 480 | 96% | 12 | 8 | Consistent performance |
+
+After two weeks, you'll have enough data to see patterns. Most new senders start at 88-94% delivery. After authentication is properly configured and you warm up your account, you should reach 95%+.
+
+If your delivery rate stalls below 92%, troubleshoot:
+- Check that SPF/DKIM/DMARC records are still in DNS (they don't expire, but registrar changes can break them)
+- Confirm your email platform's servers are on Gmail and Outlook's whitelist (check their IP reputation on MXToolbox)
+- Review the list source. Purchased lists or old scraped lists have high bounce rates. Switch to verified leads from Apollo or Hunter
+- Check email content. Certain words or links trigger spam filters. Review templates against a spam test tool like Mail-tester
+
+Consider setting up [email warmup](https://telotonet.com/articles/what-is-email-warmup/) if you're sending more than 50 cold emails per day from a new account. This involves having the warmup tool send small amounts of legitimate traffic to your inbox first, building sender reputation before you launch your campaign. Tools like Instantly and Brevo have warmup features built in.
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Forgetting to add DMARC policy or leaving it too permissive.** Many teams add SPF and DKIM but skip DMARC or set it to `p=none`. Without DMARC, receiving servers don't know how to handle authentication failures, and your emails get marked as suspicious. Add DMARC with `p=quarantine` or `p=reject` immediately. Check your DMARC reports weekly for a month to catch any legitimate emails failing authentication before you harden the policy.
+
+**Mistake 2: Using a domain with existing mail history for cold email.** If you set up cold email from company@yourcompany.com but that address has been used for customer support for two years, Gmail's and Outlook's filters already have a reputation model for that sender. Switching it to cold outreach overnight flags as anomalous. Use a subdomain (sales@email.yourcompany.com) for cold campaigns, or use a separate domain entirely. Subdomains inherit some parent domain reputation but start fresh in the eyes of filters.
+
+**Mistake 3: Not checking if your email platform's IP is already blacklisted.** Even with perfect authentication, if your cold email platform sends from a shared IP that's been used for spam, your emails get filtered regardless. Check your platform's IP reputation on MXToolbox before launching. Type in your platform's sending IP (find it in their docs or settings) and verify it's not on Spamhaus, Barracuda, or other blocklists. If it is, contact your platform's support.
+
+**Mistake 4: Assuming third-party tracking shows the complete picture.** Even with Lemlist, Instantly, or Brevo connected, you're only seeing what they can detect. A high-volume sender might miss 5-10% of bounces because not every rejection generates an SMTP response that gets logged. Use native tools (Gmail's Postmaster Tools, Outlook's Message Trace) monthly to cross-check your platform's numbers. If the numbers diverge significantly, your list quality might be worse than the platform is reporting.
+
+## Results to Expect
+
+With authentication properly configured and monitoring in place, here's what realistic timelines look like.
+
+**Week 1:** Delivery rate is 88-92%. You'll see 30-50 bounces per 500 emails sent, mostly hard bounces from invalid addresses in your list. This is normal. SPF and DKIM take 24-48 hours to propagate, so some early emails might fail before records are live.
+
+**Week 2-3:** Delivery rate climbs to 93-96% as authentication takes full effect and Gmail and Outlook's filters learn your sending pattern. Hard bounces drop as invalid addresses are removed from your list. Soft bounces might increase slightly if you're sending to higher-quality lists; this is fine and temporary.
+
+**Week 4+:** Stabilization at 94-97%. If you're sending 500-2000 emails per week, this is sustainable. Open rates should be in the 15-25% range (varies by list quality and subject line). Click rates 2-5%. Response rate (replies) 0.5-2%, depending on how good your email copy is.
+
+If you're using email warmup, the climb is slower but safer. Warmup takes 7-10 days before you launch at volume. During warmup, don't send cold emails. Let the warmup tool build reputation with small legitimate sends. After warmup, you can launch at full volume and delivery rate typically reaches 95%+ within a few days.
+
+Success means:
+- Delivery rate consistently above 93%
+- No sudden spikes in bounce rate (would signal a problem)
+- No spam complaints
+- Consistent open and click rates week to week
+
+Failure signals include:
+- Delivery rate dropping below 90%
+- Hard bounce rate exceeding 10%
+- A sudden drop in open rates (emails are reaching the inbox but filters are catching them now)
+- Replies from mailbox providers saying "authentication failure" or "IP not whitelisted"
+
+If you hit any of these, go back to Steps 1-3 and check your configuration. Deliverability problems are always traceable to authentication, list quality, or sender reputation.
+
+## FAQ
+
+<FAQBlock
+  faqs={[
+    {
+      question: "What's the difference between bounce rate and delivery rate?",
+      answer: "Delivery rate is the percentage of emails that reach the recipient's mail server without rejection. Bounce rate is the percentage that fail to deliver: hard bounces (invalid address) and soft bounces (temporary issues like full inbox). You need both metrics to understand your sender health."
+    },
+    {
+      question: "Can I monitor deliverability if I'm using Gmail's free account?",
+      answer: "Gmail's free account has limited native monitoring beyond read receipts. You'll need a third-party tool like Instantly, Lemlist, or Brevo connected to your Gmail account via API to track detailed metrics like bounce rates and spam folder placement."
+    },
+    {
+      question: "How often should I check my deliverability metrics?",
+      answer: "Check daily if you're sending 500+ emails per week. Check weekly if you're sending fewer. Watch for sudden drops in delivery rate or spikes in bounce rates, as these signal authentication issues, IP reputation problems, or list quality decay."
+    }
+  ]}
+/>
+
+## Quick Recap
+
+- Enable SPF, DKIM, and DMARC records in your domain's DNS settings before sending at volume
+- Grant third-party tools (Lemlist, Instantly, Brevo) permission to read Gmail or Outlook via app passwords or OAuth
+- Use Gmail's Postmaster Tools or Outlook's Message Trace as native verification layers alongside platform tracking
+- Create a weekly tracking spreadsheet to log delivery rate, bounce counts, and trends over time
+- Target 94-97% delivery rate after authentication is live and account is warmed up
+- Don't use your main company email address for cold campaigns on a fresh account; use a subdomain instead
+- Check your email platform's sending IP reputation on MXToolbox before launching campaigns
+- Add DMARC policy (p=quarantine or p=reject), not just SPF and DKIM, or receiving servers won't enforce authentication
+
+If you're setting up cold email at scale, deliverability monitoring is non-negotiable. A 95% delivery rate means 475 of your 500 emails land in inboxes. An 85% delivery rate means 425. That 50-email difference over 10 weeks is 500 emails that never had a chance. Set up monitoring first, launch second.
