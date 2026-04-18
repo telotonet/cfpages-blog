@@ -190,7 +190,6 @@ function resolveInternalArticle(targetUrl, linkedSlug, label, existingArticles) 
 
   return null
 }
-
 function sanitizeTemplatePlaceholders(mdx) {
   return mdx
     .replace(/\{\{([A-Za-z][A-Za-z0-9_]*)\}\}/g, '`{{$1}}`')
@@ -207,7 +206,6 @@ function normalizeInternalArticleLinks(mdx, existingArticles) {
     }
   )
 }
-
 function normalizeText(value) {
   return String(value || '').trim().toLowerCase()
 }
