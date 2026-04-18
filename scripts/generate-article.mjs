@@ -14,12 +14,102 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import Anthropic from '@anthropic-ai/sdk'
+import matter from 'gray-matter'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const ARTICLES_DIR = path.join(ROOT, 'content', 'articles')
 const CATEGORIES_DIR = path.join(ROOT, 'content', 'categories')
 const SITE_URL = 'https://telotonet.com'
+
+const GLOBAL_TOPIC_AVOIDS = [
+  'email warmup',
+  'newsletter software',
+  'email marketing platform',
+  'cold email sequence copy',
+  'subject line generator',
+  'drip campaign templates',
+  'how to write better emails',
+]
+
+const CATEGORY_STRATEGY = {
+  'ai-assistants': {
+    reader: 'operators and founders choosing a general-purpose AI assistant for research, drafting, analysis, and team workflows',
+    lanes: [
+      'ChatGPT vs Claude vs Gemini for internal business workflows',
+      'Perplexity or ChatGPT for research-heavy teams',
+      'Microsoft Copilot or Gemini for companies already deep in Microsoft 365 or Google Workspace',
+      'AI assistants for customer support macros, knowledge search, and meeting prep',
+      'buying criteria for team-wide AI assistant rollouts, security, memory, admin controls, and collaboration',
+    ],
+    avoid: [
+      'AI email copywriting',
+      'newsletter generation',
+      'generic blogging prompts',
+      'cold email personalization as the main angle',
+    ],
+  },
+  'ai-writing': {
+    reader: 'marketing and content teams evaluating dedicated AI writing software for production workflows',
+    lanes: [
+      'SEO content production stacks',
+      'landing page and ad copy workflows',
+      'brand voice control across multiple writers',
+      'repurposing webinars or podcasts into written assets',
+      'buying guides for content teams choosing between AI writing products',
+    ],
+    avoid: [
+      'cold email warmup',
+      'deliverability tools',
+      'newsletter software as the central topic',
+    ],
+  },
+  'email-tools': {
+    reader: 'teams responsible for outbound infrastructure and deliverability, not general newsletter marketers',
+    lanes: [
+      'inbox placement and deliverability monitoring',
+      'email verification and list hygiene',
+      'reply management and shared outbound inboxes',
+      'secondary domain setup, SPF, DKIM, DMARC, and sending infrastructure',
+      'cold outreach platforms compared for agencies or SDR teams',
+    ],
+    avoid: [
+      'another email warmup explainer',
+      'generic newsletter software roundups',
+      'broad email marketing advice with no tool buying angle',
+    ],
+  },
+  'productivity': {
+    reader: 'small teams choosing software for docs, tasks, meetings, automation, and day-to-day coordination',
+    lanes: [
+      'project management tools for teams under 20 people',
+      'meeting notes and async documentation tools',
+      'knowledge base and wiki software',
+      'task managers for founders and operators',
+      'automation tools that connect docs, forms, and internal workflows',
+    ],
+    avoid: [
+      'AI blog post generators',
+      'cold email tools',
+      'newsletter discussions',
+    ],
+  },
+  'sales-crm': {
+    reader: 'founders, revops leads, and small sales teams evaluating CRM and pipeline software',
+    lanes: [
+      'CRM selection for teams under 10 reps',
+      'sales engagement or prospecting databases',
+      'pipeline hygiene and deal review workflows',
+      'CRM migration playbooks and switching costs',
+      'call recording, notes, and forecasting software for small B2B sales teams',
+    ],
+    avoid: [
+      'newsletter or email marketing software',
+      'generic copywriting tools',
+      'broad productivity advice with no revenue workflow angle',
+    ],
+  },
+}
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -36,9 +126,18 @@ function getExistingArticles() {
     .map((f) => {
       const slug = f.replace('.mdx', '')
       const raw = fs.readFileSync(path.join(ARTICLES_DIR, f), 'utf8')
-      const titleMatch = raw.match(/^title:\s*["']?(.+?)["']?\s*$/m)
-      const title = titleMatch ? titleMatch[1].replace(/^["']|["']$/g, '') : slug
-      return { slug, title, url: `${SITE_URL}/articles/${slug}/` }
+      const { data } = matter(raw)
+
+      return {
+        slug,
+        title: data.title || slug,
+        url: `${SITE_URL}/articles/${slug}/`,
+        category: data.category || 'unknown',
+        tags: Array.isArray(data.tags) ? data.tags : [],
+        excerpt: data.excerpt || '',
+        publishedAt: data.publishedAt || '',
+        articleType: data.articleType || 'unknown',
+      }
     })
 }
 
@@ -71,6 +170,98 @@ function extractFrontmatter(mdx) {
   return { title, slug }
 }
 
+function normalizeText(value) {
+  return String(value || '').trim().toLowerCase()
+}
+
+function parseDateValue(value) {
+  const time = Date.parse(value || '')
+  return Number.isNaN(time) ? 0 : time
+}
+
+function sortArticlesByDate(existingArticles) {
+  return [...existingArticles].sort((a, b) => parseDateValue(b.publishedAt) - parseDateValue(a.publishedAt))
+}
+
+function pickTargetCategory(existingArticles, categories) {
+  const sortedArticles = sortArticlesByDate(existingArticles)
+  const lastArticle = sortedArticles[0]
+
+  const ranked = categories
+    .map((category) => {
+      const inCategory = sortedArticles.filter((article) => article.category === category.slug)
+      const count = inCategory.length
+      const lastPublishedAt = inCategory[0]?.publishedAt || ''
+      const lastPublishedTs = parseDateValue(lastPublishedAt)
+      const sameAsLatestPenalty = lastArticle?.category === category.slug ? 1 : 0
+
+      return {
+        ...category,
+        count,
+        lastPublishedAt,
+        score:
+          count * 1000 +
+          sameAsLatestPenalty * 250 +
+          (lastPublishedTs ? Math.floor(lastPublishedTs / 86400000) : -999999),
+      }
+    })
+    .sort((a, b) => a.score - b.score)
+
+  return ranked[0]
+}
+
+function buildRecentTopicSignals(existingArticles) {
+  const text = existingArticles
+    .flatMap((article) => [article.title, article.excerpt, ...(article.tags || [])])
+    .map(normalizeText)
+    .join(' | ')
+
+  const signals = [
+    ['email warmup', 'email warmup / mailbox warmup'],
+    ['warmup', 'warmup tools'],
+    ['newsletter', 'newsletter software'],
+    ['cold email', 'cold email'],
+    ['deliverability', 'deliverability'],
+    ['notion', 'Notion'],
+    ['copy.ai', 'Copy.ai'],
+    ['jasper', 'Jasper'],
+    ['ai writing', 'AI writing tools'],
+  ]
+
+  return signals
+    .filter(([needle]) => text.includes(needle))
+    .map(([, label]) => label)
+}
+
+function buildEditorialPlan(existingArticles, categories) {
+  const targetCategory = pickTargetCategory(existingArticles, categories)
+  const strategy = CATEGORY_STRATEGY[targetCategory.slug]
+  const sortedArticles = sortArticlesByDate(existingArticles)
+  const recentArticles = sortedArticles.slice(0, 8)
+  const categoryTitles = sortedArticles
+    .filter((article) => article.category === targetCategory.slug)
+    .map((article) => article.title)
+  const repeatedSignals = buildRecentTopicSignals(recentArticles)
+
+  const bannedTopics = [
+    ...GLOBAL_TOPIC_AVOIDS,
+    ...(strategy?.avoid || []),
+    ...categoryTitles,
+  ]
+
+  return {
+    targetCategory,
+    strategy,
+    recentArticles,
+    bannedTopics,
+    repeatedSignals,
+    categoryCoverage: categories.map((category) => ({
+      slug: category.slug,
+      count: existingArticles.filter((article) => article.category === category.slug).length,
+    })),
+  }
+}
+
 // ─── article formats ────────────────────────────────────────────────────────
 // Each format has a unique structure so articles don't all look the same.
 
@@ -78,6 +269,7 @@ const ARTICLE_FORMATS = [
   {
     name: 'honest-review',
     articleType: 'review',
+    categoryFits: ['ai-assistants', 'ai-writing', 'email-tools', 'productivity', 'sales-crm'],
     topicStyle: 'a deep honest review of ONE specific B2B SaaS tool — not a comparison',
     topicExample: 'Apollo.io Review: What It Actually Does Well (And Where It Falls Short)',
     structureInstructions: `Structure this as an honest tool review. Use this exact section order:
@@ -93,6 +285,7 @@ const ARTICLE_FORMATS = [
   {
     name: 'how-to-guide',
     articleType: 'guide',
+    categoryFits: ['ai-assistants', 'ai-writing', 'email-tools', 'productivity', 'sales-crm'],
     topicStyle: 'a practical step-by-step how-to guide — something people need to set up or configure',
     topicExample: 'How to Set Up Cold Email Sequences That Actually Get Replies',
     structureInstructions: `Structure this as a practical how-to guide. Use this exact section order:
@@ -109,6 +302,7 @@ const ARTICLE_FORMATS = [
   {
     name: 'tool-stack',
     articleType: 'best-of',
+    categoryFits: ['ai-assistants', 'ai-writing', 'email-tools', 'productivity', 'sales-crm'],
     topicStyle: 'a specific opinionated tool stack for ONE job-to-be-done — like "the exact stack for X"',
     topicExample: 'The Exact Cold Outbound Stack for a 2-Person Sales Team ($200/mo Budget)',
     structureInstructions: `Structure this as an opinionated stack recommendation. Use this exact section order:
@@ -126,6 +320,7 @@ const ARTICLE_FORMATS = [
   {
     name: 'comparison',
     articleType: 'comparison',
+    categoryFits: ['ai-assistants', 'ai-writing', 'email-tools', 'productivity', 'sales-crm'],
     topicStyle: 'a head-to-head comparison of TWO specific tools for a specific use case',
     topicExample: 'Lemlist vs Instantly: Which Cold Email Tool Is Better for Agency Outreach',
     structureInstructions: `Structure this as a real head-to-head, not a neutral "both are good" piece. Use this exact section order:
@@ -142,6 +337,7 @@ const ARTICLE_FORMATS = [
   {
     name: 'contrarian-take',
     articleType: 'review',
+    categoryFits: ['ai-assistants', 'ai-writing', 'productivity', 'sales-crm'],
     topicStyle: 'a contrarian opinion piece — why a popular tool is overrated, underrated, or misused',
     topicExample: 'Why Most Teams Are Using Notion Wrong (And What to Do Instead)',
     structureInstructions: `Structure this as a punchy opinion piece with a real point of view. Use this exact section order:
@@ -157,6 +353,7 @@ const ARTICLE_FORMATS = [
   {
     name: 'buyers-guide',
     articleType: 'best-of',
+    categoryFits: ['ai-assistants', 'ai-writing', 'email-tools', 'productivity', 'sales-crm'],
     topicStyle: 'a buyer\'s guide that helps someone choose the right tool for a specific situation — opinionated, not "it depends"',
     topicExample: 'How to Choose a CRM When You Have Under 5 Salespeople',
     structureInstructions: `Structure this as a decision-making guide. Use this exact section order:
@@ -171,20 +368,45 @@ const ARTICLE_FORMATS = [
   },
 ]
 
-function pickFormat() {
-  return ARTICLE_FORMATS[Math.floor(Math.random() * ARTICLE_FORMATS.length)]
+function pickFormat(existingArticles, targetCategory) {
+  const recentTypes = sortArticlesByDate(existingArticles)
+    .slice(0, 6)
+    .map((article) => article.articleType)
+
+  const candidates = ARTICLE_FORMATS
+    .filter((format) => !format.categoryFits || format.categoryFits.includes(targetCategory))
+    .map((format) => ({
+      format,
+      score: recentTypes.filter((type) => type === format.articleType).length,
+    }))
+    .sort((a, b) => a.score - b.score)
+
+  const bestScore = candidates[0]?.score ?? 0
+  const best = candidates.filter((candidate) => candidate.score === bestScore)
+  return best[Math.floor(Math.random() * best.length)].format
 }
 
-function topicPickerPrompt(existingArticles, categories, format) {
+function topicPickerPrompt(existingArticles, categories, format, plan) {
   const categoryList = categories.map((c) => `• ${c.slug} — ${c.name}`).join('\n')
   const publishedList = existingArticles.length
     ? existingArticles.map((a) => `• ${a.title}`).join('\n')
     : '(none yet)'
+  const categoryCoverage = plan.categoryCoverage
+    .map((item) => `• ${item.slug}: ${item.count} article(s)`)
+    .join('\n')
+  const bannedTopics = plan.bannedTopics.map((topic) => `• ${topic}`).join('\n')
+  const laneList = (plan.strategy?.lanes || []).map((lane) => `• ${lane}`).join('\n')
+  const repeatedSignals = plan.repeatedSignals.length
+    ? plan.repeatedSignals.map((signal) => `• ${signal}`).join('\n')
+    : '• none'
 
   return `You run a B2B SaaS blog called Telotonet. It covers tools that small and mid-sized businesses use every day: cold email and deliverability, sales CRM and outbound automation, AI writing assistants, and productivity software.
 
 Available categories:
 ${categoryList}
+
+Current category coverage:
+${categoryCoverage}
 
 Already published (do NOT repeat or closely overlap with these):
 ${publishedList}
@@ -192,20 +414,41 @@ ${publishedList}
 Today's article format: ${format.topicStyle}
 Example of a good title for this format: "${format.topicExample}"
 
+You MUST pick a topic in this exact category:
+- ${plan.targetCategory.slug} — ${plan.targetCategory.name}
+
+This category was chosen because it needs more coverage. The audience here is:
+- ${plan.strategy?.reader}
+
+Strong topic lanes for this category:
+${laneList}
+
+Recent patterns already overrepresented or too easy:
+${repeatedSignals}
+
+Hard bans for today's topic:
+${bannedTopics}
+
 Pick ONE specific topic in this format that:
 - Has real search demand
-- Fits one of the categories above
+- Fits ONLY the required category above
 - Is NOT already covered in the published list
 - Uses specific tool names or concrete situations — no generic titles
+- Does not reuse the same cluster, framing, or keyword pattern as the banned topics
+- Does not default to email, newsletters, or cold outreach unless the required category is email-tools
+
+Prefer angles like buyer decisions, implementation tradeoffs, migration pain, budget thresholds, team size constraints, admin controls, integrations, or workflow fit.
 
 Reply with ONLY the topic title. No explanation, no quotes. Just the title.`
 }
 
-function articleWriterPrompt(topic, format, existingArticles, categories, today) {
+function articleWriterPrompt(topic, format, existingArticles, categories, today, plan) {
   const categoryList = categories.map((c) => `${c.slug} (${c.name})`).join(', ')
   const internalLinks = existingArticles.length
     ? existingArticles.map((a) => `• "${a.title}" → ${a.url}`).join('\n')
     : '(none yet)'
+  const laneList = (plan.strategy?.lanes || []).map((lane) => `- ${lane}`).join('\n')
+  const bannedTopics = plan.bannedTopics.slice(0, 20).map((topic) => `- ${topic}`).join('\n')
 
   return `You are a senior B2B SaaS content writer. You write for Telotonet — a no-BS blog that helps business buyers evaluate software before they pay for it. The audience is operations managers, founders, sales leads, and marketing managers at companies with 5–200 employees. They are smart and busy. They don't want hype.
 
@@ -215,6 +458,17 @@ function articleWriterPrompt(topic, format, existingArticles, categories, today)
 
 Write a complete, publish-ready MDX article on this topic:
 "${topic}"
+
+This article MUST belong to this exact category:
+"${plan.targetCategory.slug}"
+
+Category context:
+- Reader: ${plan.strategy?.reader}
+- Good topic lanes for this category:
+${laneList}
+
+Do not drift into these repeated angles or keyword clusters unless the topic explicitly requires them:
+${bannedTopics}
 
 ---
 
@@ -231,6 +485,8 @@ ${format.structureInstructions}
 - Be specific: real product names, real prices, real plan limits, real numbers.
 - Express genuine opinions. "X is better for Y because..." — no endless hedging.
 - Vary sentence length. Short punchy sentences mixed with longer explanations.
+- Match examples to the category. If this is not an email-tools article, do not keep using cold email or newsletter examples.
+- If a tool spans multiple categories, frame it through the chosen category lens, not the easiest adjacent topic.
 - BANNED phrases (never use): "delve into", "in today's landscape", "it's worth noting", "game-changer", "leverage", "utilize", "at the end of the day", "in conclusion", "seamlessly", "robust", "cutting-edge", "revolutionize", "unlock", "empower", "streamline"
 - NEVER use em-dashes (—). Use commas or restructure instead.
 - No fluffy openers like "In the world of..." or "As businesses increasingly..."
@@ -314,15 +570,28 @@ Start the article body right after the closing --- of the frontmatter. Begin wit
 
 async function main() {
   const apiKey = process.env.ANTHROPIC_API_KEY
-  if (!apiKey) throw new Error('ANTHROPIC_API_KEY is not set')
 
   const existingArticles = getExistingArticles()
   const categories = getCategories()
   const today = todayISO()
   const topicHint = process.env.TOPIC_HINT || ''
-  const format = pickFormat()
+  const dryRun = process.env.DRY_RUN === '1'
+  const plan = buildEditorialPlan(existingArticles, categories)
+  const format = pickFormat(existingArticles, plan.targetCategory.slug)
 
+  console.log(`Target category: ${plan.targetCategory.slug}`)
   console.log(`Article format: ${format.name}`)
+
+  if (process.env.PRINT_EDITORIAL_PLAN === '1') {
+    console.log(JSON.stringify(plan, null, 2))
+  }
+
+  if (dryRun) {
+    console.log('Dry run enabled, skipping Anthropic calls and file writes.')
+    return
+  }
+
+  if (!apiKey) throw new Error('ANTHROPIC_API_KEY is not set')
 
   const client = new Anthropic({ apiKey })
 
@@ -336,7 +605,7 @@ async function main() {
     const topicMsg = await client.messages.create({
       model: 'claude-haiku-4-5',
       max_tokens: 128,
-      messages: [{ role: 'user', content: topicPickerPrompt(existingArticles, categories, format) }],
+      messages: [{ role: 'user', content: topicPickerPrompt(existingArticles, categories, format, plan) }],
     })
     topic = topicMsg.content
       .filter((b) => b.type === 'text')
@@ -355,7 +624,7 @@ async function main() {
     messages: [
       {
         role: 'user',
-        content: articleWriterPrompt(topic, format, existingArticles, categories, today),
+        content: articleWriterPrompt(topic, format, existingArticles, categories, today, plan),
       },
     ],
   })
@@ -369,8 +638,12 @@ async function main() {
   // Force-fix wrong internal link paths — Claude sometimes writes /blog/ instead of /articles/
   const before = mdxContent
   mdxContent = mdxContent.replaceAll('telotonet.com/blog/', 'telotonet.com/articles/')
+  mdxContent = mdxContent.replace(
+    /^category:\s*["']?.+?["']?\s*$/m,
+    `category: "${plan.targetCategory.slug}"`
+  )
   if (mdxContent !== before) {
-    console.warn('Fixed: replaced /blog/ → /articles/ in generated content')
+    console.warn('Adjusted generated content to enforce internal-link and category rules')
   }
 
   if (!mdxContent.startsWith('---')) {
