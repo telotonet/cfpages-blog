@@ -1,0 +1,231 @@
+---
+title: "How to Set Up a Sales Workflow in Monday.com: A Step-by-Step Guide for Small Sales Teams"
+description: "Set up a sales workflow in Monday.com without the fluff. Specific steps for tracking deals, automating handoffs, and keeping your team aligned."
+excerpt: "A practical guide to building a sales workflow in Monday.com that actually works for small teams without overcomplicating things."
+publishedAt: "2026-04-18"
+author: "Alex"
+category: "sales-crm"
+coverImage: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Monday.com sales workflow setup on laptop screen"
+tags: ["monday.com", "sales workflow", "project management", "small business", "CRM alternative"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "Is Monday.com better than a dedicated CRM like Pipedrive for sales?"
+    answer: "Monday.com is cheaper and more flexible, but Pipedrive is built specifically for sales pipelines. Monday.com works if you want one tool for sales plus operations. Use Pipedrive if your team only does sales and needs pipeline visibility."
+  - question: "Can Monday.com replace HubSpot for small sales teams?"
+    answer: "Monday.com can handle basic deal tracking and team collaboration that HubSpot does, but it lacks email integration, contact management, and automated lead scoring. For pure CRM functionality, HubSpot's free tier is stronger. For workflow visibility across sales and operations, Monday.com wins."
+  - question: "How much does Monday.com cost for a sales team?"
+    answer: "Monday.com costs $8 to $16 per user per month (paid annually). A 5-person sales team runs $40 to $80 monthly. That's cheaper than Pipedrive ($59/user) or HubSpot Pro ($120/month for 5 users), but you may need additional tools for email and contact management."
+---
+
+<AffiliateDisclosureInline />
+
+Monday.com is a project management tool that sales teams often try to turn into a CRM. It's not perfect for that job, but if your team is already using Monday.com for operations, product, and marketing, building a sales workflow there makes sense. You avoid paying for a second platform and keep deal data visible to the whole company.
+
+This guide walks through setting up a sales workflow that actually works. You'll track deals, automate handoffs, and keep pipeline visibility without the typical setup mess.
+
+## What You Need Before Starting
+
+Before you build anything, gather these things:
+
+**Monday.com account and workspace**: You need at least the Team plan ($8/user/month, billed annually) or higher. The free plan caps you at 2 weeks of automation and has limited views. If your team is 5+ people, the Team plan is non-negotiable.
+
+**Team member seats and permissions set up**: Decide who owns what. At minimum, you need sales team members and one admin (usually the sales lead or ops person). You'll need to invite them to the workspace and assign board permissions.
+
+**Your sales process mapped out**: Before opening Monday.com, write down your actual deal stages. Most small sales teams use something like: Prospect, Qualified, Proposal, Negotiation, Won, Lost. Write these down. Don't use generic stages like "Stage 1" or "Opportunity." Use language your team uses.
+
+**List of data you'll track per deal**: Company name, contact name, contact email, deal size, expected close date, next action, and notes. You can add more later, but these six fields are the minimum to make the workflow useful.
+
+**Connected email tool (optional but recommended)**: If you want deal-linked email history, connect Gmail or Outlook. Monday.com won't connect these natively, but you can use automation or copy emails into updates. More on this below.
+
+## Step 1: Create a Sales Pipeline Board and Set Up Core Columns
+
+Open Monday.com and create a new board. Name it "Sales Pipeline" or "[Year] Sales Pipeline" so it doesn't get confused with other work.
+
+Click the "+" icon to add your first column. Monday.com defaults to "Item Name" for the first column, which you'll rename to "Deal Name." This is where you'll write the company or opportunity name.
+
+Now add these columns in order:
+
+**Column 2: Company Name** (Text field). Use this to distinguish between different companies if you're tracking multiple contacts at the same place.
+
+**Column 3: Contact Name** (Text field). The person you're actually talking to.
+
+**Column 4: Contact Email** (Text field). Their email. You'll need this for your team to reach out without searching email.
+
+**Column 5: Deal Size** (Number field). Set the format to Currency and pick your currency. This matters for revenue forecasting later.
+
+**Column 6: Deal Stage** (Status field). This is critical. Click "Status" and add your deal stages. In the dropdown, create these exact statuses: Prospect, Qualified, Proposal, Negotiation, Won, Lost. Assign each a color. Prospect is gray, Qualified is yellow, Proposal is light blue, Negotiation is orange, Won is green, Lost is red. This makes pipeline scanning instant.
+
+**Column 7: Expected Close Date** (Date field). Set this as a due date. This tells Monday.com when deals should close, which powers timeline views and deadline alerts.
+
+**Column 8: Next Action** (Text field). What's the next concrete step? "Send proposal," "Wait for feedback," "Schedule demo." Not "follow up" or "check in." Be specific.
+
+**Column 9: Last Contact Date** (Date field). When did someone on your team last touch this deal? Update this every time you talk to the prospect. It reveals which deals are stalled.
+
+**Column 10: Notes** (Long text field). Use this for context: what does the prospect care about? What's blocking the deal? What's their timeline?
+
+Your board now has the structure to track deals without noise. Don't add 20 columns. Your team won't fill them out.
+
+## Step 2: Add Team Members to the Board and Set Board Permissions
+
+Click the three-dot menu at the top right of your board. Select "Invite members to board."
+
+Add your sales team members one at a time. Set their permissions:
+
+**Sales reps**: "Can edit." They own their own deals and should be able to drag deals between stages, update fields, and add notes without approval.
+
+**Sales lead or ops person**: "Is a board owner." They manage board structure, automations, and oversee all deals.
+
+**Executives or finance**: "Can view." They see pipeline data but can't edit. This prevents chaos where leadership accidentally moves deals or deletes information.
+
+Close the invite modal. Now add a "Person" column (Column 11, at the end) and call it "Deal Owner." This assigns each deal to a team member. When you add a new deal, set the owner to the sales rep working it. This prevents deals from slipping through the cracks because someone thought someone else was handling it.
+
+## Step 3: Build Views for Different Workflows
+
+Monday.com's real power is views. Your single board data can be displayed five different ways, each showing what a specific person needs to see.
+
+**View 1: Board View (the default)**. This is your drag-and-drop pipeline. People drag deals across columns as they progress through stages. It's visual, fast, and your sales team will live here.
+
+**View 2: Table View**. Click the "View" dropdown at the top left and select "Add a view" then "Table." Name it "Pipeline Table." This shows every deal as a row with all columns visible at once. Your sales lead uses this for weekly pipeline reviews. Sort by "Expected Close Date" so deals closing soonest are at the top. This is your source of truth for revenue forecasting.
+
+**View 3: Timeline View**. Click "Add a view" then "Timeline." Name it "Close Dates." Drag the "Expected Close Date" column into the timeline settings. Now you see every deal plotted on a calendar by when it should close. This surfaces bottlenecks. If 10 deals cluster in May and zero in June, your forecast is bad.
+
+**View 4: Calendar View** (optional). If you want a monthly view of closes, use this. Most small teams skip this, but some sales leads like it for forecasting calls with finance.
+
+**View 5: By Person**. Click "Add a view" then "Group by" and select "Deal Owner." Now the board groups all deals by who owns them. Your sales lead uses this to load-balance. If person A has 8 active deals and person B has 2, that's a problem.
+
+Save all five views. Your team won't use every one, but having them ready prevents time wasted on custom reporting later.
+
+## Step 4: Set Up Automations for Deal Movement and Notifications
+
+Automations are where Monday.com saves your team from manual work. Set up three automations to start.
+
+**Automation 1: Notify the Deal Owner When a Deal Moves to Negotiation**
+
+Click "Automations" at the top of your board. Select "New automation." Choose "When status changes." In the dropdown, select your "Deal Stage" column. Select "to Negotiation" as the trigger.
+
+For the action, choose "Send a notification." Select "To the person in a specific column" and choose "Deal Owner."
+
+Set the notification text to: "Your deal moved to Negotiation. Check next steps and confirm close date."
+
+This reminds reps to prioritize when a deal heats up. Now, save the automation.
+
+**Automation 2: Create a Reminder When Expected Close Date is Tomorrow**
+
+Create a new automation. Choose "When date arrives" and select "Expected Close Date." Set it to "1 day before."
+
+For the action, choose "Notify members" and select "Deal Owner."
+
+Text: "Deal closes tomorrow: {Item Name} with {Company Name}. Final confirmation needed."
+
+This catches deals that are about to close and require last-minute coordination.
+
+**Automation 3: Move Deals to Lost If No Contact in 30 Days**
+
+This is optional but prevents dead deals from clogging your pipeline. Create a new automation. Choose "When a date arrives" and select "Last Contact Date." Set it to "30 days after."
+
+For the action, choose "Change status" and change "Deal Stage" to "Lost."
+
+This is aggressive, but small sales teams don't have time to maintain zombie deals. If a rep hasn't touched a deal in 30 days, it's dead. The rep can move it back to active if contact resumes.
+
+Save all three automations. They now run on their own.
+
+## Step 5: Integrate Email (The Tricky Part)
+
+Monday.com doesn't natively link emails to deals. This is a gap. You have three options:
+
+**Option A: Manual email forwarding (free, requires discipline)**. When you send or receive important emails on a deal, forward them into the deal's update section. Click the deal, scroll down to "Updates," and paste the email. This takes 30 seconds per email but keeps context visible. Small teams often prefer this because it forces reps to flag what matters.
+
+**Option B: Use an email-to-Monday automation tool (zapier, Make)**. Connect your email to Monday.com through Zapier or Make.com. When you star or flag an email, it creates an update on the relevant deal. This costs $20 to $30 per month on top of Monday.com but saves time if your team sends 50+ emails per deal. Most small teams skip this.
+
+**Option C: Keep email separate and reference it in notes**. Write the email address in your "Contact Email" column and use external email (Gmail, Outlook) as your email archive. Link deals in your email folders or use search. This is simple but your deal context lives in two places instead of one.
+
+For teams under 15 people, Option A (manual forwarding) works fine. It takes 10 extra seconds per email and keeps context in one place. If your team balks at this, you probably need a dedicated CRM like Pipedrive instead. That's not a failure. It's choosing the right tool.
+
+## Step 6: Run Your First Weekly Pipeline Review
+
+Now that the board is set up, test it with your team.
+
+Import 5 to 10 current deals as test rows. Fill in all columns for each deal. If a deal doesn't have enough information to fill the columns, that tells you the deal isn't qualified yet. Move it to "Prospect" and schedule a follow-up.
+
+Hold a 20-minute meeting with your sales team. Open the board view and the table view side by side. Walk through each deal. Practice moving deals across the board as the team confirms status. Update "Next Action," "Expected Close Date," and "Last Contact Date" for real.
+
+This does three things: it trains your team on the board, it surfaces bad data, and it gives you a clean pipeline to start forecasting from.
+
+After one week of daily use, hold another 20-minute review. Look at which views your team actually uses (usually the board view) and which they ignore (usually timeline view). Delete unused views after a month. Your team will create ad-hoc views later if they need them.
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Creating Too Many Columns**
+
+Teams often add columns for every possible detail: "Competitor," "Budget," "Decision Timeline," "Objections," etc. By week two, 80% of these columns are empty because your team doesn't update them. Keep your columns to ten. If you need more data, use the Notes column. Less is more.
+
+Fix: Start with the nine core columns above. After one month of use, check which columns your team actually fills in. Delete three that are always blank. Add new ones only if two or more team members request the same column.
+
+**Mistake 2: Mixing Sales and Non-Sales Work on the Same Board**
+
+Some teams add internal tasks like "Create case study for this client" or "Schedule tech call with engineering." This confuses pipeline. Your deal board should only show sales deals, not internal tasks.
+
+Fix: Create a separate "Sales Operations" or "Post-Sale" board for non-deal work. This keeps your pipeline clean and your forecasting accurate.
+
+**Mistake 3: Not Assigning Deal Owners**
+
+Without the "Deal Owner" column and clear assignment, deals get touched by two people, then neither person follows up, and the deal dies. This is common in young teams.
+
+Fix: Enforce the rule: every deal must have one owner. If a deal involves multiple people, one person owns the next action. Update the "Deal Owner" column weekly if deals transfer.
+
+**Mistake 4: Ignoring Stalled Deals**
+
+Teams often keep deals in "Proposal" or "Negotiation" for months without movement. This balloons your pipeline and makes forecasting useless.
+
+Fix: Update "Last Contact Date" every time you touch a deal. Use the 30-day automation (Automation 3 above) to move untouched deals to Lost. If a deal is legitimately on pause, update the notes to say why, and move it to a separate "On Hold" status. But make sure it's intentional, not forgotten.
+
+## Results to Expect
+
+After two weeks, your team will know the status of every deal without asking questions. This alone saves 3 to 5 hours per week of "where's that deal?" Slack messages.
+
+After one month, you'll have accurate pipeline data. You can forecast with confidence because you know which deals are real and which are pipe dreams. Your sales lead can tell you on Friday what revenue is expected in the next 30, 60, and 90 days. That's powerful.
+
+After two months, the team will stop forgetting follow-ups. The automations remind them when deals heat up or go stale. Your deal cycle gets shorter because nothing falls through cracks.
+
+In terms of numbers: expect 5 to 10% faster deal closure (deals move through stages faster because the team sees what's blocking them), 20% fewer lost deals (because stalled deals get caught and revived), and 30% faster pipeline reviews (because data is already organized).
+
+These numbers are conservative. Some teams see bigger gains. Much depends on how disorganized you were before.
+
+If you want to improve this further, consider whether Monday.com is actually the best fit long-term. For teams doing pure sales, a dedicated CRM like [Pipedrive](https://telotonet.com/articles/how-to-set-up-a-sales-pipeline-in-pipedrive-a-stepbystep-guide-for-firsttime-use/) handles forecasting and deal mechanics better. If you need email integration and contact history, [HubSpot CRM](https://telotonet.com/articles/hubspot-crm-review-what-it-actually-does-well-and-where-it-falls-short-for-small/) is stronger. If you're doing sales plus operations, Monday.com wins because you keep everything in one place.
+
+For the first 3 to 6 months, though, this setup is solid. Build it, run it, and decide if you need to upgrade.
+
+## Workflow Refinements After Month One
+
+Once the basics work, consider these improvements:
+
+**Add a "Pipeline Value" roll-up column** that sums deal sizes by stage. This tells you instantly how much revenue is at risk if one stage gets stuck.
+
+**Create a custom status label for "Hot Deals"** (deals that could close this week). Apply this to 3 to 5 deals at a time. Your team should spend 70% of time on hot deals, 30% on pipeline building.
+
+**Use the Filter feature** to show only deals you own or only deals in Proposal stage. Filters make Monday.com less noisy for individual reps.
+
+**Weekly update the "Expected Close Date" column** during your team meeting. This is the single most important maintenance task. If your close dates never change, your forecast is wrong.
+
+<FAQBlock
+  faqs={[
+    { question: "Is Monday.com better than a dedicated CRM like Pipedrive for sales?", answer: "Monday.com is cheaper and more flexible, but Pipedrive is built specifically for sales pipelines. Monday.com works if you want one tool for sales plus operations. Use Pipedrive if your team only does sales and needs pipeline visibility." },
+    { question: "Can Monday.com replace HubSpot for small sales teams?", answer: "Monday.com can handle basic deal tracking and team collaboration that HubSpot does, but it lacks email integration, contact management, and automated lead scoring. For pure CRM functionality, HubSpot's free tier is stronger. For workflow visibility across sales and operations, Monday.com wins." },
+    { question: "How much does Monday.com cost for a sales team?", answer: "Monday.com costs $8 to $16 per user per month (paid annually). A 5-person sales team runs $40 to $80 monthly. That's cheaper than Pipedrive ($59/user) or HubSpot Pro ($120/month), but you may need additional tools for email and contact management." }
+  ]}
+/>
+
+## Quick Recap
+
+- Set up one Sales Pipeline board with Deal Name, Company, Contact, Email, Deal Size, Deal Stage, Close Date, Next Action, Last Contact, and Notes columns.
+- Add team members with appropriate permissions: reps can edit, leads are board owners, executives are view-only.
+- Create five views: Board (drag-and-drop), Table (forecasting), Timeline (bottleneck spotting), Calendar (optional), and By Person (load balancing).
+- Build three automations: notify on stage change, remind before close date, archive deals untouched for 30 days.
+- Integrate email by forwarding important emails into deal updates or use a third-party automation tool.
+- Run weekly pipeline reviews to keep data clean and catch stalled deals early.
+- Avoid too many columns, mixing in non-sales work, and leaving deals unassigned.
+- Expect faster deal cycles, fewer lost deals, and cleaner forecasts within 60 days.
