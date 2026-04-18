@@ -170,6 +170,44 @@ function extractFrontmatter(mdx) {
   return { title, slug }
 }
 
+function resolveInternalArticle(targetUrl, linkedSlug, label, existingArticles) {
+  const normalizedTargetUrl = targetUrl.endsWith('/') ? targetUrl : `${targetUrl}/`
+  const normalizedLabel = normalizeText(label).replace(/\s+/g, ' ')
+
+  const exactUrlMatch = existingArticles.find((article) => article.url === normalizedTargetUrl)
+  if (exactUrlMatch) return exactUrlMatch
+
+  const exactSlugMatch = existingArticles.find((article) => article.slug === linkedSlug)
+  if (exactSlugMatch) return exactSlugMatch
+
+  const prefixMatches = existingArticles.filter(
+    (article) => article.slug.startsWith(linkedSlug) || linkedSlug.startsWith(article.slug)
+  )
+  if (prefixMatches.length === 1) return prefixMatches[0]
+
+  const titleMatch = existingArticles.find((article) => normalizeText(article.title) === normalizedLabel)
+  if (titleMatch) return titleMatch
+
+  return null
+}
+
+function sanitizeTemplatePlaceholders(mdx) {
+  return mdx
+    .replace(/\{\{([A-Za-z][A-Za-z0-9_]*)\}\}/g, '`{{$1}}`')
+    .replace(/\{([A-Za-z][A-Za-z0-9]* [A-Za-z0-9 ]{0,40})\}/g, '`{$1}`')
+}
+
+function normalizeInternalArticleLinks(mdx, existingArticles) {
+  return mdx.replace(
+    /\[([^\]]+)\]\((https:\/\/telotonet\.com\/articles\/([a-z0-9-]+)\/?)\)/g,
+    (match, label, targetUrl, linkedSlug) => {
+      const article = resolveInternalArticle(targetUrl, linkedSlug, label, existingArticles)
+      if (!article) return match
+      return `[${article.title}](${article.url})`
+    }
+  )
+}
+
 function normalizeText(value) {
   return String(value || '').trim().toLowerCase()
 }
@@ -642,6 +680,8 @@ async function main() {
     /^category:\s*["']?.+?["']?\s*$/m,
     `category: "${plan.targetCategory.slug}"`
   )
+  mdxContent = sanitizeTemplatePlaceholders(mdxContent)
+  mdxContent = normalizeInternalArticleLinks(mdxContent, existingArticles)
   if (mdxContent !== before) {
     console.warn('Adjusted generated content to enforce internal-link and category rules')
   }
