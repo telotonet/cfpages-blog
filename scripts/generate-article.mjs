@@ -170,6 +170,12 @@ function extractFrontmatter(mdx) {
   return { title, slug }
 }
 
+function sanitizeTemplatePlaceholders(mdx) {
+  return mdx
+    .replace(/\{\{([A-Za-z][A-Za-z0-9_]*)\}\}/g, '`{{$1}}`')
+    .replace(/\{([A-Za-z][A-Za-z0-9]* [A-Za-z0-9 ]{0,40})\}/g, '`{$1}`')
+}
+
 function normalizeText(value) {
   return String(value || '').trim().toLowerCase()
 }
@@ -642,6 +648,7 @@ async function main() {
     /^category:\s*["']?.+?["']?\s*$/m,
     `category: "${plan.targetCategory.slug}"`
   )
+  mdxContent = sanitizeTemplatePlaceholders(mdxContent)
   if (mdxContent !== before) {
     console.warn('Adjusted generated content to enforce internal-link and category rules')
   }
