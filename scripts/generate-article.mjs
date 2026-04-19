@@ -22,6 +22,39 @@ const ARTICLES_DIR = path.join(ROOT, 'content', 'articles')
 const CATEGORIES_DIR = path.join(ROOT, 'content', 'categories')
 const SITE_URL = 'https://telotonet.com'
 
+const COVER_IMAGE_POOLS = {
+  'ai-assistants': [
+    { photoId: 'photo-1677442135703-1787eea5ce01', alt: 'AI interface and analytics dashboard on a laptop screen' },
+    { photoId: 'photo-1551288049-bebda4e38f71', alt: 'Data and analytics dashboard on a monitor' },
+    { photoId: 'photo-1499750310107-5fef28a66643', alt: 'Research workspace with laptop and documents' },
+    { photoId: 'photo-1522071820081-009f0129c71c', alt: 'Small team collaborating around a shared screen' },
+  ],
+  'ai-writing': [
+    { photoId: 'photo-1484788984921-03950022c9ef', alt: 'Writing workspace with laptop, notes, and documents' },
+    { photoId: 'photo-1499750310107-5fef28a66643', alt: 'Laptop workspace set up for writing and editing' },
+    { photoId: 'photo-1551288049-bebda4e38f71', alt: 'Content performance dashboard and analytics view' },
+    { photoId: 'photo-1677442135703-1787eea5ce01', alt: 'AI writing interface on a laptop screen' },
+  ],
+  'email-tools': [
+    { photoId: 'photo-1596526131083-e8c633c948d2', alt: 'Email inbox and outreach workflow on a laptop screen' },
+    { photoId: 'photo-1423666639041-f56000c27a9a', alt: 'Messaging and communication interface on screen' },
+    { photoId: 'photo-1551288049-bebda4e38f71', alt: 'Campaign analytics dashboard with email metrics' },
+    { photoId: 'photo-1499750310107-5fef28a66643', alt: 'Laptop workspace for email campaign planning' },
+  ],
+  'productivity': [
+    { photoId: 'photo-1611532736597-de2d4265fba3', alt: 'Planning board and workflow setup on a laptop' },
+    { photoId: 'photo-1522071820081-009f0129c71c', alt: 'Team collaborating on tasks and project planning' },
+    { photoId: 'photo-1484788984921-03950022c9ef', alt: 'Focused workspace with notebook and laptop' },
+    { photoId: 'photo-1423666639041-f56000c27a9a', alt: 'Communication and coordination interface for team work' },
+  ],
+  'sales-crm': [
+    { photoId: 'photo-1560472354-b33ff0c44a43', alt: 'Sales pipeline and CRM dashboard on a laptop screen' },
+    { photoId: 'photo-1551288049-bebda4e38f71', alt: 'Revenue analytics and performance dashboard' },
+    { photoId: 'photo-1611532736597-de2d4265fba3', alt: 'Workflow planning board for sales operations' },
+    { photoId: 'photo-1522071820081-009f0129c71c', alt: 'Sales team collaborating around shared metrics' },
+  ],
+}
+
 const GLOBAL_TOPIC_AVOIDS = [
   'email warmup',
   'newsletter software',
@@ -168,6 +201,41 @@ function extractFrontmatter(mdx) {
     .replace(/-+/g, '-')
     .slice(0, 80)
   return { title, slug }
+}
+
+function hashString(value) {
+  let hash = 0
+  for (let i = 0; i < value.length; i += 1) {
+    hash = (hash * 31 + value.charCodeAt(i)) >>> 0
+  }
+  return hash
+}
+
+function buildUnsplashUrl(photoId) {
+  return `https://images.unsplash.com/${photoId}?w=1200&h=630&fit=crop&auto=format`
+}
+
+function pickCoverAsset(categorySlug, topic) {
+  const pool = COVER_IMAGE_POOLS[categorySlug] || COVER_IMAGE_POOLS.productivity
+  const index = hashString(`${categorySlug}:${topic}`) % pool.length
+  const asset = pool[index]
+
+  return {
+    ...asset,
+    url: buildUnsplashUrl(asset.photoId),
+  }
+}
+
+function ensureQuotedFrontmatterField(mdx, field, value) {
+  const escapedValue = String(value).replace(/"/g, '\\"')
+  const line = `${field}: "${escapedValue}"`
+  const pattern = new RegExp(`^${field}:\\s*.*$`, 'm')
+
+  if (pattern.test(mdx)) {
+    return mdx.replace(pattern, line)
+  }
+
+  return mdx.replace(/^---\n/, `---\n${line}\n`)
 }
 
 function resolveInternalArticle(targetUrl, linkedSlug, label, existingArticles) {
@@ -479,6 +547,7 @@ Reply with ONLY the topic title. No explanation, no quotes. Just the title.`
 }
 
 function articleWriterPrompt(topic, format, existingArticles, categories, today, plan) {
+  const coverAsset = pickCoverAsset(plan.targetCategory.slug, topic)
   const categoryList = categories.map((c) => `${c.slug} (${c.name})`).join(', ')
   const internalLinks = existingArticles.length
     ? existingArticles.map((a) => `• "${a.title}" → ${a.url}`).join('\n')
@@ -513,6 +582,38 @@ ${bannedTopics}
 ${format.structureInstructions}
 
 ---
+
+## VISUAL RHYTHM — required
+
+Use at least TWO custom MDX blocks from the allowed set below. Spread them through the article, do not stack them together, and do not put both at the very end.
+
+Allowed blocks:
+
+1. Callout
+<Callout type="info" title="What matters here">
+  One tight paragraph with a useful takeaway, warning, or framing note.
+</Callout>
+
+2. Notice
+<Notice>
+  A short secondary note, caveat, or implementation detail.
+</Notice>
+
+3. ProsCons
+<ProsCons
+  pros={["Specific upside", "Another concrete strength"]}
+  cons={["Specific downside", "Another concrete weakness"]}
+/>
+
+4. QuoteBlock
+<QuoteBlock author="Common buyer takeaway">
+  One sharp sentence that summarizes the practical reality for the reader.
+</QuoteBlock>
+
+Rules:
+- At least one block must appear before the midpoint of the article.
+- Pick blocks that fit the article type and category.
+- Blocks must add information, not repeat the paragraph right above them.
 
 ## WRITING RULES — every single one applies
 
@@ -572,8 +673,8 @@ excerpt: "<one sentence summary>"
 publishedAt: "${today}"
 author: "Alex"
 category: "<slug from: ${categoryList}>"
-coverImage: "https://images.unsplash.com/photo-<PHOTO_ID>?w=1200&h=630&fit=crop&auto=format"
-coverImageAlt: "<alt text>"
+coverImage: "${coverAsset.url}"
+coverImageAlt: "${coverAsset.alt}"
 tags: ["tag1", "tag2", "tag3", "tag4"]
 draft: false
 featured: false
@@ -586,19 +687,6 @@ faq:
     answer: "<answer>"
   - question: "<question>"
     answer: "<answer>"
----
-
-Unsplash photo IDs:
-- Email/outreach: photo-1596526131083-e8c633c948d2
-- Laptop/work: photo-1499750310107-5fef28a66643
-- Team/office: photo-1522071820081-009f0129c71c
-- Data/analytics: photo-1551288049-bebda4e38f71
-- Writing/docs: photo-1484788984921-03950022c9ef
-- Sales/CRM: photo-1560472354-b33ff0c44a43
-- Communication: photo-1423666639041-f56000c27a9a
-- Planning: photo-1611532736597-de2d4265fba3
-- AI/tech: photo-1677442135703-1787eea5ce01
-
 Start the article body right after the closing --- of the frontmatter. Begin with <AffiliateDisclosureInline /> on its own line, then a blank line, then the article text.`
 }
 
@@ -678,6 +766,9 @@ async function main() {
     /^category:\s*["']?.+?["']?\s*$/m,
     `category: "${plan.targetCategory.slug}"`
   )
+  const coverAsset = pickCoverAsset(plan.targetCategory.slug, topic)
+  mdxContent = ensureQuotedFrontmatterField(mdxContent, 'coverImage', coverAsset.url)
+  mdxContent = ensureQuotedFrontmatterField(mdxContent, 'coverImageAlt', coverAsset.alt)
   mdxContent = sanitizeTemplatePlaceholders(mdxContent)
   mdxContent = normalizeInternalArticleLinks(mdxContent, existingArticles)
   if (mdxContent !== before) {
