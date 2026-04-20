@@ -1,0 +1,182 @@
+---
+title: "The Exact Async Documentation Stack for Remote Teams Managing Client Work and Internal Processes ($80/mo Budget)"
+description: "A practical async docs stack for small remote teams: Notion for wikis, Loom for async video, and Zapier for workflow automation. Real costs, real config."
+excerpt: "Build a documentation-first remote team on $80/month with Notion, Loom, and Zapier."
+publishedAt: "2026-04-20"
+author: "Alex"
+category: "productivity"
+coverImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Team collaborating on tasks and project planning"
+tags: ["async-documentation", "remote-teams", "notion", "loom", "zapier", "workflow-automation"]
+draft: false
+featured: false
+articleType: "stack-guide"
+affiliateDisclosure: true
+faq:
+  - question: "Can I build this stack with just Notion and nothing else?"
+    answer: "You can. A solid Notion wiki handles 80% of async documentation needs. But Loom solves the 'explain this complex process' problem that text and screenshots can't, and Zapier saves 5+ hours per week on manual data entry. The combo is worth the cost."
+  - question: "What if our team is on Slack or Discord for chat?"
+    answer: "This stack works alongside any chat tool. The documentation lives in Notion, video explanations live in Loom, and Zapier connects them both. Slack or Discord is your day-to-day communication layer, not your documentation layer."
+  - question: "Do I really need Zapier if we're using Notion forms?"
+    answer: "Notion forms work for simple submissions, but Zapier handles multi-step workflows: new form submission triggers a Loom prompt, creates a task in your project manager, and saves the response to a database. Notion alone can't do that without manual work."
+---
+
+<AffiliateDisclosureInline />
+
+## The Problem This Stack Solves
+
+Remote teams managing client work and internal processes bleed time to synchronous meetings, unclear documentation, and manual data entry. An operations manager spends an hour on a call explaining the client onboarding process. A developer updates a process doc that nobody reads because it's a 2000-word wall of text. Someone manually copies data from a form into five different tools every morning.
+
+This stack fixes those three problems with a documentation-first, async-first approach. It's designed for teams of 5 to 20 people managing both external client deliverables and internal workflows, and it costs $80 per month.
+
+## The Stack at a Glance
+
+| Tool | Purpose | Cost/mo | Free tier? |
+|------|---------|---------|-----------|
+| Notion | Central wiki, process docs, client project trackers, internal knowledge base | $10–15 (Team plan) | Yes, limited |
+| Loom | Screen recordings for process walkthroughs, client onboarding, training | $15–20 (Pro) | Yes, limited |
+| Zapier | Automation between forms, databases, and tools; async notifications | $19–30 (Standard plan minimum) | Yes, limited |
+| Google Drive (or equivalent) | Shared storage for client assets, contracts, working docs | $0–10 (Business Starter if needed) | Yes |
+| **Total** | | **$44–75/mo** | |
+
+<Callout type="info" title="The real $80 budget">
+  This stack sits around $60/month at baseline. The extra $20 headroom covers: Notion Sync Engine if you integrate external databases, occasional Zapier Task overage, or a paid Slack tier if you don't have one already. Budget $80 to avoid surprises.
+</Callout>
+
+## Tool 1: Notion
+
+Notion is your single source of truth for anything that isn't an action item or a real-time conversation. It replaces scattered Google Docs, outdated wikis, and email threads that nobody can find.
+
+In this stack, Notion handles three concrete jobs. First, it's your process library: step-by-step runbooks for client onboarding, project delivery handoff, invoice processing, whatever repeats. These aren't essays. They're numbered steps with links to Loom videos, screenshots, and decision trees. Second, it's your client tracker. Each client gets a workspace or database with project status, deliverables, contact info, and notes. Team members don't ask "what's the status on Acme Corp?" because the answer is in Notion. Third, it's your internal knowledge base: company policies, tool logins, past client case studies, templates for proposals or contracts.
+
+Set Notion up this way. Create a top-level "Operations Hub" with four main sections: Processes (where each process is a template with a Loom link embedded), Clients (a database view with properties for status, revenue, contact owner, and next deadline), Templates (proposals, contracts, SOWs, email templates), and FAQs. Link everything. If your client database mentions "Onboarding Process," make that a linked database item that points to the onboarding process doc, which has a Loom video embedded at the top.
+
+Enable Notion's database templates. When someone adds a new client, it auto-generates a client project page with standard sections: timeline, deliverables, contact info, and a linked changelog. This saves 20 minutes per client.
+
+Use Notion's database views heavily. Create a Kanban view of clients by status (Prospect, Active, Completed, At-Risk). Create a calendar view of upcoming deadlines. Create a gallery view of past work for quick reference. Different team members see different views depending on their role, and you're not creating separate documents.
+
+Cost here: $10 per workspace member if you stay on the free tier for yourself, or $15/month for a team plan that includes version history and better user management. Start free, upgrade when you hit 50+ docs or need granular permissions.
+
+<ProsCons
+  pros={["All your processes and client info searchable in one place", "Embeds Loom videos directly in docs so people see the walkthrough first", "Database views (Kanban, calendar, table) adapt to how different people work", "Zapier and Slack integrations mean you can push notifications there"]}
+  cons={["Loading time is slow on large databases (300+ items)", "Sorting and filtering inside Notion is clunky compared to a real CRM", "Table structure requires discipline or you end up with inconsistent data"]}
+/>
+
+## Tool 2: Loom
+
+Loom is your async video tool. It records your screen, your face, or both, and generates a shareable link in 30 seconds. You send that link instead of scheduling a 30-minute meeting.
+
+Use Loom for three specific purposes. First, process walkthroughs. You record yourself running through the client onboarding flow, explaining each decision point. Anyone new to the team watches the video instead of asking you for the hundredth time. Second, async feedback. Instead of marking up a design or document with comments, you record a 2-minute walkthrough of what you'd change and why. The creator watches it at their own pace and understands your intent instead of guessing at a comment. Third, client communications. Record a quick status update video once per week instead of writing an email. Clients see your face, hear your tone, and feel more connected than they would reading text.
+
+Embed Loom videos directly in Notion. Put the video at the top of your process doc. Put an async feedback video in the client project page under "Feedback from [Name]." This way, the video lives in context, not buried in email or Slack.
+
+Configure Loom settings: turn on transcript generation (searchable text helps team members skim), set a default thumbnail, and enable comment replies so people can ask clarifying questions without jumping into a call. Use custom workflows if you have repeating video types (e.g., weekly client update template with a branded intro).
+
+Cost: $15 per month for Pro (unlimited recordings, custom branding). Stay free if you're recording fewer than 25 videos per month, but Pro's search and transcript features save real time on a 10-person team.
+
+The best part: Loom analytics show how many people watched, how far they got, and where they rewound. If a process video gets skipped halfway through, you know the explanation didn't land.
+
+## Tool 3: Zapier
+
+Zapier connects your other tools and kills manual data entry. It's where async workflows live.
+
+Set up three concrete automations in this stack. First, form to database: a client submits an intake form, and Zapier automatically creates a new record in your Notion clients database with their info pre-populated. That's one less manual data-entry task. Second, deadline notification: when a due date approaches in your Notion client tracker, Zapier posts a notification in your team chat (Slack, Discord, whatever you use) at 9 a.m. Monday morning. No one forgets a deadline. Third, client project archive: when a project reaches "completed" status in Notion, Zapier moves the associated files to a completed projects folder in Google Drive and updates a Notion archive database. Your active projects folder stays clean.
+
+More advanced: set up a Zapier workflow that triggers when someone comments on a process doc in Notion, automatically generates a Loom recording template prompt for them ("Hey, that process needs a video explanation"), and posts it to Slack. This keeps your video library up to date without manager oversight.
+
+<Notice>
+  Zapier charges per task. A task is one action (create a record, send a message, move a file). A single workflow with 3 steps uses 1 task per trigger. The Standard plan ($19/month) includes 750 tasks. On a 10-person team, you'll hit 1500–2000 tasks per month, so budget $30 for the Professional plan (2000 tasks). If you overshoot, Zapier charges overages at $0.99 per 100 tasks.
+</Notice>
+
+Cost: $19 per month minimum. Upgrade to Professional ($30) if you're automating more than five workflows, which most 10-person teams will.
+
+## Tool 4: Google Drive
+
+Google Drive isn't fancy, but it's critical infrastructure. It's where client contracts, working files, asset libraries, and final deliverables live.
+
+Organize it like this: one folder per client, subfolders for contracts, assets, working files, and deliverables. Use Google Docs and Sheets as your day-to-day editing tools. Version control is automatic, and sharing is simple. Link from Notion to the client folder so team members know where to find the physical files.
+
+If you need enterprise-level access controls, upgrade to Google Workspace Business Starter ($6/user/month). If you're under 5 people and sharing files casually, the free Google Drive tier is fine.
+
+Cost: free tier or $6 per user per month if you need admin controls and audit logs.
+
+## How the Tools Connect
+
+Here's the actual workflow. A new client signs a contract. Someone adds them to a Google Drive folder and fills out a quick intake form (hosted on a Typeform or Google Form).
+
+Zapier sees the form submission. It creates a new record in your Notion Clients database, auto-populating name, email, contract date, and project scope. It also posts a message to your team Slack: "New client: Acme Corp. Assigned to Sarah. Kickoff video added to project page."
+
+Sarah opens the new client record in Notion. It has a template page structure already built: timeline, deliverables, contact info, and a linked "Onboarding Process" process doc. She clicks into the Onboarding Process doc, watches the embedded Loom video at the top (a 5-minute walkthrough of the exact steps), and follows along with Acme Corp.
+
+As she moves through onboarding, she records a Loom feedback video for the Acme team reviewing their brand guidelines. She embeds that video in the client project page under "Feedback." Zapier sees a new video linked in Notion and sends a notification to the client via email.
+
+When the project reaches the "In Delivery" phase, Zapier updates a shared calendar in Google Calendar so everyone sees the deadline. When the deliverable is complete, Zapier moves the final files to a "Completed Projects" folder in Google Drive.
+
+Every Friday, Sarah records a 2-minute Loom status update and embeds it in the client project page. The client watches it asynchronously on their own time instead of jumping on a call.
+
+The entire workflow runs with zero synchronous meetings after the kickoff call.
+
+## Total Cost Breakdown
+
+| Tool | Tier | Monthly Cost | What You Get |
+|------|------|--------------|--------------|
+| Notion | Team Plan | $15 | Workspace for up to 10 users, databases, views, form integrations, version history |
+| Loom | Pro | $15 | Unlimited recordings, transcripts, custom branding, analytics |
+| Zapier | Professional | $30 | Up to 2000 tasks per month, multi-step workflows, better app support |
+| Google Drive | Free or Business Starter | $0–6 | Shared file storage, version control, optional admin controls |
+| **Monthly Total** | | **$60–75** | **Fully async documentation and workflow system** |
+
+If you need to cut $20 off the monthly bill, stay on Notion free ($0) and Loom free ($0), and use Zapier free ($0). You lose: Notion version history and granular permissions, Loom transcripts and analytics, and 90% of Zapier workflows. Not recommended for a team of 5+.
+
+If you add $20 per month, upgrade to Notion Plus ($20) for database templates and synced blocks, and Loom Teams ($25) for team workspace and shared folders. Total: $95/month for a significantly more powerful setup.
+
+## What to Swap If Your Budget Is Different
+
+**Tighter budget (trying to hit $40/month):**
+
+Start free on everything. Use Notion free tier for your wiki and client tracker. Use Loom free for up to 25 videos per month. Skip Zapier and handle form submissions and notifications manually. This works for a 3-to-5-person team managing light client work. The pain point: you're manually creating client records, and you have no video search or analytics. Upgrade to paid as soon as team size hits 8 people or you're managing 15+ active clients.
+
+**Looser budget ($120/month):**
+
+Upgrade Notion to Plus ($20) and add Slack Pro ($12.50 per user for 5 users = $62.50). Use the Slack upgrade to consolidate your chat and notification layer. Keep Loom Pro ($15) and Zapier Professional ($30). You're now fully integrated: form submissions trigger Slack notifications that link to Notion records, Loom videos embed everywhere, and your team chat is the hub. Total: $127.50. Trade-off: Slack's cost scales with headcount.
+
+**Alternative: swapping Loom for other async tools:**
+
+ScreenFlow ($99 one-time) if your team uses Mac exclusively and doesn't need cloud storage or sharing. OBS Studio (free) if you want to record locally and self-host. Wistia ($99/month) if you want video analytics on steroids. For this stack, Loom wins because its sharing and transcription are built-in, and it costs less than the alternatives.
+
+**Alternative: swapping Zapier for Make (formerly Integromat):**
+
+Make's free tier includes 1000 operations per month. If you're running 2-3 simple workflows, Make free works fine. But Zapier's app library is bigger, and its UI is simpler for non-technical users. Stick with Zapier unless you need to cut costs or you have specific Make integrations in mind.
+
+<Callout type="info" title="The hidden cost: adoption">
+  This stack only works if your team actually uses it. If people skip Notion and email updates instead, or avoid recording Loom videos because it feels awkward, you've wasted money. Budget 2-3 weeks for adoption. Document the expected workflow. Run one client through it entirely as a proof of concept. Show your team what they gained (no meetings, searchable knowledge, clear process).
+</Callout>
+
+## Bottom Line
+
+This stack is perfect for remote teams of 5 to 20 people managing repeating client work and internal processes. You're not using this if you're a single founder with one client. You're not using this if you're a 50-person company with budget for dedicated tools in each category.
+
+The ops manager at a 12-person agency should build this. The operations lead at a bootstrapped SaaS managing onboarding processes should build this. The project manager at a service company handling 20+ active client projects should build this.
+
+You should look elsewhere if you need real-time collaboration on documents (Figma does that better), if you're managing a sales pipeline (a CRM does that better), or if you need advanced project scheduling with Gantt charts (Asana does that better). This stack is documentation, process, and async notification. It's not a project manager. It's not a CRM. It's not a design tool.
+
+Set it up once. Train your team once. Watch 5+ hours per week vanish from synchronous meetings. Watch client communication improve because they're getting clear videos instead of unclear emails. Watch your new team members onboard in half the time because they're reading documented processes instead than asking questions all day.
+
+---
+
+<FAQBlock
+  faqs={[
+    {
+      question: "Can I build this stack with just Notion and nothing else?",
+      answer: "You can. A solid Notion wiki handles 80% of async documentation needs. But Loom solves the 'explain this complex process' problem that text and screenshots can't, and Zapier saves 5+ hours per week on manual data entry. The combo is worth the cost."
+    },
+    {
+      question: "What if our team is on Slack or Discord for chat?",
+      answer: "This stack works alongside any chat tool. The documentation lives in Notion, video explanations live in Loom, and Zapier connects them both. Slack or Discord is your day-to-day communication layer, not your documentation layer."
+    },
+    {
+      question: "Do I really need Zapier if we're using Notion forms?",
+      answer: "Notion forms work for simple submissions, but Zapier handles multi-step workflows: new form submission triggers a Loom prompt, creates a task in your project manager, and saves the response to a database. Notion alone can't do that without manual work."
+    }
+  ]}
+/>
