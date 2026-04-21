@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Lora } from 'next/font/google'
+import Script from 'next/script'
 import { Providers } from './providers'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
@@ -28,6 +29,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${lora.variable}`}
     >
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3LEP3FRXW4"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-3LEP3FRXW4');`}
+        </Script>
         {/* Preconnect to Google Fonts for better performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
