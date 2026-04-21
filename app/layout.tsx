@@ -4,6 +4,7 @@ import Script from 'next/script'
 import { Providers } from './providers'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { CookieConsentBanner } from '@/components/layout/CookieConsentBanner'
 import { buildBaseMetadata } from '@/lib/seo'
 import './globals.css'
 
@@ -29,14 +30,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${lora.variable}`}
     >
       <head>
+        <Script id="google-consent-mode" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  analytics_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  wait_for_update: 500
+});`}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3LEP3FRXW4"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+          {`gtag('js', new Date());
 
 gtag('config', 'G-3LEP3FRXW4');`}
         </Script>
@@ -65,6 +76,7 @@ gtag('config', 'G-3LEP3FRXW4');`}
             {children}
           </main>
           <Footer />
+          <CookieConsentBanner />
         </Providers>
       </body>
     </html>
