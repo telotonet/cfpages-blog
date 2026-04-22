@@ -46,9 +46,9 @@ gtag('consent', 'default', {
           src="https://www.googletagmanager.com/gtag/js?id=G-3LEP3FRXW4"
           strategy="afterInteractive"
         />
-        <Script
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9483283827194890"
-          strategy="afterInteractive"
           crossOrigin="anonymous"
         />
         <Script id="google-analytics" strategy="afterInteractive">
