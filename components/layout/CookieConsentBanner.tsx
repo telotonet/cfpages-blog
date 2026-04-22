@@ -17,9 +17,9 @@ function updateGoogleConsent(state: ConsentState) {
 
   window.gtag('consent', 'update', {
     analytics_storage: state,
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
+    ad_storage: state,
+    ad_user_data: state,
+    ad_personalization: state,
   })
 }
 
@@ -49,10 +49,10 @@ export function CookieConsentBanner() {
     <aside className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-2xl rounded-2xl border border-border bg-background/95 p-4 shadow-2xl backdrop-blur sm:bottom-6 sm:p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-1.5">
-          <p className="font-sans text-sm font-semibold text-foreground">Analytics consent</p>
+          <p className="font-sans text-sm font-semibold text-foreground">Cookie preferences</p>
           <p className="text-sm leading-6 text-muted-foreground">
-            We use analytics cookies to understand which articles people read and how the site is
-            performing. You can accept or reject analytics tracking.
+            We use cookies to improve the site experience, understand traffic, and support content
+            and advertising features. You can accept or reject optional cookies.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export function CookieConsentBanner() {
             onClick={() => handleConsent('granted')}
             className="inline-flex min-h-11 items-center justify-center rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-foreground/90"
           >
-            Accept analytics
+            Accept
           </button>
           <button
             type="button"
