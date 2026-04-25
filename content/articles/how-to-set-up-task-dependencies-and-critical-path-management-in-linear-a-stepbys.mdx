@@ -1,0 +1,195 @@
+---
+title: "How to Set Up Task Dependencies and Critical Path Management in Linear: A Step-by-Step Guide for Product Teams Shipping Faster"
+description: "Learn to configure task dependencies and critical path management in Linear to identify bottlenecks and accelerate product delivery for small teams."
+excerpt: "Task dependencies and critical path management in Linear help product teams identify what's actually blocking shipping and fix it fast."
+publishedAt: "2026-04-25"
+author: "Alex"
+category: "productivity"
+coverImage: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Communication and coordination interface for team work"
+tags: ["Linear", "task management", "project management", "product teams", "critical path"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "What's the difference between a blocking dependency and a related dependency in Linear?"
+    answer: "A blocking dependency means the downstream task literally cannot start until the upstream task is done. A related dependency is just a link for context. Linear shows blocking dependencies prominently in your critical path calculation. Use blocking for actual work sequence constraints, related for 'good to know' connections."
+  - question: "Does Linear automatically calculate my critical path?"
+    answer: "No. Linear shows you dependencies and dependency chains, but you have to interpret them to find your critical path. The critical path is the longest sequence of dependent tasks. If you move a task on the critical path, your whole project timeline shifts. Use Linear's timeline view and cycle planning tools to identify it manually."
+  - question: "Can I set up dependencies across multiple teams or projects in Linear?"
+    answer: "Yes, but only on Linear's Team and Enterprise plans. Free and Pro plans limit cross-project dependencies. If your product team spans multiple projects, check your plan before counting on this feature."
+---
+
+<AffiliateDisclosureInline />
+
+Your product team is three weeks from launch. The payment integration task is blocked waiting on API schema docs. The backend team hasn't started those yet because they're waiting on the design review. Nobody knows this is the problem until you're five days out and shipping slips another week.
+
+This is what happens when dependencies live in Slack threads and tribal knowledge instead of your actual task manager.
+
+Linear handles task dependencies and critical path visibility well enough that small product teams can stop losing weeks to hidden blockers. The setup takes an hour. Getting it right saves hours every cycle.
+
+This guide walks through the exact steps to configure dependencies in Linear, identify your critical path, and use both to actually ship faster, not just appear more organized.
+
+## What You Need Before Starting
+
+You'll need a Linear workspace with at least a Team plan (dependencies aren't available on Free). A Free plan is $0, Team is $10 per user per month.
+
+You also need an existing project or cycle with at least 8-12 tasks. Dependency work makes sense once you have enough task volume that invisible blockers become a real problem. If you have fewer than 5 tasks, dependencies will feel like overhead.
+
+Identify one person who will own keeping the dependency map updated. This is usually a product manager, tech lead, or ops person. If nobody owns it, dependencies drift and become noise.
+
+Finally, know roughly which work items depend on which others. You don't need perfect detail yet, but you should be able to list "payment integration can't start until schema is final" or "launch checklist can't complete until QA signoff."
+
+<Callout type="info" title="Why dependencies matter for small teams">
+Small teams ship fast when blockers are visible at task creation, not discovered at the deadline. Dependencies make blockers visible. Every day a blocker stays hidden is a day your team is working around it instead of removing it.
+</Callout>
+
+## Step 1: Create a Primary Task for Your Critical Workflow
+
+Open Linear and go to your active project or cycle. Create a parent task that represents the main shipping constraint. For a product launch, this might be "Payment Integration Go-Live". For an API release, it might be "Public API v2 Release".
+
+This task doesn't need to do anything itself. Its job is to anchor your dependency chain. Everyone will see it as the north star of the cycle.
+
+Name it clearly. "Launch" is vague. "Payment Integration Go-Live" is obvious. Make the description one sentence: "Complete and verified payment processing end-to-end for production launch."
+
+Set the due date to your actual ship date minus 3 days, not the ship date itself. This gives you a buffer for last-minute fixes. If you ship on May 15, set the task due date to May 12.
+
+Leave it unassigned for now. You'll populate blockers, not ownership. The people working on the subtasks will be assigned.
+
+## Step 2: Create Subtasks and Map Immediate Dependencies
+
+Break down the launch or release into actual work: "API schema design complete", "Backend integration built", "Payment gateway testing complete", "Deployment checklist signed off".
+
+In Linear, create these as separate tasks under your primary task. Don't nest them. Keep them as top-level tasks with a shared label like "Payment Integration" so you can filter and see them together.
+
+Now add one immediate dependency: The backend integration task depends on the schema task. In Linear, open the integration task. Scroll to the "Relations" section on the right side of the task detail panel. Click "Add relation" and select "is blocked by". Search for the schema design task.
+
+This tells Linear: backend integration is blocked by schema design. You can't start building until design is done.
+
+Do the same for testing. Testing is blocked by integration. Deployment is blocked by testing.
+
+You've now created a dependency chain. Linear will highlight these relationships in your task view.
+
+<Notice>
+Linear shows "is blocked by" and "blocks" relationships automatically. If you say "Task A is blocked by Task B," Linear knows Task B blocks Task A. You only enter it once.
+</Notice>
+
+## Step 3: Identify and Add Parallel Dependencies
+
+Not all tasks are sequential. Some happen in parallel but still gate the launch.
+
+For payment integration, the compliance review happens at the same time as development, but deployment can't happen until compliance approves. Add a "Deploy" task. Make it blocked by both "Integration complete" and "Compliance sign-off".
+
+This is critical: if you only link deploy to integration, you might miss that compliance is the actual blocker. By making deploy depend on both, Linear makes it visible that either one slipping will delay the whole timeline.
+
+Add other parallel work: marketing checklist, documentation, support training. Any of these blocking the final go-live? Add that dependency.
+
+Look at your task list. If you see two tasks at the same priority level with no sequence between them, they're probably parallel. If you see one task that multiple others feed into, that's your bottleneck.
+
+<ProsCons
+  pros={["Parallel dependencies surface hidden bottlenecks fast", "You see immediately when sequential work could be parallelized", "Critical path becomes obvious with 5-6 dependencies"]}
+  cons={["Too many dependencies obscure the real blockers", "Teams sometimes over-specify non-blocking relationships as dependencies", "Dependencies only work if tasks are actually in Linear and kept current"]}
+/>
+
+## Step 4: Visualize Your Critical Path in Timeline View
+
+In Linear, open your project and switch to the "Timeline" view. This shows all tasks as bars on a Gantt-style chart. Scroll down until you see your payment integration tasks.
+
+The timeline won't automatically calculate critical path, but you can read it by hand: follow the longest chain of dependent tasks from start to finish. That's your critical path.
+
+For payment integration, it might look like:
+1. Schema design (5 days) → 2. Backend build (7 days) → 3. Testing (3 days) → 4. Deployment (1 day) = 16 days total.
+
+If you also have "Compliance review (4 days)" and it runs parallel to building, it doesn't extend the timeline because testing takes 3 days and compliance takes 4, so compliance finishes during testing.
+
+But if compliance takes 10 days, it becomes part of your critical path. Now deploy is blocked by compliance, and the timeline extends to 18 days.
+
+Mark down the longest sequence. That's your critical path. Any task on that path that slips will slip your entire deadline. Any task off that path has slack time.
+
+## Step 5: Set Up a Critical Path View Using Filters and Labels
+
+Linear doesn't have a dedicated critical path report, but you can build one with labels and filters.
+
+Create a label called "Critical Path" or "Critical". Go back through your timeline view and tag every task that sits on the longest sequence of dependencies.
+
+Now create a saved filter: go to your project settings, then "Filters", and create a new filter with these criteria:
+- Label = "Critical Path"
+- Project = (your launch project)
+
+Save this as "Critical Path - Q2 Launch" or whatever your cycle is.
+
+Now every team member can pull up one filter and see only the tasks that will actually impact your ship date. Work on those first. Everything else is secondary.
+
+Update this filter at the start of every planning session. As you knock out critical path tasks, move tasks up from the secondary list to replace them.
+
+## Step 6: Weekly Critical Path Check-in
+
+Every Monday or at the start of your sync, spend 10 minutes reviewing Linear's timeline view for your cycle. Look specifically for:
+
+1. Red or yellow status flags on critical path tasks.
+2. Tasks that are moved further right (delayed) compared to last week.
+3. New dependencies that appeared after planning.
+
+If a critical path task is at risk, pull it into your standup for 5 minutes. Is it being blocked? By what? Can you unblock it today?
+
+If a new dependency appeared (e.g., "Turns out we need legal review"), decide right then: does this task become critical path, or is it secondary? If it's critical and wasn't planned, your deadline probably just moved.
+
+Document this decision in the task description. Write: "Added legal review dependency on 4/22. Extends timeline by 2 days to 5/14." This creates a paper trail for why timelines shift.
+
+<Callout type="info" title="The real value of critical path tracking">
+Most small teams don't need sophisticated project management software. What they need is visibility into what's actually blocking them. A 10-minute Monday check-in on critical path prevents the Friday-afternoon panic that erases the entire next week.
+</Callout>
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Over-specifying dependencies.**
+
+Teams sometimes make every task dependent on every other task because "everything is connected." This drowns the signal. Dependencies should represent true sequence constraints. If testing can happen while design is finalizing, they're not dependent. You've just created noise.
+
+Fix: Ask for each dependency, "If we started this task today, would we be blocked, or would we just prefer to wait?" If it's "prefer to wait," it's not a dependency.
+
+**Mistake 2: Setting dependencies but not assigning work.**
+
+Linear will show you a beautiful dependency map with nobody actually working on the tasks. Dependencies only matter if they're tied to real human effort and commitment.
+
+Fix: When you add a dependency, immediately assign the blocking task to someone and set a due date. If the schema design task is unassigned, you have a dependency with no owner, which means it'll probably slip.
+
+**Mistake 3: Ignoring dependencies that touch other teams.**
+
+If your payment integration depends on the backend team's API schema, and they're not in your Linear workspace, or they have a different cycle cadence, you've created an invisible blocker.
+
+Fix: Pull the blocking team's due date into your task description. "Blocked by backend API schema - backend team ships 4/28. We start 4/29." This forces a conversation about whether 4/28 is realistic.
+
+## Results to Expect
+
+After you set up dependencies and critical path visibility, expect these changes within two cycles.
+
+First, you'll catch blockers 5-7 days earlier than you used to. Instead of discovering on Friday that compliance review isn't done, you'll see it in your Monday check-in when there's still time to escalate.
+
+Second, you'll stop context-switching on false priorities. Your team will spend more time on actual blockers and less time on tasks that looked urgent but actually have slack. This probably adds 8-12 hours per person per cycle of productive focus.
+
+Third, your deadline predictability improves. You still might slip, but you'll know by day 3 of the cycle, not day 10. That's enough time to descope or pull resources instead of panic-shipping or shipping late.
+
+You probably won't see perfect on-time delivery immediately. What you will see is fewer surprise delays and more confidence in timelines. For teams shipping every 2-4 weeks, that's the real win.
+
+<FAQBlock
+  faqs={[
+    { question: "What's the difference between a blocking dependency and a related dependency in Linear?", answer: "A blocking dependency means the downstream task literally cannot start until the upstream task is done. A related dependency is just a link for context. Linear shows blocking dependencies prominently in your critical path calculation. Use blocking for actual work sequence constraints, related for 'good to know' connections." },
+    { question: "Does Linear automatically calculate my critical path?", answer: "No. Linear shows you dependencies and dependency chains, but you have to interpret them to find your critical path. The critical path is the longest sequence of dependent tasks. If you move a task on the critical path, your whole project timeline shifts. Use Linear's timeline view and cycle planning tools to identify it manually." },
+    { question: "Can I set up dependencies across multiple teams or projects in Linear?", answer: "Yes, but only on Linear's Team and Enterprise plans. Free and Pro plans limit cross-project dependencies. If your product team spans multiple projects, check your plan before counting on this feature." }
+  ]}
+/>
+
+## Quick Recap
+
+- Create one primary task anchoring your release or launch, due 3 days before your actual ship date.
+- Map sequential work as blocked-by relationships: integration blocked by schema, testing blocked by integration, deploy blocked by testing.
+- Add parallel dependencies so deploy is blocked by both integration and compliance, surfacing true bottlenecks.
+- Use Linear's timeline view to visually identify your critical path, the longest sequence of dependent tasks.
+- Label critical path tasks and create a saved filter so your team sees only what matters.
+- Review critical path health weekly in 10 minutes, catching slips before they become crises.
+
+---
+
+If you're comparing project management tools for a small team, Linear is strong for dependency tracking, but the setup and discipline matter more than the software. For teams still deciding between options, [Asana vs ClickUp: Which Project Management Tool Works Better for Small Teams Managing Client Projects and Internal Tasks](https://telotonet.com/articles/asana-vs-clickup-which-project-management-tool-works-better-for-small-teams-mana/) covers how both handle dependencies at different scales.
