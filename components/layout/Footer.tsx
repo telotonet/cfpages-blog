@@ -14,7 +14,8 @@ const FOOTER_LINKS = [
       { href: '/about/', label: 'About Us' },
       { href: '/contact/', label: 'Contact' },
       { href: '/editorial-policy/', label: 'Editorial Policy' },
-      { href: '/affiliate-disclosure/', label: 'Affiliate Disclosure' },
+      { href: '/privacy-policy/', label: 'Privacy Policy' },
+      { href: '/terms/', label: 'Terms of Use' },
     ],
   },
 ]
@@ -39,12 +40,7 @@ export function Footer() {
               Reviews and comparisons of B2B SaaS tools — email, sales, CRM, AI writing,
               and productivity software.
             </p>
-            <p className="mt-4 text-xs text-muted-foreground">
-              This site contains affiliate links.{' '}
-              <Link href="/affiliate-disclosure/" className="underline hover:text-foreground">
-                Learn more
-              </Link>
-            </p>
+            <p className="mt-4 text-xs text-muted-foreground">Contact: telotonet@gmail.com</p>
           </div>
 
           {/* Nav sections */}

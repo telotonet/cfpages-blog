@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Telotonet publishes honest, hands-on reviews and comparisons of B2B SaaS and AI tools for business owners and marketers.',
+    'Telotonet publishes practical reviews, comparisons, and guides for B2B SaaS and AI tools used by business teams.',
   alternates: { canonical: '/about/' },
 }
 
@@ -30,9 +30,9 @@ export default function AboutPage() {
 
           <h2>What we do</h2>
           <p>
-            We test tools in real workflows, not just read the landing page. Every review is
-            built on actual usage — we evaluate onboarding, UI, pricing, support, and whether
-            the product actually does what it claims.
+            We publish practical reviews, comparisons, and setup guides designed to help small
+            teams evaluate software more quickly. Our goal is to summarize the tradeoffs clearly,
+            surface important limits, and make product research easier to navigate.
           </p>
 
           <h2>Our principles</h2>
@@ -41,8 +41,8 @@ export default function AboutPage() {
               <strong>Independent.</strong> We never sell spots in rankings or accept paid reviews.
             </li>
             <li>
-              <strong>Transparent.</strong> All affiliate links are clearly marked. Commission
-              does not influence our ratings or recommendations.
+              <strong>Clear.</strong> We separate editorial content from advertising or partnership
+              discussions.
             </li>
             <li>
               <strong>Current.</strong> SaaS tools change fast. We update articles when pricing
@@ -59,8 +59,9 @@ export default function AboutPage() {
 
           <h2>Get in touch</h2>
           <p>
-            For corrections, partnership inquiries, or article suggestions:{' '}
-            <a href="/contact/">contact page</a>.
+            For corrections, questions, or article suggestions, visit the{' '}
+            <a href="/contact/">contact page</a> or email{' '}
+            <a href="mailto:telotonet@gmail.com">telotonet@gmail.com</a>.
           </p>
         </div>
       </div>

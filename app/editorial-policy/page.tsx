@@ -29,26 +29,23 @@ export default function EditorialPolicyPage() {
 
           <h2>How we select topics</h2>
           <p>
-            We write about tools we have tested ourselves. Topics are chosen by the editorial
-            team based on relevance, reader demand, and practical value. We do not accept
-            commissioned articles.
+            Topics are chosen based on relevance, reader demand, and practical value for small
+            business teams. We focus on software decisions where pricing, limits, workflow fit,
+            and tradeoffs matter.
           </p>
 
-          <h2>Testing process</h2>
+          <h2>Research process</h2>
           <p>
-            Before publishing a review or comparison, we create an account and use the product
-            in real work scenarios. For paid plans, we either use trial periods or purchase a
-            subscription. We test against the claims made on the product's website.
+            Reviews, comparisons, and guides are based on product research, public documentation,
+            pricing pages, changelogs, product interfaces when accessible, and editorial analysis.
+            We revise content when important details change.
           </p>
 
-          <h2>Affiliate links and objectivity</h2>
+          <h2>Editorial independence</h2>
           <p>
-            Some links on this site are affiliate links. This means we may receive a commission
-            if you click through and sign up. Affiliate relationships <strong>do not influence</strong> our
-            ratings, rankings, or recommendations.
-          </p>
-          <p>
-            All articles containing affiliate links include a clear disclosure at the top.
+            We do not sell rankings or publish paid reviews disguised as editorial content. If we
+            ever run advertising or sponsorships, they are handled separately from editorial
+            decisions.
           </p>
 
           <h2>Keeping content current</h2>
@@ -69,8 +66,8 @@ export default function EditorialPolicyPage() {
           <ul>
             <li>Paid reviews or paid rankings</li>
             <li>Native advertising without clear labeling</li>
-            <li>Content written without testing the product</li>
-            <li>Comparisons based solely on vendor marketing materials</li>
+            <li>Misleading claims about products, pricing, or capabilities</li>
+            <li>Low-value content created only to fill space</li>
           </ul>
         </div>
       </div>

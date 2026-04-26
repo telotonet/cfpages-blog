@@ -628,7 +628,6 @@ Rules:
 - NEVER use em-dashes (—). Use commas or restructure instead.
 - No fluffy openers like "In the world of..." or "As businesses increasingly..."
 - Write in second person (you/your) or third person. Never "I".
-- No affiliate push. Never "click here to buy", "get started today", "sign up now".
 
 ---
 
@@ -679,7 +678,6 @@ tags: ["tag1", "tag2", "tag3", "tag4"]
 draft: false
 featured: false
 articleType: "${format.articleType}"
-affiliateDisclosure: true
 faq:
   - question: "<question>"
     answer: "<answer>"
@@ -687,7 +685,7 @@ faq:
     answer: "<answer>"
   - question: "<question>"
     answer: "<answer>"
-Start the article body right after the closing --- of the frontmatter. Begin with <AffiliateDisclosureInline /> on its own line, then a blank line, then the article text.`
+Start the article body right after the closing --- of the frontmatter, then the article text.`
 }
 
 // ─── main ────────────────────────────────────────────────────────────────────

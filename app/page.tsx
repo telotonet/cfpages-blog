@@ -134,8 +134,8 @@ export default function HomePage() {
           <div className="grid gap-6 sm:grid-cols-3">
             {[
               {
-                title: 'Hands-on tested',
-                text: 'Every tool covered here has been actively used — sign-up, setup, and real workflows. Not just a read-through of the pricing page.',
+                title: 'Practical',
+                text: 'Articles focus on real buying questions: pricing, limits, workflow fit, and where each tool is a bad fit.',
               },
               {
                 title: 'Specific',

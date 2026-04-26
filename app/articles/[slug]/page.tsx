@@ -19,7 +19,6 @@ import { ArticleHeader } from '@/components/article/ArticleHeader'
 import { TableOfContents } from '@/components/article/TableOfContents'
 import { RelatedArticles } from '@/components/article/RelatedArticles'
 import { AuthorBox } from '@/components/article/AuthorBox'
-import { AffiliateDisclosureInline } from '@/components/mdx/AffiliateDisclosureInline'
 import { FAQBlock } from '@/components/mdx/FAQBlock'
 import { JsonLd } from '@/components/seo/JsonLd'
 
@@ -59,7 +58,6 @@ export default async function ArticlePage({ params }: PageProps) {
   const content = await compileMDXContent(article.content, {
     components: mdxComponents,
   })
-  const hasInlineAffiliateDisclosure = article.content.includes('<AffiliateDisclosureInline')
 
   const articleSchema = buildArticleSchema(article)
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -82,9 +80,6 @@ export default async function ArticlePage({ params }: PageProps) {
           <div className="article-reading-grid">
               <div className="article-main">
                 <ArticleHeader article={article} categoryName={category?.name} />
-                {article.affiliateDisclosure && !hasInlineAffiliateDisclosure && (
-                  <AffiliateDisclosureInline />
-                )}
                 <article
                   className="article-body prose prose-base max-w-none dark:prose-invert"
                   aria-label={`Article: ${article.title}`}

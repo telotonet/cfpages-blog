@@ -7,14 +7,6 @@ export interface FAQItem {
   answer: string
 }
 
-export interface AffiliateBlock {
-  tool: string
-  url: string
-  label: string
-  badge?: string // e.g. "Best value", "Our top pick"
-  nofollow?: boolean
-}
-
 export interface ArticleFrontmatter {
   title: string
   description: string
@@ -32,8 +24,6 @@ export interface ArticleFrontmatter {
   articleType: ArticleType
   relatedSlugs?: string[]
   faq?: FAQItem[]
-  affiliateBlocks?: AffiliateBlock[]
-  affiliateDisclosure?: boolean
   canonicalUrl?: string
   ogImage?: string
 }
