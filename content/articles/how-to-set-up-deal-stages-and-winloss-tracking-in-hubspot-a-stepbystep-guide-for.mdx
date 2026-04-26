@@ -1,0 +1,261 @@
+---
+title: "How to Set Up Deal Stages and Win/Loss Tracking in HubSpot: A Step-by-Step Guide for Sales Teams Managing Deal Velocity"
+description: "Configure HubSpot deal stages and win/loss tracking to monitor pipeline velocity, forecast accurately, and identify where deals stall."
+excerpt: "Set up deal stages and win/loss tracking in HubSpot to monitor pipeline health, catch stalled deals early, and get honest numbers on what actually closes."
+publishedAt: "2026-04-26"
+author: "Alex"
+category: "sales-crm"
+coverImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Sales pipeline and CRM dashboard on a laptop screen"
+tags: ["HubSpot", "deal-stages", "pipeline-management", "sales-operations", "CRM-setup"]
+draft: false
+featured: false
+articleType: "guide"
+affiliateDisclosure: true
+faq:
+  - question: "Can I change deal stages after deals are already in HubSpot?"
+    answer: "Yes. Existing deals won't break if you update stages, but changing stage order or removing stages mid-pipeline can create reporting confusion. Best practice: freeze your stage sequence for at least one full quarter before restructuring."
+  - question: "What's the difference between deal stage and pipeline stage in HubSpot?"
+    answer: "Deal stage is the status of an individual opportunity (Negotiation, Proposal, etc.). Pipeline is the container for all deals in a specific sales process (Enterprise Sales, Self-Service, etc.). You can have multiple pipelines with different stage sequences."
+  - question: "How often should I review win/loss data to spot velocity problems?"
+    answer: "Weekly for teams under 10 reps, bi-weekly for larger teams. Look for deals stuck in one stage for more than 2-3x the average time that stage should take. That's your signal to intervene or reassign."
+---
+
+<AffiliateDisclosureInline />
+
+Deal stages and win/loss tracking are not glamorous CRM features. Nobody gets excited setting them up. But they're the difference between running a sales team that knows where money is actually coming from versus one that's just crossing fingers and updating spreadsheets.
+
+If you're using HubSpot and you haven't configured this properly, you're losing visibility into pipeline velocity. You're not seeing which deals are stuck. You're not getting honest feedback on what your sales process actually looks like. You're probably also forecasting badly because you don't know how long deals spend in each stage.
+
+This guide walks you through configuring deal stages and win/loss tracking in HubSpot so you can track deal velocity, catch stalled deals early, and build forecasts based on real data instead of hope.
+
+## What You Need Before Starting
+
+You need a HubSpot account with at least the Professional plan ($720/year minimum) or higher. The Free plan doesn't include custom pipelines or advanced deal properties, so you'll need to upgrade.
+
+You also need to decide on your sales process before you start. Don't copy HubSpot's default stages. Sit down with your sales team for 30 minutes and map out the actual stages your deals go through. For example: Qualified Lead, Proposal Sent, Negotiation, Closed Won, Closed Lost. Write them down. Count them. Most teams need 4-7 stages.
+
+You need at least one sales rep or team member who understands your process well enough to explain why each stage exists and what moves a deal from one stage to the next. If you can't explain that clearly, you'll create confusing stages that reps won't use correctly.
+
+Finally, gather any historical deal data you want to analyze. If you've been tracking deals in spreadsheets or another CRM, now's the time to decide if you're importing that data or starting fresh from today. Starting fresh is cleaner for new setups.
+
+<Callout type="info" title="Stage count matters more than you think">
+  Too many stages (more than 7) and reps won't move deals through them consistently. Too few (fewer than 4) and you lose visibility into where deals actually stall. Aim for 5-6 stages that map directly to how your reps actually sell.
+</Callout>
+
+## Step 1: Create or Edit Your Sales Pipeline
+
+In HubSpot, go to Settings (gear icon in the top right corner). Search for "Pipelines" and click on Pipelines under Objects > Deals.
+
+You'll see HubSpot's default pipeline. You can edit this one or create a new pipeline for a different sales process. If your company has one main sales process, edit the default. If you have separate processes for enterprise deals versus mid-market deals, create separate pipelines.
+
+Click "Edit Pipeline" on the default pipeline or "Create Pipeline" if you're building a new one. Name it clearly: "Enterprise Sales Pipeline" or "SMB Self-Serve Pipeline". Vague names like "Main Pipeline" become confusing when you add a second pipeline later.
+
+Now add your deal stages. Click "Add stage" and type the first stage name. Use clear, action-oriented names: "Qualified Lead" instead of "Stage 1", "Discovery Call Scheduled" instead of "Engage", "Proposal Sent" instead of "Pitch". Each name should answer the question: "What has to happen for a deal to be in this stage?"
+
+Add each stage in order from first to last. The order matters because HubSpot uses it for pipeline progression and forecasting. For a typical B2B SaaS process, you might create:
+
+1. Qualified Lead (prospect meets ICP, lead quality confirmed)
+2. Discovery Scheduled (meeting booked)
+3. Proposal Sent (quote or proposal document delivered)
+4. Negotiation (terms being discussed)
+5. Closed Won (deal signed)
+6. Closed Lost (deal declined or no longer pursuing)
+
+Don't skip Closed Lost. Teams that don't have an explicit lost stage end up with deals stuck in late-stage limbo, making forecasting impossible.
+
+After you've added all stages, click "Save Pipeline". HubSpot will confirm that the pipeline is live.
+
+<Notice>
+If you're migrating from another CRM, you can leave your old pipeline in place while you test the new one. Just create a new pipeline in HubSpot, test it with your team for one week, then archive the old pipeline once everyone's comfortable.
+</Notice>
+
+## Step 2: Set Up Deal Properties for Win/Loss Tracking
+
+With your stages in place, now you need properties to track why deals close and how long they spend in each stage. HubSpot records stage entry and exit times automatically, but you need custom fields to capture the reason a deal closes.
+
+Go back to Settings and search for "Properties". Click Properties under Objects > Deals.
+
+Click "Create Property" to add your first win/loss property. Name it "Closed Lost Reason" (or "Closed Won Reason" if you want to track wins too, though most teams focus on losses).
+
+Set the field type to "Single-line text" for quick entry, or "Dropdown" if you want to force reps to pick from a list. Dropdown is better for standardized reporting. Click "Create".
+
+If you chose Dropdown, add these options as a starting point. Adjust based on your business:
+
+For Closed Lost:
+- Budget was cut
+- Chose competitor
+- Needs delayed / timeline pushed
+- Internal champion left
+- Not a priority
+- Price too high
+- Lack of executive support
+
+For Closed Won (optional, but useful):
+- Strong product fit
+- Best price
+- Fast implementation timeline
+- Executive champion sponsor
+
+Keep the list to 7-8 options max. Too many options and reps won't fill it out consistently.
+
+Save the property. Then create one more property: "Days in Deal Stage" as a number field. HubSpot will auto-calculate this, but having it as a visible property helps with reporting and sorting.
+
+Finally, create a property called "Sales Rep Notes" as a large text field. This gives reps space to explain deals that don't fit neatly into your loss reasons. A deal might be "Closed Lost" because of "Needs delayed", but the notes might say "CRO said they'd revisit in Q3 if budget opens up. Keep warm."
+
+Save all properties and move on.
+
+## Step 3: Configure Deal Stage Entry and Exit Automation
+
+Now you'll set up automations that trigger when deals move between stages. These automations help reps fill out critical information and flag deals that are moving too slowly.
+
+Go to Automation > Workflows and click "Create Workflow".
+
+Choose "Deal-based" as the workflow type. Name it "Closed Lost Reason Reminder" and click "Create".
+
+Set the trigger to: "Deal is updated AND Deal stage is equal to Closed Lost".
+
+Add an action: "Send Notification". This sends an in-app or email notification to the deal owner. You can customize it: "Don't forget to fill in the Closed Lost Reason for [Deal Name]. This helps us understand what we're losing."
+
+Add a second action: "Create task" to remind the rep to fill out notes. This creates a task assigned to the deal owner.
+
+Save and publish this workflow.
+
+Create a second workflow for stalled deals. Name it "Deals Stuck in Stage Alert".
+
+Set the trigger to: "Deal is updated AND [your deal duration property] is greater than 45 days AND Deal stage is equal to [any of your mid-stage stages, like Proposal Sent or Negotiation]".
+
+Add an action: "Send Notification" to the sales manager. "Deal [Deal Name] has been in [Deal stage] for 45+ days. Check in with [Sales Rep] on next steps."
+
+This workflow flags deals that are moving too slowly. Adjust the day threshold based on your typical sales cycle. If your average deal takes 60 days, set the threshold to 60+.
+
+Save and publish.
+
+<ProsCons
+  pros={["Automations ensure consistent data capture without relying on reps to remember", "Alerts catch stalled deals before they disappear into the weeds", "Notification-based workflows don't spam email; they create actionable reminders"]}
+  cons={["Automations require regular review or they become noise that reps ignore", "Too many notifications kill their effectiveness; keep it to 2-3 critical workflows", "You still need reps to actually fill in the data; automation just prompts them"]}
+/>
+
+## Step 4: Create Deal Reports to Track Velocity and Win/Loss Rates
+
+Deal stages are only useful if you're actually looking at the data. Set up two reports in HubSpot to track velocity and win/loss patterns.
+
+Go to Reports and click "Create Report".
+
+Choose "Deal" as the object. Name the first report "Pipeline Velocity" and select "Table" as the report type.
+
+Set up columns: Deal Name, Deal Owner, Deal Stage, Deal Amount, Days in Deal Stage (if you created that property), and Expected Close Date.
+
+Add filters to show only deals created in the last 90 days. Add a second filter to exclude Closed Won and Closed Lost deals so you're only looking at deals in progress.
+
+Group this report by Deal Stage. This shows you how many deals are in each stage and the average time they spend there.
+
+Save this report. Review it weekly. If one stage (say, Negotiation) consistently has 2-3x more deals hanging out than your other stages, that's a bottleneck. Either that stage is poorly defined, your sales reps aren't moving deals through it, or your deal qualification is broken.
+
+Now create a second report: "Win/Loss Summary".
+
+Choose Deal as the object and Table as the type. Name it "Win/Loss Summary".
+
+Add columns: Deal Name, Deal Owner, Deal Stage (should be Closed Won or Closed Lost), Deal Amount, Closed Lost Reason (if it's a loss), and Closed Won Reason (if applicable).
+
+Group by Deal Owner first, then by Deal Stage. This shows you which reps are closing deals and where losses are coming from.
+
+Add a date filter to show deals closed in the last 30 days.
+
+Save and review this report. Look for patterns: Are losses clustered in one stage? Do certain reps have higher loss rates? Is one loss reason showing up more than expected?
+
+If 40% of your losses say "Price too high", that's a signal your qualification is too broad or your positioning isn't strong enough early. If losses are scattered across reasons, you might have execution issues across multiple parts of the pipeline.
+
+## Step 5: Set Team Permissions and Update Reps on Expectations
+
+Deal stage data is only as good as the people entering it. You need to tell your team exactly how to use these stages and why it matters.
+
+In HubSpot Settings, go to Users & Teams and confirm that all sales reps have at least "Read/Edit" permissions on Deals. If you have junior reps, make sure they can't delete deals or change certain properties like Company Name or Deal Amount. Lock those down in Properties > Edit Property > Permissions.
+
+Now hold a 15-minute team call or send a written guide explaining:
+
+1. What each deal stage means and the specific action that moves a deal to that stage. Example: "A deal enters Proposal Sent only after you've sent a written quote or demo proposal. Email isn't enough; it has to be a formal document."
+
+2. When and why they should fill out the Closed Lost Reason. Example: "Whenever you move a deal to Closed Lost, you have to select a reason from the dropdown. If none of the reasons fit, pick the closest one and add detail in Sales Rep Notes."
+
+3. How the stalled deal alerts work and what they should do when they see one. Example: "If you get a notification that your deal has been stuck in Negotiation for 45 days, it means either we need to push hard for a decision or move it to Closed Lost. Don't leave it hanging."
+
+4. When they'll see the velocity report and how it's used. Example: "Every Monday morning, I'm looking at which deals are moving fast through Proposal and which are stuck. If your deals are consistently slower than the team average, let's talk about what's blocking them."
+
+<Callout type="info" title="Reps need to trust the system to use it right">
+  If reps think the stages are just for management reporting, they'll rush through them or skip them. If they understand stages help them identify which deals need action and which are progressing normally, they'll use them correctly. Frame it as a tool for them, not a surveillance mechanism.
+</Callout>
+
+## Step 6: Review and Adjust Your Stages After One Month
+
+After one month of real data, review whether your stages actually match how your reps sell. Schedule a quick 20-minute call with 2-3 reps and ask:
+
+"Are any of these stages confusing?" If a stage is getting skipped or misused, redefine it or merge it with another stage.
+
+"Are any deals getting stuck in a stage for unclear reasons?" If a stage has no clear exit criteria, make it more specific.
+
+"Does the order make sense?" Sometimes reps realize a stage should come earlier or later in the process.
+
+Make small adjustments. Don't overhaul the stages after one month; data needs time to stabilize. But if something feels broken, fix it now rather than forcing bad data for a quarter.
+
+After you've adjusted, reset your metric baseline. If you moved a stage or renamed it, your historical velocity numbers shift. Document the change and start fresh tracking from that date.
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Creating stages that describe company situations instead of sales actions.**
+
+"In Evaluation" or "Considering Us" is vague. What does the rep actually do to move from Evaluation to the next stage? Better stages: "Technical Demo Scheduled" or "Reference Call Completed". These describe actions, not abstract states.
+
+Fix: Rewrite every stage as an answer to "What has the rep accomplished to reach this stage?"
+
+**Mistake 2: Forgetting to set deal close dates aligned with stage progression.**
+
+If a deal is in Proposal and the expected close date is 6 months away, that's a signal the forecast is probably wrong. Better practice: Update expected close dates when a deal moves to a new stage. A deal in Negotiation should close within 30-45 days, not 6 months.
+
+Fix: Add a workflow that prompts reps to update the close date whenever a deal stage changes. Include it in your closed lost reminder automation.
+
+**Mistake 3: Not enforcing loss reasons consistently.**
+
+If reps leave the loss reason blank for 30% of lost deals, your win/loss data is worthless. You can't spot patterns if half your data is missing.
+
+Fix: Make the Closed Lost Reason property mandatory. In HubSpot, go to the property settings and toggle "Require a value when moving a deal to this stage". Reps won't be able to move a deal to Closed Lost without filling it in.
+
+**Mistake 4: Ignoring the velocity data and never acting on it.**
+
+You build the reports, you review them, but then nothing changes. Deals still languish in Negotiation. Loss reasons never improve. The system becomes busywork.
+
+Fix: Every month, identify one metric from your velocity report and commit to improving it. If deals in Proposal stay there 60 days on average, this month the goal is 45 days. Have each rep commit to a small change: earlier discovery, tighter proposal scope, faster follow-up after sending. Track progress and celebrate wins.
+
+## Results to Expect
+
+Within two weeks, you'll have baseline velocity numbers. You'll see how many deals are in each stage, how long they typically stay there, and which reps are moving deals fastest.
+
+Within one month, you'll have win/loss data showing the top reasons deals don't close. If you see patterns (e.g., "Budget was cut" for 30% of losses), you know where to focus qualification.
+
+Within three months, you'll have enough data to forecast accurately. You know that deals in Proposal spend 45 days on average before closing or closing lost. Deals in Negotiation take 30 days. Use that to predict when revenue is actually coming in, not when you hope it will.
+
+By month four or five, you should see velocity improve. If you've been acting on the data, stalled deals should move faster. Loss reasons should shift. You might see "Budget was cut" drop from 30% to 15% because you're qualifying tighter earlier.
+
+For a team of 5 reps, clean deal stage data should improve forecast accuracy by 20-30%. For a team of 10+, it's often higher because you have more data to trend.
+
+The real win isn't faster deals or higher close rates, though those often improve. It's knowing where your pipeline actually is. You're not surprised by missing forecast. You're not wondering why deals disappear. You can walk into a forecast call and say, "We have 15 deals in Proposal worth $300K. Historical conversion is 65%. Expected close is 45 days out. We're also tracking 8 deals in Negotiation worth $180K, conversion is 55%, close is 30 days out." That's the difference between running on data and running on hope.
+
+<FAQBlock
+  faqs={[
+    { question: "Can I change deal stages after deals are already in HubSpot?", answer: "Yes. Existing deals won't break if you update stages, but changing stage order or removing stages mid-pipeline can create reporting confusion. Best practice: freeze your stage sequence for at least one full quarter before restructuring." },
+    { question: "What's the difference between deal stage and pipeline stage in HubSpot?", answer: "Deal stage is the status of an individual opportunity (Negotiation, Proposal, etc.). Pipeline is the container for all deals in a specific sales process (Enterprise Sales, Self-Service, etc.). You can have multiple pipelines with different stage sequences." },
+    { question: "How often should I review win/loss data to spot velocity problems?", answer: "Weekly for teams under 10 reps, bi-weekly for larger teams. Look for deals stuck in one stage for more than 2-3x the average time that stage should take. That's your signal to intervene or reassign." }
+  ]}
+/>
+
+## Quick Recap
+
+- **Create your pipeline** with 5-7 clear, action-oriented deal stages that map to your actual sales process.
+- **Add win/loss properties** (Closed Lost Reason, Sales Rep Notes) so reps explain why deals close.
+- **Set up automation** to remind reps to fill in loss reasons and alert managers to stalled deals.
+- **Build velocity and win/loss reports** to see how long deals spend in each stage and where losses cluster.
+- **Brief your team** on what each stage means, why the data matters, and what happens when deals stall.
+- **Review after one month** and adjust stages if they're confusing or misaligned with actual sales behavior.
+- **Act on the data every month.** Pick one metric to improve (faster Proposal time, lower loss rate) and track it.
+
+If you're managing pipeline for the first time or inherited a broken setup, this is worth the two hours it takes to implement correctly. One team doing this properly is worth more to your forecast than five teams winging it. For further reading on setting up CRM infrastructure more broadly, see our guide on [how to set up a sales CRM for your first sales hire](/articles/how-to-set-up-a-sales-crm-for-your-first-sales-hire-a-stepbystep-guide-for-small/), which covers the foundational structure before
