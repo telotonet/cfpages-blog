@@ -5,7 +5,7 @@ interface NoticeProps {
   className?: string
 }
 
-// Lightweight text-only notice — for disclaimers, notes, affiliate notices etc.
+// Lightweight text-only notice for short disclaimers or notes.
 export function Notice({ children, className }: NoticeProps) {
   return (
     <aside

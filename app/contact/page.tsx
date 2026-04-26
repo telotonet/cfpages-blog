@@ -3,7 +3,7 @@ import { Breadcrumbs } from '@/components/ui/Breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with the Telotonet editorial team for corrections, partnerships, or article suggestions.',
+  description: 'Get in touch with Telotonet for corrections, questions, or article suggestions.',
   alternates: { canonical: '/contact/' },
 }
 
@@ -22,6 +22,17 @@ export default function ContactPage() {
           Found an error, have a question, or want to suggest a review topic?
         </p>
 
+        <div className="mb-8 rounded-xl border bg-card p-5">
+          <h2 className="mb-2 font-sans text-sm font-semibold text-foreground">Email</h2>
+          <p className="text-sm text-muted-foreground">
+            Reach us at{' '}
+            <a href="mailto:telotonet@gmail.com" className="text-accent underline hover:no-underline">
+              telotonet@gmail.com
+            </a>
+            .
+          </p>
+        </div>
+
         <div className="grid gap-5 sm:grid-cols-2">
           {[
             {
@@ -31,7 +42,7 @@ export default function ContactPage() {
             },
             {
               title: 'Partnerships & advertising',
-              text: 'Discuss sponsored content, affiliate programs, or other collaboration opportunities.',
+              text: 'Discuss advertising, sponsorship, or other collaboration opportunities.',
               hint: 'Subject: [Partnership]',
             },
             {
@@ -59,8 +70,8 @@ export default function ContactPage() {
 
         <div className="mt-8 rounded-xl border bg-muted/40 p-6">
           <p className="text-sm text-muted-foreground">
-            We do not publish paid reviews or sell spots in rankings.
-            All content is the result of independent testing and editorial work.
+            We do not sell spots in rankings. Advertising inquiries are reviewed separately from
+            editorial content.
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
             Please read our{' '}
