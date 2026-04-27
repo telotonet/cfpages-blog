@@ -1,0 +1,168 @@
+---
+title: "The Exact Knowledge Base Stack for Small Teams Building Internal Documentation Without Breaking the Budget ($60/mo)"
+description: "A practical knowledge base stack for small teams: Slite, Zapier, and Claude. Real costs, actual workflows, and honest trade-offs."
+excerpt: "Build a searchable internal knowledge base on a tight budget with the right mix of tools for capturing, organizing, and maintaining documentation."
+publishedAt: "2026-04-27"
+author: "Alex"
+category: "productivity"
+coverImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Team collaborating on tasks and project planning"
+tags: ["knowledge base", "documentation", "small team ops", "internal wiki", "budget tools"]
+draft: false
+featured: false
+articleType: "best-of"
+faq:
+  - question: "Do I really need a separate knowledge base tool, or can I just use Notion?"
+    answer: "Notion works for smaller docs, but it gets slow with heavy search at 100+ articles, poor full-text search, and lacks built-in permission controls. A dedicated KB tool like Slite or Slab handles team-wide documentation scaling better. Use Notion if you're under 30 docs; move to a KB tool at 50+."
+  - question: "What's the difference between a wiki and a knowledge base?"
+    answer: "Wikis are collaborative edit-heavy tools (like Confluence); knowledge bases are typically read-heavy with curated, published content. For small teams, knowledge bases are better because fewer people write docs and you want fast search, not endless editing threads."
+  - question: "Can I connect my knowledge base to Slack so people search it without leaving Slack?"
+    answer: "Yes. Slite, Slab, and Notion all have Slack integrations that let users search and retrieve articles from Slack. Setup takes 10 minutes. It cuts down the number of repeat questions in Slack by 40-60% in teams that actually use it."
+---
+
+## The Problem This Stack Solves
+
+Your team is drowning in Slack threads and scattered Google Docs. Every time someone joins, they ask the same questions: How do we run payroll? What's the client onboarding process? Where are the brand guidelines? You spend time answering the same thing four times a week, and nothing ever gets found again. You need a searchable, organized knowledge base where documentation lives once and people actually find it. But you can't afford $200/month or the overhead of a heavyweight wiki.
+
+## The Stack at a Glance
+
+| Tool | Purpose | Cost/mo | Free tier? |
+|------|---------|---------|-----------|
+| **Slite** | Core KB: writing, organizing, and searching internal docs | $39 | Yes (limited) |
+| **Zapier** | Automation: capture Slack messages and form submissions into Slite | $20 | Yes (3 zaps) |
+| **Claude API** | AI indexing and smart search: answer questions directly from your docs | $1 | Usage-based |
+| **Total** | | **$60** | Partial |
+
+<Callout type="info" title="Why this stack, not Notion or Confluence">
+Notion is free but search is slow at scale, permission controls are weak, and it's designed for mixed workloads (tasks, docs, databases), not pure knowledge management. Confluence is $5/user and built for wikis, not read-heavy documentation. This stack optimizes for what small teams actually need: fast search, permission controls, and automation that captures knowledge before people forget to write it down.
+</Callout>
+
+## Tool 1: Slite
+
+Slite is the anchor of this stack. It's a knowledge base platform built for small teams, not enterprises. You create docs, organize them into collections, and people search. No database overhead. No wiki workflows. Just docs that people find.
+
+Why Slite here: It has full-text search that actually works, built-in integrations with Slack, bulk permissions for collections, and a clean writing experience. At $39/month, you're paying for a tool that solves one problem well, not a platform that solves 10 problems poorly.
+
+Key config tips:
+- Create collections by function, not by person: Hiring, Finance, Operations, Brand. Not "Alex's Docs" or "2024 Projects."
+- Use consistent naming: Prefix docs with a category tag in the title. "HIRING: How to Screen Technical Candidates" instead of just "Screening."
+- Turn on Slack integration immediately. Connect it to your main channel. Users who search Slite from Slack will use it 3x more often than if they have to open a separate tab.
+- Set collection permissions tightly. Not everyone needs edit access to Finance docs.
+
+Slite's $39 plan gives you unlimited docs, unlimited users, and full Slack integration. The free tier gives you 100 docs and no Slack integration, which isn't useful for this stack. Budget the paid tier.
+
+## Tool 2: Zapier
+
+Zapier is the connective tissue. It captures knowledge before it disappears into Slack or someone's inbox.
+
+Why Zapier here: It has native integrations with Slite and Slack. You set up one-way automation: a new message in a Slack thread, a form submission, an event in Airtable, triggers a doc draft in Slite. This cuts down on "someone needs to write this down" friction.
+
+Real workflows to set up:
+- **Slack to Slite**: New message in a thread tagged `#document-me` creates a new Slite doc in your Operations collection. The thread content becomes the doc. Saves 10 minutes per week.
+- **Form to Slite**: New Typeform or Google Form submission (customer feedback, bug reports, policy feedback) triggers a doc in your KB. You review and publish manually, but the raw data lives in Slite now, not in a spreadsheet someone emails around.
+- **Scheduled summaries**: Weekly digest of all new docs published in Slite, sent to the team. Keeps people aware of what's been documented.
+
+The Zapier $20/month plan gives you 15 active zaps (automations). You'll use 5-7 for this stack. Their free tier (3 zaps) isn't enough if you're connecting multiple sources to Slite.
+
+<ProsCons
+  pros={[
+    "No code required. UI is drag-and-drop and templates are pre-built",
+    "Triggers work in near-real-time. New Slack message creates a Slite doc in seconds",
+    "Easy to audit. You can see exactly what data flows where"
+  ]}
+  cons={[
+    "Requires a Zapier account on top of Slite. That's another login to manage",
+    "Zaps can break if the target app (Slite) changes its API",
+    "Free tier is too limited for a real documentation workflow"
+  ]}
+/>
+
+## Tool 3: Claude API
+
+Claude API is the intelligence layer. It sits between your knowledge base and your team's questions.
+
+Why Claude here: You can feed your entire Slite knowledge base into Claude via API, and let it answer team questions directly or within Slack. When someone asks "What's our refund policy?" in Slack, instead of them searching Slite manually, Claude retrieves the relevant doc and answers them instantly. This is not a search box. This is an AI that knows your docs.
+
+Key setup:
+- Use Claude's Batch API or streaming API to index your Slite docs weekly. Pull all published docs and embed them in Claude's context window.
+- Create a Slack command like `/ask-kb What's our overtime policy?` that routes the question to Claude.
+- Claude returns the answer and links to the source doc in Slite.
+- Set up a fallback: if Claude can't find a good match, it says "I don't have docs on that. Try searching Slite."
+
+Cost breakdown: Claude's API is usage-based. A team of 10 people asking 20-30 questions per week will spend $1-3/month. You're not paying per message; you're paying per token (roughly 100K tokens = $0.30 for Claude 3.5 Sonnet).
+
+Why not ChatGPT for this: ChatGPT's API doesn't have a strong built-in knowledge base retrieval mode. You'd need to build RAG (retrieval-augmented generation) yourself, which adds complexity. Claude handles this pattern cleaner out of the box.
+
+<Notice>
+If you want to skip the Claude API for now and just use Slite's native search plus Slack integration, you can do that. Your stack drops to $59/mo, and the workflow is "search Slite in Slack, click the link, read the doc." It's slower than AI answering, but it works.
+</Notice>
+
+## How the Tools Connect
+
+Here's the actual data flow for a real scenario:
+
+1. **Capture**: A team member in Slack mentions "Hey, we need to document our new API rate limits." Someone tags the message with `#document-me`.
+2. **Automate**: Zapier picks up the tag, grabs the thread, and creates a draft doc in your Slite Operations collection titled "API Rate Limits."
+3. **Organize**: You (or whoever owns Operations docs) open the Slite draft, clean it up, add examples, publish it.
+4. **Retrieve**: Next week, a new engineer asks in Slack "What are our API limits?" They type `/ask-kb API limits`.
+5. **Answer**: Claude retrieves the doc from Slite's index, summarizes it, and answers the question with a link to the full doc in Slite.
+6. **Update**: Six months later, the limit changes. You update the doc in Slite. Claude's weekly index refresh picks up the change. The next `/ask-kb` question gets the new answer.
+
+No tool sits idle. Each one does one job, and the output of one feeds into the next.
+
+## Total Cost Breakdown
+
+| Tool | Plan | Cost | What You Get |
+|------|------|------|--------------|
+| Slite | Pro | $39 | Unlimited docs, unlimited users, Slack integration, permissions |
+| Zapier | Starter | $20 | 15 active zaps, 2K tasks/month, built-in integrations |
+| Claude API | Pay-as-you-go | ~$1 | Tokens used (10-30 questions/week = $1-3/month) |
+| **Total** | | **~$60** | |
+
+This assumes your team uses the free tier for email (Gmail) and basic Slack (which you likely have already). If you add tools like Typeform (free tier exists) or Google Forms (free), the stack stays under $60.
+
+At 15 people, the cost per person is $4/month. At 50 people, it's $1.20/month. This scales without per-seat pricing.
+
+## What to Swap If Your Budget Is Different
+
+**Tighter budget ($30/mo):**
+- Replace Slite with Notion + Notion AI. You lose search speed and Slack integration, but you keep organized docs. Total: $30/mo (Notion Plus + Claude API usage). Trade-off: search is slower, people don't find docs as easily.
+- Skip Zapier. Manually create docs in Slite once per week. Total: $39/mo (Slite only). Trade-off: you lose automation, but you save $20.
+
+**Looser budget ($100/mo):**
+- Add Slab instead of Slite. Slab ($70/mo) has better analytics (sees which docs are read, which are ignored) and stronger version control. Use the extra $40 to add a second Claude API tier or Perplexity Pro ($20/mo) for competitive research on your customers.
+- Add Airtable ($20/mo) to capture customer feedback automatically. Every support email with a feature request triggers an Airtable record and a Slite doc summary. Better for teams handling customer input.
+
+**No automation budget ($50/mo, Slite only):**
+- Use Slite Pro ($39) + Claude API (~$1). Skip Zapier. Manual docs. This works if your team is small (under 10 people) and writes docs consistently. You still get Slack search, fast indexing, and AI answers.
+
+## Bottom Line
+
+This stack is perfect for operations teams, support teams, and early-stage companies that need to stop repeating answers and start building institutional knowledge. It's not perfect for teams that need heavy collaborative editing (try Confluence) or teams that already have everything in Notion and are happy (stay there). It's also not for distributed teams with 100+ employees; they need Slab or Confluence and better governance.
+
+If you're at 5-25 people, hire new people every few months, and spend more time answering "how do we do X?" questions than you'd like, this stack pays for itself in two weeks.
+
+<FAQBlock
+  faqs={[
+    {
+      question: "Do I really need a separate knowledge base tool, or can I just use Notion?",
+      answer: "Notion works for smaller docs, but it gets slow with heavy search at 100+ articles, has poor full-text search, and lacks built-in permission controls. A dedicated KB tool like Slite handles team-wide documentation scaling better. Use Notion if you're under 30 docs; move to a KB tool at 50+."
+    },
+    {
+      question: "What's the difference between a wiki and a knowledge base?",
+      answer: "Wikis are collaborative edit-heavy tools (like Confluence); knowledge bases are typically read-heavy with curated, published content. For small teams, knowledge bases are better because fewer people write docs and you want fast search, not endless editing threads."
+    },
+    {
+      question: "Can I connect my knowledge base to Slack so people search it without leaving Slack?",
+      answer: "Yes. Slite, Slab, and Notion all have Slack integrations that let users search and retrieve articles from Slack. Setup takes 10 minutes. It cuts down the number of repeat questions in Slack by 40-60% in teams that actually use it."
+    }
+  ]}
+/>
+
+<QuoteBlock author="The practical takeaway">
+A knowledge base only works if people actually use it. Integration with Slack and AI-powered search beats a perfect doc that no one finds.
+</QuoteBlock>
+
+**One more thing**: if you're deciding between this approach and a full async documentation strategy that includes process videos, project templates, and decision logs, read [The Exact Async Documentation Stack for Remote Teams Managing Client Work and Internal Processes ($80/mo Budget)](https://telotonet.com/articles/the-exact-async-documentation-stack-for-remote-teams-managing-client-work-and-in/). This stack is lighter and faster to set up. That one is heavier but more thorough for teams managing complex client workflows.
+
+Start with Slite and Slack integration this week. Add Zapier automation next week. Add Claude API the week after. You don't need to deploy all three at once.
