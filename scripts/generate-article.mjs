@@ -1,7 +1,7 @@
 /**
  * generate-article.mjs
  *
- * Called by the GitHub Actions workflow 3x/day.
+ * Called by the GitHub Actions workflow once per day.
  * Flow:
  *   1. Read existing slugs → pass to Claude so it doesn't repeat topics
  *   2. Claude picks a fresh topic (or uses TOPIC_HINT env var)
