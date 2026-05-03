@@ -605,11 +605,6 @@ Allowed blocks:
   cons={["Specific downside", "Another concrete weakness"]}
 />
 
-4. QuoteBlock
-<QuoteBlock author="Common buyer takeaway">
-  One sharp sentence that summarizes the practical reality for the reader.
-</QuoteBlock>
-
 Rules:
 - At least one block must appear before the midpoint of the article.
 - Pick blocks that fit the article type and category.
@@ -671,6 +666,7 @@ description: "<SEO meta description, 140–160 characters>"
 excerpt: "<one sentence summary>"
 publishedAt: "${today}"
 author: "Alex"
+authorUrl: "https://telotonet.com/authors/alex/"
 category: "<slug from: ${categoryList}>"
 coverImage: "${coverAsset.url}"
 coverImageAlt: "${coverAsset.alt}"

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getAllArticles } from '@/lib/articles'
 import { getAllCategories } from '@/lib/categories'
-import { buildWebSiteSchema } from '@/lib/seo'
+import { buildOrganizationSchema, buildWebSiteSchema } from '@/lib/seo'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { ArticleCard } from '@/components/article/ArticleCard'
 import { Badge } from '@/components/ui/Badge'
@@ -18,6 +18,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={buildWebSiteSchema()} />
+      <JsonLd data={buildOrganizationSchema()} />
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section aria-labelledby="hero-heading" className="border-b bg-muted/20">

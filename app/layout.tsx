@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${lora.variable}`}
     >
       <head>
+        <meta name="google-adsense-account" content="ca-pub-9483283827194890" />
         <Script id="google-consent-mode" strategy="beforeInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}

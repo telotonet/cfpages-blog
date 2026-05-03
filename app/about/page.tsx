@@ -28,6 +28,11 @@ export default function AboutPage() {
             the noise and pick the right tools.
           </p>
 
+          <p>
+            The site is independently published and updated by Alex. Editorial questions and
+            corrections can be sent to <a href="mailto:telotonet@gmail.com">telotonet@gmail.com</a>.
+          </p>
+
           <h2>What we do</h2>
           <p>
             We publish practical reviews, comparisons, and setup guides designed to help small
