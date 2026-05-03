@@ -4,6 +4,7 @@ import type { ArticleMeta } from '@/lib/types'
 import { formatDate } from '@/lib/utils'
 
 const AUTHOR_AVATAR = 'https://avatars.githubusercontent.com/u/84102215?v=4'
+const DEFAULT_AUTHOR_URL = '/authors/alex/'
 
 interface AuthorBoxProps {
   article: ArticleMeta
@@ -29,9 +30,9 @@ export function AuthorBox({ article }: AuthorBoxProps) {
 
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            {article.authorUrl ? (
+            {article.authorUrl || article.author === 'Alex' ? (
               <Link
-                href={article.authorUrl}
+                href={article.authorUrl ?? DEFAULT_AUTHOR_URL}
                 className="font-sans text-sm font-semibold text-foreground hover:text-accent transition-colors"
                 rel="author"
               >
@@ -52,7 +53,7 @@ export function AuthorBox({ article }: AuthorBoxProps) {
             )}
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            Reviews and comparisons of B2B SaaS tools. Tests products and writes about what actually matters.
+            Writes and updates comparisons and guides about B2B SaaS tools, pricing, and workflow fit for small teams.
           </p>
         </div>
       </div>

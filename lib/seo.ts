@@ -131,6 +131,19 @@ export interface WebSiteSchema {
   }
 }
 
+export interface OrganizationSchema {
+  '@context': string
+  '@type': 'Organization'
+  name: string
+  url: string
+  email: string
+  contactPoint: {
+    '@type': 'ContactPoint'
+    email: string
+    contactType: string
+  }
+}
+
 export function buildWebSiteSchema(): WebSiteSchema {
   return {
     '@context': 'https://schema.org',
@@ -145,6 +158,21 @@ export function buildWebSiteSchema(): WebSiteSchema {
         urlTemplate: `${SITE_URL}/articles/?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
+    },
+  }
+}
+
+export function buildOrganizationSchema(): OrganizationSchema {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+    email: 'telotonet@gmail.com',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'telotonet@gmail.com',
+      contactType: 'editorial',
     },
   }
 }

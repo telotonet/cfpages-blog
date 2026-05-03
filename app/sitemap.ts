@@ -34,6 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
+      url: `${baseUrl}/authors/alex/`,
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
       url: `${baseUrl}/contact/`,
       changeFrequency: 'monthly',
       priority: 0.4,

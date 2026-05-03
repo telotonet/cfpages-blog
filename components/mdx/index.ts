@@ -6,7 +6,6 @@ import { ComparisonTable } from './ComparisonTable'
 import { CTABox } from './CTABox'
 import { FAQBlock } from './FAQBlock'
 import { ImageBlock } from './ImageBlock'
-import { QuoteBlock } from './QuoteBlock'
 import { ToolSummaryCard } from './ToolSummaryCard'
 
 export const mdxComponents: MDXComponents = {
@@ -18,7 +17,6 @@ export const mdxComponents: MDXComponents = {
   CTABox,
   FAQBlock,
   ImageBlock,
-  QuoteBlock,
   ToolSummaryCard,
 }
 
@@ -30,6 +28,5 @@ export {
   CTABox,
   FAQBlock,
   ImageBlock,
-  QuoteBlock,
   ToolSummaryCard,
 }
