@@ -1,0 +1,209 @@
+---
+title: "How to Set Up Recurring Tasks and Delegation in Todoist: A Step-by-Step Guide for Small Teams Managing Weekly Workflows Without Project Bloat"
+description: "Learn how to configure recurring tasks and assign work in Todoist without creating chaos. Practical setup for small teams managing weekly workflows."
+excerpt: "Set up recurring tasks and team delegation in Todoist without turning your task manager into a cluttered mess."
+publishedAt: "2026-05-05"
+author: "Alex"
+authorUrl: "https://telotonet.com/authors/alex/"
+category: "productivity"
+coverImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Team collaborating on tasks and project planning"
+tags: ["task management", "team workflows", "todoist setup", "recurring tasks", "delegation"]
+draft: false
+featured: false
+articleType: "guide"
+faq:
+  - question: "Can you assign tasks to team members in Todoist free plan?"
+    answer: "No. Task assignment and team collaboration require Todoist Premium ($4/month) or Team Inbox ($60/month for teams). The free plan doesn't support delegation or seeing other people's tasks."
+  - question: "What's the difference between recurring tasks and repeating subtasks in Todoist?"
+    answer: "Recurring tasks repeat on a schedule you set (daily, weekly, monthly). Repeating subtasks are individual tasks within a project that repeat independently. Use recurring tasks for workflows, repeating subtasks for checklist items tied to a parent task."
+  - question: "How do I prevent recurring tasks from piling up and cluttering my task list?"
+    answer: "Use the 'Due date' field to stagger when recurring tasks appear. Create sections or use filters to hide completed recurring tasks from view. Set recurring tasks to auto-complete or archive after a certain period if you're using Todoist Pro or higher."
+
+---
+
+Todoist works best when you're not drowning in task clones. If you've ever set up recurring tasks and watched your task list balloon with duplicates, you know the problem. Add team delegation to that and suddenly nobody knows who's responsible for what.
+
+The good news: Todoist has solid recurring task and delegation features. The catch: you need to set them up right the first time, or you'll spend weeks untangling the mess.
+
+This guide walks you through exactly how to configure recurring tasks and assign work to team members without creating workflow chaos.
+
+## What You Need Before Starting
+
+You'll need:
+- A Todoist account. Free plan works for individual recurring tasks. If you're delegating to a team, you need Premium ($4/month) minimum, or Team Inbox ($60/month for actual team collaboration).
+- Team members' email addresses if you're delegating work.
+- A clear list of which tasks repeat and on what schedule (daily, weekly, monthly, custom patterns).
+- Clarity on who owns what. Vague ownership kills delegation.
+- 10-15 minutes to configure this properly.
+
+<Callout type="info" title="Premium is required for real delegation">
+If you're a solo founder, Todoist free plan handles recurring tasks fine. The moment you have a team, upgrade to Premium at minimum. Team Inbox is overkill unless you're a distributed remote team handling customer support or intake workflows.
+</Callout>
+
+## Step 1: Create Your First Recurring Task
+
+Start simple. Pick one recurring task your team does every week. Let's say a weekly standup prep task.
+
+Open Todoist. Click the plus icon (+) to create a new task.
+
+Type your task name: "Prepare weekly standup notes"
+
+Press Enter. Now the task appears in your list.
+
+Click on the task to open its details panel on the right side.
+
+In the details panel, you'll see a calendar icon labeled "Due date." Click it.
+
+Choose a date for when this task should first appear. Pick a day your team actually does the standup. Let's say Monday.
+
+Now look for a "Repeat" option below the due date. Click it.
+
+<Notice>
+Todoist shows the repeat options right next to the due date field. If you don't see "Repeat," make sure you've clicked into the task details, not just the task row itself.
+</Notice>
+
+Select "Weekly" from the dropdown. A new field appears asking which days of the week. Check "Monday" (or whatever day your standup happens).
+
+Click outside the repeat field to save. Your task now repeats every Monday automatically.
+
+## Step 2: Set Up Your Recurring Task Schedule Without Overload
+
+Here's where most teams fail: they create recurring tasks for everything, then get overwhelmed by the volume.
+
+Create a new project called "Weekly Recurring Work" (or whatever naming makes sense to your team). This keeps recurring tasks from mixing with your regular backlog.
+
+Add 3-5 core recurring tasks to this project:
+- Weekly status report (every Friday)
+- Weekly team check-in prep (every Monday)
+- Recurring client deliverable (whatever day it's due)
+- Monthly invoice review (first Friday of each month)
+- Quarterly planning sync (first Monday of each quarter)
+
+For each recurring task, follow the same process as Step 1: due date, then repeat configuration.
+
+For monthly tasks, click "Repeat" then select "Monthly." Todoist lets you choose "Same day each month" (e.g., the 15th) or "Same day of the week" (e.g., first Friday).
+
+Use the second option. It's more reliable for team scheduling.
+
+<ProsCons
+  pros={["Recurring tasks auto-generate, no manual creation needed", "You can see the schedule up front without scrolling", "Team members get a consistent expectation of when work appears"]}
+  cons={["If the pattern changes, you have to edit or delete old recurrences manually", "Completed recurring tasks still appear in your history, cluttering search results", "No built-in way to batch-edit multiple recurring tasks at once"]}
+/>
+
+## Step 3: Assign Recurring Tasks to Team Members
+
+This requires Todoist Premium or higher.
+
+Open a recurring task. In the details panel, you'll see an "Assign to" field. It looks like a person icon.
+
+Click it. A dropdown shows your team members (if they've been added to your Todoist workspace).
+
+Select the team member's name.
+
+Now every time this recurring task generates, it automatically assigns to that person.
+
+Let's say Sarah owns the weekly standup prep. Click "Assign to" on that task and select Sarah. The next Monday, a new standup prep task appears in Sarah's list already assigned to her. No manual reassignment needed.
+
+Do this for all your recurring tasks. Map:
+- Status report to the person who owns communications
+- Invoice review to the finance person
+- Client deliverable to whoever manages that relationship
+
+The key insight: assignment should follow responsibility, not rotation. If you rotate tasks week-to-week, set up separate recurring tasks for each person, or handle rotation manually and use Todoist just for tracking.
+
+## Step 4: Use Filters to Keep Your View Clean
+
+This is the part people skip, then complain their task list is a mess.
+
+Open Todoist's search and filter panel. In the left sidebar, click the funnel icon.
+
+Create a new filter. Give it a name: "This Week's Work"
+
+In the filter field, type:
+```
+#Weekly Recurring Work & due: today | due: tomorrow | due: this week
+```
+
+This shows only tasks in your Weekly Recurring Work project that are due soon.
+
+Create another filter: "My Tasks"
+```
+assigned: @me & !completed
+```
+
+This shows tasks assigned to you that aren't done yet.
+
+Save both filters. Now your sidebar shows custom views instead of your full unfiltered task list. You see what matters without the noise.
+
+<Callout type="info" title="Filters are views, not subsets">
+Creating a filter doesn't delete or move tasks. It just shows a subset of your tasks based on the rules you set. You can delete a filter anytime and all tasks remain intact.
+</Callout>
+
+## Step 5: Handle Task Delegation When Recurring Tasks Don't Fit the Pattern
+
+Some workflows don't repeat on a fixed schedule. Someone needs to do something once a week, but it depends on context or priority.
+
+For these, use Todoist's "Recurring template" approach instead of built-in recurrence.
+
+Create a task called "Weekly content review" but don't set it to repeat. Instead, make a checklist inside it:
+- Review client content pieces (due Tuesday)
+- Add feedback in doc (due Wednesday)
+- Send summary report (due Friday)
+
+Assign the parent task to the content lead. They can see all subtasks and manage the flow themselves. It repeats in their mind as a weekly ritual without cluttering your task list.
+
+For team delegation without fixed recurrence: use Todoist comments. Assign a task, then add a comment tagging the person with instructions. They see the task, the comment, and context all in one place.
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Creating recurring tasks for things that don't actually repeat.**
+
+You set up a task to "Review Q1 goals" to recur quarterly. Three quarters in, it's generating tasks nobody uses because the process changed. Now you have zombie recurring tasks.
+
+Fix: Before making anything recur, ask: "Will this task and its due date be relevant 6 months from now?" If no, don't make it recurring. Handle it manually once, then evaluate.
+
+**Mistake 2: Assigning everything to one person because you're not sure who owns what.**
+
+You delegate all recurring tasks to the ops manager because they seem organized. Now they're a bottleneck. Recurring tasks should push work out to the people who actually do it.
+
+Fix: Map each recurring task to the person whose job it is, not who has bandwidth. If nobody owns it, the task shouldn't be recurring.
+
+**Mistake 3: Forgetting to check if your recurring task is actually completing.**
+
+You set up a weekly task to appear every Monday. It's now been 8 weeks. The last two weeks, the task has been sitting in your list incomplete. You're just snoozing it instead of actually doing it.
+
+Fix: Review recurring tasks every two weeks. If a recurring task goes uncompleted for more than one cycle, either delete it or reassign it. A recurring task that's always late isn't a task, it's procrastination tracked.
+
+## Results to Expect
+
+After setup, here's what happens:
+
+**Week 1-2:** Your team gets one consistent view of recurring work. Recurring tasks appear on schedule. People know what they're responsible for. No more "Wait, who was supposed to do this?"
+
+**Week 3-4:** You've adjusted. Some tasks needed to move, or the schedule wasn't quite right. You tweak due dates or who they're assigned to. The system starts feeling natural.
+
+**Month 2+:** Recurring work becomes invisible. Tasks show up, get done, archive. Your team moves through the workflow without thinking about setup. This is the goal. You want your task system to fade into the background and just work.
+
+Real numbers: A team of 5-8 people with 8-12 recurring tasks spends about 2-3 hours per week on recurring work coordination. With Todoist set up right, that overhead drops to 10-15 minutes because assignment and scheduling are automated. You're not talking about who's doing what every Monday morning.
+
+One realistic caveat: Todoist's automation is solid for simple patterns. If your recurring work is complex (conditional logic, dependencies, branching workflows), you'll outgrow Todoist. At that point, you might look at ClickUp or Monday.com. But for small teams managing weekly workflows, Todoist's recurring tasks and assignment system is exactly enough. For comparison on more complex scenarios, see our guide on [Asana vs ClickUp: Which Project Management Tool Works Better for Small Teams Managing Client Projects and Internal Tasks](https://telotonet.com/articles/asana-vs-clickup-which-project-management-tool-works-better-for-small-teams-mana/).
+
+## Quick Recap
+
+- Create recurring tasks by setting a due date, then clicking "Repeat" and choosing your frequency
+- Use the "Same day of the week" option for monthly tasks so they land on predictable days
+- Organize recurring tasks in a separate project to avoid mixing them with your regular backlog
+- Assign recurring tasks to the person responsible, not whoever has bandwidth
+- Use filters to show only the recurring work that matters this week
+- Delete or pause recurring tasks that go uncompleted for more than one cycle
+- Review your recurring task setup every month to catch tasks that stopped being relevant
+- For complex workflows that don't fit fixed recurrence, use checklists or comments instead
+
+<FAQBlock
+  faqs={[
+    { question: "Can you assign tasks to team members in Todoist free plan?", answer: "No. Task assignment and team collaboration require Todoist Premium ($4/month) or Team Inbox ($60/month for teams). The free plan doesn't support delegation or seeing other people's tasks." },
+    { question: "What's the difference between recurring tasks and repeating subtasks in Todoist?", answer: "Recurring tasks repeat on a schedule you set (daily, weekly, monthly). Repeating subtasks are individual tasks within a project that repeat independently. Use recurring tasks for workflows, repeating subtasks for checklist items tied to a parent task." },
+    { question: "How do I prevent recurring tasks from piling up and cluttering my task list?", answer: "Use the 'Due date' field to stagger when recurring tasks appear. Create sections or use filters to hide completed recurring tasks from view. Set recurring tasks to auto-complete or archive after a certain period if you're using Todoist Pro or higher." }
+  ]}
+/>
