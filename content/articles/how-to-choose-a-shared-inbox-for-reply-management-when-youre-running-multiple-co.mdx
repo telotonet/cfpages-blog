@@ -1,0 +1,140 @@
+---
+title: "How to Choose a Shared Inbox for Reply Management When You're Running Multiple Cold Email Campaigns Across Different Sender Domains"
+description: "Evaluate shared inboxes for multi-domain cold email reply handling. Compare Slack, Outlook, and dedicated tools for SDR teams."
+excerpt: "Running cold email from multiple domains means managing replies across separate sender addresses. Here's how to pick a shared inbox that won't collapse under scale."
+publishedAt: "2026-05-08"
+author: "Alex"
+authorUrl: "https://telotonet.com/authors/alex/"
+category: "email-tools"
+coverImage: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Messaging and communication interface on screen"
+tags: ["shared-inbox", "cold-email", "reply-management", "multi-domain", "email-infrastructure"]
+draft: false
+featured: false
+articleType: "best-of"
+faq:
+  - question: "Can I use a single Gmail shared inbox for replies from multiple sender domains?"
+    answer: "Technically yes, but it creates chaos. Replies land in one place, but you lose context about which domain generated which lead. You'll also struggle with reply-to routing if you're not careful with forwarding rules. Most teams running serious volume end up creating separate inboxes per domain."
+  - question: "Do I need a separate shared inbox tool if my CRM already tracks replies?"
+    answer: "Not always. If your CRM syncs with your email client and your team is small (under 5 SDRs), a native Gmail or Outlook shared folder works. But once replies start piling up and you need real-time handoff or assignment rules, a dedicated tool saves time and prevents missed emails."
+  - question: "What happens to reply-to addresses when I set up a shared inbox across multiple domains?"
+    answer: "The reply-to header depends on how you configure forwarding. If you forward from domain A to a shared inbox, replies hit the shared inbox address, not domain A. Use a dedicated tool or proper mail rules to preserve reply-to integrity. This matters for sender reputation and deliverability."
+---
+
+## Skip This If You Already Know What You Need
+
+- **Use a dedicated shared inbox tool** (Front, Notion Mail, or Helpshift) if you're juggling 3+ sender domains and your SDR team is 4+ people. Native email forwarding breaks down at scale.
+- **Gmail or Outlook forwarding works** if you're running 2 domains max and your team is under 5 people. Set up filters and labels to route replies, but expect manual overhead.
+- **Watch for reply-to header loss**, folder organization chaos, and missing context about which domain generated which lead. These kill productivity faster than tool switching ever will.
+
+## What Actually Matters When Choosing a Shared Inbox for Multi-Domain Cold Email
+
+You're not buying a shared inbox like it's a newsletter tool. You're buying infrastructure that keeps replies organized, routable, and tied to the right sender domain. Here's what separates tools that work from tools that create more work.
+
+**1. Reply-to header preservation and routing logic.**
+When someone replies to an email sent from sales@domain-a.com, the reply needs to land in your shared space AND maintain context that it came from domain-a. Some tools rewrite headers automatically. Others let you set custom rules. This matters because your SDRs need to know which domain generated which prospect, and your deliverability engine needs clean reply chains. Tools like Front and Notion Mail handle this explicitly. Gmail forwarding and generic shared mailboxes often corrupt this data.
+
+**2. Assignment and triage without manual copy-paste.**
+Cold email replies are time-sensitive. If a prospect responds to an SDR's campaign, the reply needs to land in the right person's queue in seconds, not after someone manually forwards it to Slack. Good shared inbox tools offer assignment rules (route all replies from domain-a to Sarah, domain-b to James) and automation that ties replies to existing contacts in your CRM. Bad ones require someone to read the email and manually assign it.
+
+**3. Visibility into which domain and campaign generated each reply.**
+This is the thread that ties everything together. When a shared inbox lumps replies from five different domains into one folder, your SDRs lose context. They see "Prospect replied," but not "Prospect replied to the domain-b campaign we ran last week." A good tool either keeps separate inboxes per domain (cleaner) or uses labels, tags, or metadata to make the source visible at a glance.
+
+**4. Integration with your CRM or CMS so replies actually tie back to the prospect record.**
+If a reply lands in your shared inbox but doesn't sync to your CRM, you've just created duplicate work. Your SDR sees the reply, finds the prospect manually, updates the status. A solid tool syncs automatically, updates the contact record, and moves the opportunity forward. Poor tools require you to copy-paste or export manually.
+
+**5. Deliverability monitoring without separate logins.**
+Running multiple domains means tracking sender reputation, bounce rates, and spam folder placement for each one separately. Some shared inbox tools have basic bounce detection and read receipts. Others make you log into Mailbox Monitors separately. When you're managing 3+ domains, tool fragmentation kills velocity. You want centralized visibility.
+
+<Callout type="info" title="The reply-to trap">
+  Most teams don't realize that forwarding emails from domain-a.com to a shared inbox can rewrite the reply-to header to point back to the shared inbox address, not domain-a.com. This breaks the prospect's ability to reply directly to the domain they first emailed. If you're forwarding, test this before rolling out to your whole team. Some tools (Front, Notion Mail) solve this explicitly. Others require custom mail rules.
+</Callout>
+
+## The Options Worth Considering
+
+| Tool | Best for | Price | Weak spot |
+|------|----------|-------|-----------|
+| Front | Shared reply management at scale with multi-domain routing | $99–$299/month (per user) | Expensive if your team is under 5 people; overkill for light volume |
+| Notion Mail | Lightweight shared inbox tied to a Notion workspace | Free–$10/month for Notion + mail setup | Limited assignment automation; works best with small teams; no CRM integration |
+| Outlook Groups or Gmail forwarding | Free or included with existing licenses | $0 (Outlook/Gmail) or $6–14/month per user | Header rewriting issues; manual folder management; no assignment logic |
+| Helpshift | Ticketing-style reply management for agencies | $99–$500/month | Built for customer support first, cold email second; over-engineered for small SDR teams |
+| Slack shared email channel | Asynchronous reply collaboration within Slack | $12.50–$15/month per member | No email client UX; replies show as Slack messages; confuses email context with chat |
+| Superhuman | High-end email client with shared features | $30/month | Designed for power users with keyboard shortcuts; not built for team reply assignment; pricey for shared inboxes |
+
+## Front: The Right Choice When You're Running 4+ Domains and Have a Dedicated Ops Person
+
+Front is the closest thing to a "proper" shared inbox for multi-domain cold email. It handles reply-to routing explicitly, assigns emails based on custom rules, and integrates with HubSpot, Salesforce, and Pipedrive. You can set rules like "all replies to domain-b go to this team" or "if the subject contains 'contract,' route to legal." It has read receipts, comment threads, and snooze features that make triage fast.
+
+The catch: it's $99 minimum per person per month, so a 5-person SDR team hits $500/month quickly. It's built for agencies and high-volume outreach shops where reply management is a core job function, not a side task. If you're sending 5,000 cold emails per month across three domains and expecting 150 replies, Front is worth it. If you're sending 500 emails and expect 15 replies, you're overpaying.
+
+## Notion Mail: The Right Choice When You Want Lightweight Multi-Domain Reply Routing for Under 10 People
+
+Notion Mail ties your shared inbox directly to a Notion database. Replies land in an email folder, sync to Notion as records, and your team can triage from the Notion interface or the email client. No learning curve, no expensive per-user fees. The setup is minimal: forward emails from each domain to a Notion Mail address, set up filters to tag by domain, and start working.
+
+The limitation is that assignment is mostly manual or label-based. You don't get "automatically send all domain-b replies to James." You get labels and filters. For small teams where everyone monitors the same inbox anyway, this works fine. For teams larger than 8 people, it starts to feel like herding cats.
+
+## Gmail Forwarding or Outlook Groups: The Right Choice When You're Just Starting and Can't Justify Tool Spend
+
+If you're running two domains with a 2-person SDR team, native forwarding and labels work. Set up a Gmail group or Outlook shared mailbox, forward replies from each domain to it, and use labels or folders to separate them. No monthly cost. No new logins. Integrates with your existing stack.
+
+The problems appear fast: reply-to headers get rewritten (prospect tries to reply to domain-a but the reply-to points to the shared inbox), nobody owns the inbox so emails slip through the cracks, and there's no assignment logic. After you hit 3 domains or 4 SDRs, you'll feel the friction and want to upgrade. Plan for this.
+
+<ProsCons
+  pros={["Zero cost if using existing email licenses", "No new tool to learn or support", "Works fine for under 2 domains and 3 people"]}
+  cons={["Reply-to header corruption is common", "No assignment or routing logic", "Manual folder/label management gets chaotic at scale", "No CRM sync without additional setup"]}
+/>
+
+## Helpshift: The Right Choice When You're an Agency and Reply Triage Doubles as Customer Support
+
+Helpshift is built for customer support but works well for cold email reply management if your team is also managing inbound support tickets. It handles multi-inbox routing, auto-assignment, and SLA tracking. You can create rules (route domain-a replies to Team A, domain-b replies to Team B) and track response time per SDR.
+
+If you're not also managing customer support, Helpshift is expensive overhead. Its ticketing workflow feels like overkill for cold email replies. You're paying for escalation routing, canned responses, and customer satisfaction surveys you don't need. It starts at $99/month for 2 inboxes.
+
+## Slack Shared Email Channels: The Right Choice When Your Team Lives in Slack and Doesn't Need True Email UX
+
+Slack added email integration that lets you forward emails into a shared Slack channel. Replies land as messages, everyone sees them instantly, and you can thread conversations. If your team is already in Slack for project management and collaboration, this reduces tool fragmentation.
+
+The tradeoff: Slack is a chat interface, not an email client. Forwarding emails to Slack adds latency (they don't arrive instantly). You lose the ability to track read status, reply-to headers, and attachments become messy. You're also mixing cold email triage with chat, which erodes focus. Use this if you're micro-small and your Slack culture is strong. Don't use this if cold email reply management is a core function.
+
+## Red Flags to Watch Out For
+
+**Header rewriting without warning.** Some tools claim to support multi-domain forwarding but silently rewrite the reply-to header. Test with a real domain before rolling out. Send yourself an email and reply to it. Check the reply-to header in the raw message. If it doesn't match your sender domain, the tool is breaking your mail chain.
+
+**Assignment rules that require manual entry.** If the tool requires you to manually add each domain and assign it to a person every time someone joins or leaves, you're looking at bottleneck. Good tools let you create rules once and forget them. Bad ones require a setup call every quarter.
+
+**No CRM sync, or sync that requires a third-party connector.** If replies don't update your HubSpot or Pipedrive record automatically, someone is copy-pasting. Check whether the tool has native integration before buying. If it requires Zapier or a custom webhook, verify the integration actually works and has support behind it.
+
+**Per-user pricing that scales with team size.** Front and Helpshift charge per person per month. A 10-person SDR team on Front costs $990+/month. Make sure you can rationalize the cost before signing up. Sometimes a cheaper tool with less features is the right call.
+
+**Separate logins for deliverability monitoring.** If you have to log into one tool to manage replies and another to check bounce rates or inbox placement, you're fragmenting visibility. Look for tools that give you sender reputation and list health in the same interface.
+
+## FAQ
+
+<FAQBlock
+  faqs={[
+    {
+      question: "Can I use a single Gmail shared inbox for replies from multiple sender domains?",
+      answer: "Technically yes, but it creates context loss. Replies land in one place, but you lose track of which domain generated which lead. You'll also struggle with reply-to routing unless you set up custom mail rules carefully. Most teams running serious volume end up creating separate inboxes per domain or using a tool that preserves domain context automatically."
+    },
+    {
+      question: "Do I need a separate shared inbox tool if my CRM already tracks replies?",
+      answer: "Not always. If your CRM syncs with your email client (HubSpot for Gmail, Pipedrive for Outlook) and your team is under 5 SDRs, native email forwarding works. But once replies start accumulating and you need real-time assignment or routing rules, a dedicated tool prevents missed emails and speeds up triage. A tool pays for itself when it saves one SDR 30 minutes per day."
+    },
+    {
+      question: "What happens to reply-to addresses when I forward emails from multiple domains to a shared inbox?",
+      answer: "The reply-to header depends on your forwarding setup. If you forward from domain A to a shared inbox, replies default to the shared inbox address, not domain A. This breaks the prospect's ability to reply directly to domain A. Use a dedicated tool with proper mail rules or use Outlook/Gmail rules that preserve the original reply-to header. Test this before rolling out to your team."
+    }
+  ]}
+/>
+
+## My Pick for Most Teams
+
+**Use Notion Mail if you're small (under 10 people) and want to avoid tool bloat. Use Front if you're serious about cold email as a revenue driver and can justify the per-user cost.**
+
+Most SDR teams run 2-3 domains and don't have the infrastructure budget of a mid-market sales ops shop. Notion Mail gives you multi-domain reply management without the $500/month price tag. It integrates with your existing Notion workspace (which half of you are already using), syncs replies automatically, and lets you tag and filter by domain. Setup takes an afternoon.
+
+If your team is 6+ people, each SDR owns a domain, and reply velocity is high enough that a shared inbox is a full-time job, Front is the right tool. It has the assignment logic, CRM integrations, and compliance features that scale. Just don't buy it for a 3-person team. You're overpaying.
+
+For cold email ops specifically, also consider how your reply management ties into your broader outreach stack. If you're using [Dripify vs Apollo: B2B Cold Email and Lead Database Comparison for Sales Teams](https://telotonet.com/articles/dripify-vs-apollo-b2b-cold-email-and-lead-database-comparison-for-sales-teams/) for campaign execution, check whether either tool has native reply integrations. Some platforms bundle reply management into their feature set. If yours does, using the native tool beats bolting on a separate shared inbox.
+
+The worst mistake: buying a shared inbox tool before you have a process. Reply management without written triage rules (who owns what, response time SLAs, escalation paths) just moves the chaos to a new tool. Define your process first. Then pick the tool that enforces it.
