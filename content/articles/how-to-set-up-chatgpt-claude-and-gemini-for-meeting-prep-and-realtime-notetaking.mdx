@@ -1,0 +1,394 @@
+---
+title: "How to Set Up ChatGPT, Claude, and Gemini for Meeting Prep and Real-Time Note-Taking: A Step-by-Step Guide for Small Teams Running Daily Standups and Client Calls"
+description: "Step-by-step setup guide for using ChatGPT, Claude, and Gemini for meeting prep, real-time notes, and action items. Includes integrations for standups and client calls."
+excerpt: "Learn how to configure ChatGPT, Claude, and Gemini specifically for meeting workflows, note-taking, and real-time follow-ups without friction."
+publishedAt: "2026-05-12"
+author: "Alex"
+authorUrl: "https://telotonet.com/authors/alex/"
+category: "ai-assistants"
+coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&auto=format"
+coverImageAlt: "Data and analytics dashboard on a monitor"
+tags: ["ChatGPT", "Claude", "Gemini", "meeting notes", "AI workflows", "standups"]
+draft: false
+featured: false
+articleType: "guide"
+faq:
+  - question: "Can I use ChatGPT, Claude, and Gemini at the same time for meetings?"
+    answer: "Yes. Most teams use one tool live during calls (ChatGPT or Claude on desktop) and keep another (Gemini) open in a second window for backup or research. You won't need all three running simultaneously, but having them accessible prevents vendor lock-in and lets you pick the best tool for each meeting type."
+  - question: "Do these AI assistants integrate with Zoom, Google Meet, or Teams?"
+    answer: "ChatGPT and Claude do not have native meeting software integrations. Gemini integrates with Google Meet if you're using Workspace. For most teams, the workflow is: open the AI tool in a separate browser tab, copy meeting link into the chat, paste key discussion points after the call, and regenerate notes. Zapier can automate some post-call handoffs to your project manager."
+  - question: "Should I pay for ChatGPT Plus, Claude Pro, or Gemini Advanced, or is free enough?"
+    answer: "Free versions work for occasional note-taking and simple prep. If you're running 5+ meetings per week, ChatGPT Plus ($20/mo) or Claude Pro ($20/mo) saves time on token limits and context length. Gemini Advanced ($20/mo) makes sense only if your team already uses Google Workspace. For small teams, start free, upgrade one person's account, and share the outputs."
+---
+
+Running back-to-back meetings without losing action items or context kills productivity. Most teams take notes in docs, Slack, or their laps, then spend 20 minutes after each call reconstructing what happened and who owns what.
+
+There's a better way. ChatGPT, Claude, and Gemini can prep meetings before they start, capture key points in real-time, generate meeting summaries on demand, and surface action items without you typing a single sentence.
+
+This guide walks you through configuring all three tools specifically for meeting workflows. You'll know which tool to use when, how to set them up for minimum friction, and how to integrate them with your existing standup or client call routine.
+
+## What You Need Before Starting
+
+Before you begin, have these ready:
+
+**Accounts and access:**
+- ChatGPT account (free or Plus at $20/mo; Plus includes GPT-4 and longer context windows, which help with longer meeting transcripts)
+- Claude account (free or Claude Pro at $20/mo; Pro gives you 100K context window, critical for multi-hour meeting logs)
+- Gemini account (free or Gemini Advanced at $20/mo through Google One; requires Google Workspace for business integrations)
+
+**Meeting materials:**
+- Calendar links or meeting agendas (even rough outlines work)
+- Any pre-meeting briefing docs, client background, or past conversation notes
+- Names and roles of attendees (especially for client calls where context matters)
+- A shared doc or Slack channel where team members can see meeting prep and notes post-call
+
+**Tools you'll likely already have:**
+- A web browser with multiple tabs or windows (you'll keep an AI tab open during calls)
+- A text editor, Google Doc, or Notion page to paste summaries into (for storage and team sharing)
+- Optionally, a calendar tool like Google Calendar or Outlook (to batch prep before standups)
+
+<Callout type="info" title="Time investment upfront">
+  The first 2-3 meetings using this workflow will feel slower because you're learning prompts and pasting text. By meeting 5-6, you'll be 15 minutes faster per call than your old note-taking routine. Budget 10 minutes per week to refine your prompts based on what worked.
+</Callout>
+
+## Step 1: Set Up ChatGPT for Meeting Prep and Live Note-Taking
+
+Start with ChatGPT because it's the most accessible and works well for quick meeting prep.
+
+Open ChatGPT (or go to chat.openai.com) and create a dedicated chat thread for meetings. Name it something clear like "Meeting Prep and Notes" so you can find it later.
+
+At the top of this new thread, paste this system prompt:
+
+```
+You are a meeting assistant for a small B2B team. Your job is to:
+1. Help prepare for meetings by suggesting talking points based on a brief outline or attendee list
+2. Capture meeting notes in real-time from key discussion points I paste during or after the call
+3. Generate concise action items with owner names and due dates
+4. Flag any follow-up questions or topics that need research
+
+Format all output as markdown. Keep summaries under 300 words unless I ask for detail. Always list action items in a separate section with owner and due date.
+```
+
+Copy that text, paste it into your ChatGPT chat, and send it. ChatGPT will acknowledge the instruction. From now on, every response in that thread will follow this format.
+
+Now, let's do a test with a sample meeting. Say your team has a standup in 30 minutes with the Product, Sales, and Support leads. Paste this into ChatGPT:
+
+```
+Meeting: Daily Standup
+Date: May 15, 2025
+Time: 10 AM
+Attendees: Sarah (Product Lead), Marcus (Sales Lead), Jenna (Support Lead)
+Duration: 15 minutes
+
+Known agenda items:
+- Update on new feature rollout (Product)
+- Pipeline status and Q2 forecast (Sales)
+- Support queue backlog (Support)
+```
+
+ChatGPT will return a prep outline like:
+
+```
+## Meeting Prep: Daily Standup
+
+### Key Talking Points
+
+**Sarah (Product):**
+- Is the rollout on track? Any blockers?
+- How are early metrics looking?
+
+**Marcus (Sales):**
+- Pipeline: which deals are closing this week?
+- Any forecast changes due to customer churn or new wins?
+
+**Jenna (Support):**
+- Current queue depth and most common issue?
+- Do any issues need Product escalation?
+
+### Pre-Meeting Questions to Ask
+- Is there capacity for a new support feature request?
+- Do sales need help with any account context?
+```
+
+Screenshot or copy this output to a shared Google Doc so the team sees the structure 5 minutes before the call.
+
+<Notice>
+  During the actual meeting, don't try to capture every word. Instead, jot down 2-3 key decisions or problems mentioned, then paste them into ChatGPT right after the call with names attached. The AI will structure them into proper notes.
+</Notice>
+
+## Step 2: Configure Claude for Deeper Meeting Context and Long Transcripts
+
+Claude's real strength is handling longer context and messy input. It's better than ChatGPT if you're dealing with multi-hour strategy sessions, customer discovery calls, or call transcripts.
+
+Go to claude.ai and create a new conversation. In the system prompt field (if using Claude Pro), set this:
+
+```
+You are a meeting analyst. When given meeting notes, transcripts, or discussion summaries, you:
+1. Extract and organize all decisions made
+2. Identify every action item with clear owner and deadline
+3. Flag risks, assumptions, or disagreements mentioned
+4. Suggest follow-up topics for the next meeting
+5. Surface any unclear or contradictory statements that need clarification
+
+Always format action items as: [OWNER] [ACTION] [DUE DATE]
+Always bold any risks or dependencies mentioned by attendees.
+```
+
+Paste this into a new Claude chat and send it.
+
+Now, here's where Claude shines. If you have a recorded Zoom call or a transcript, paste the entire transcript into Claude and ask:
+
+```
+Here's a transcript from our customer discovery call with Acme Corp. Please:
+1. List every problem they mentioned
+2. Extract all action items with owners
+3. Flag any objections or concerns they raised
+4. Suggest next steps for our follow-up call
+```
+
+Claude will process a 30-minute call transcript (roughly 5,000 words) without breaking a sweat, whereas ChatGPT might struggle with that volume on free tier.
+
+If you don't have a transcript, you can manually write a messy summary during the call and paste it in. Claude's good at parsing rough notes.
+
+For example:
+
+```
+Customer call notes - rough:
+- John (prospect) said they're frustrated with current tool's reporting
+- They have 3 team members using it
+- Budget is 50K/year but they want to move to spreadsheets if we can't solve it
+- They want a demo focusing on custom dashboards
+- Said "we'll decide by June 15"
+- Asked about data import from Salesforce
+- We promised to send comparison doc vs. their current tool
+```
+
+Send that to Claude. It will return:
+
+```
+## Acme Corp Discovery Call Summary
+
+### Key Problems Identified
+- Current tool's reporting is insufficient for their use case
+- Considering reverting to spreadsheets due to frustration
+
+### Action Items
+[ALEX] Send comparison doc vs. their current tool [Due: May 20]
+[ALEX] Prepare custom dashboard demo [Due: May 22]
+[CUSTOMER] Internal review and decision [Due: June 15]
+
+### Risks & Assumptions
+**Risk:** Customer has a backup plan (spreadsheets). May lose deal if demo doesn't address reporting gaps.
+**Assumption:** Budget of 50K/year assumes they'll expand team usage.
+
+### Follow-Up Topics
+- Data import technical requirements from Salesforce
+- Timeline for implementation if they decide to move forward
+```
+
+This kind of structured output is exactly what your team needs within 60 seconds of a call ending.
+
+## Step 3: Integrate Gemini for Real-Time Collaboration and Google Workspace Syncing
+
+If your team uses Google Workspace (Gmail, Google Calendar, Google Docs), Gemini integrates directly with your workflow in ways ChatGPT and Claude don't.
+
+Open gemini.google.com and go to Settings (gear icon, top right). Enable "Gemini in Google Apps" if you have Gemini Advanced. This lets you summon Gemini from inside Gmail, Google Docs, and Google Meet.
+
+Create a new Gemini chat and paste this instruction:
+
+```
+You are a meeting facilitator for a remote team. Your role:
+1. Generate pre-meeting agendas from calendar event titles and attendee lists
+2. Turn messy notes into structured meeting minutes
+3. Create calendar invites with next meeting dates and owners
+4. Flag any decisions that need documentation
+5. Suggest follow-up actions based on what wasn't discussed
+
+For action items, format as: [OWNER] - [TASK] - [DEADLINE]
+Always ask clarifying questions if the meeting context is unclear.
+```
+
+Now, the key move: Open a Google Doc for your team's meeting notes (e.g., "May 2025 Meeting Log"). In the top right, click the Gemini icon (if you have Advanced). Click "Help me write."
+
+Ask Gemini directly:
+
+```
+We just had a meeting with our Q2 planning. Here's what we discussed:
+- Realized Q1 goals were too ambitious
+- Decided to push feature X to Q3
+- Sarah will run a retro with the team
+- Marcus needs customer feedback by May 30
+- We're meeting again June 1
+
+Please create a clean meeting summary in 2-3 paragraphs and list action items.
+```
+
+Gemini will write it directly into your Google Doc. You approve, edit, or regenerate. No copy-paste needed.
+
+This workflow is crucial if your team lives in Docs. It cuts the friction of switching between tabs.
+
+<ProsCons
+  pros={["Gemini integrates directly into Google Docs and Gmail", "No copy-paste friction if you're already in Google Workspace", "Handles casual note input and structures it automatically"]}
+  cons={["Only useful if your team actually uses Google Workspace", "Less powerful than Claude for very long or complex transcripts", "Requires Gemini Advanced ($20/mo) for best performance"]}
+/>
+
+## Step 4: Set Up a Weekly Standup Template in ChatGPT and Automate Recurring Prep
+
+Most small teams run daily or weekly standups. You can automate the prep side.
+
+Open your ChatGPT "Meeting Prep" thread again. Paste this:
+
+```
+Every Tuesday at 9:30 AM, we run a standup with Sales, Product, and Support. 
+Here's the recurring agenda:
+
+1. What we shipped last week (Product)
+2. Pipeline velocity and closed deals (Sales)
+3. Critical support issues and resolution status (Support)
+4. Blockers or cross-team dependencies
+
+Can you create a template I can use every week that asks each lead for their update? Include a section for blockers.
+```
+
+ChatGPT will return a template like:
+
+```
+## Weekly Standup - [DATE]
+
+**Product Update (Sarah)**
+- Features shipped or in progress:
+- Metrics or user feedback:
+- Blockers:
+
+**Sales Update (Marcus)**
+- Deals closed this week:
+- Pipeline movement (qualified, proposals, demos):
+- Forecast impact:
+- Blockers:
+
+**Support Update (Jenna)**
+- Issues resolved:
+- Escalations to product:
+- Queue depth:
+- Blockers:
+
+**Cross-team Dependencies**
+(List any items that depend on another team)
+```
+
+Copy this template into a Google Doc and save it. Each Tuesday morning, send the template to your team's Slack channel (or email). Have each person fill in their section before 9:25 AM.
+
+Right before the standup, paste their filled-in responses into ChatGPT and ask:
+
+```
+Here are our standup updates. Please:
+1. Highlight any blockers or risks
+2. Suggest any cross-team actions we should discuss
+3. Flag if any update suggests a missed deadline or scope change
+```
+
+ChatGPT will flag issues in seconds, so you run a smarter standup.
+
+## Step 5: Create a Post-Call Workflow for Note-Taking and Action Item Distribution
+
+This is the final piece that makes the system stick. Most teams take notes but never act on them. Here's how to fix it.
+
+Right after any meeting longer than 15 minutes, do this:
+
+1. **Paste rough notes into Claude** (not ChatGPT, because Claude is better at messy input):
+
+```
+Customer call - ABC Company
+- Dave (CTO) and Lisa (Ops Lead) on the call
+- They're interested in our platform but worried about data security
+- Asked for SOC 2 report (we have one)
+- Want a pricing breakdown for 100 users
+- They run weekly standups, need API access for their tools
+- Lisa said "if you can guarantee 99.99% uptime, we're probably buying"
+- Dave asked about on-prem deployment (we don't offer it)
+- Next call scheduled for June 10
+```
+
+2. **Claude returns structured output:**
+
+```
+## ABC Company Call Summary
+
+### Key Issues
+- Data security concerns (primary objection)
+- On-prem deployment not available (may be deal-breaker)
+
+### Action Items
+[YOU] Send SOC 2 report + pricing breakdown [Due: May 16]
+[YOU] Research on-prem alternatives or explain cloud-only approach [Due: May 20]
+[CUSTOMER] Internal security review [Due: June 8]
+
+### Next Steps
+Call June 10 to address security concerns and discuss on-prem workaround.
+
+### Success Metrics
+- Confirm 99.99% uptime guarantee
+- Address on-prem requirement or clarify why cloud-only is better
+```
+
+3. **Copy the output into a shared Slack channel or Google Doc**, tag the owners, and set calendar reminders for due dates.
+
+This workflow takes 3 minutes and ensures nothing falls through the cracks.
+
+<Callout type="info" title="The real win here">
+  You're not just taking notes. You're turning vague discussions into dated action items with named owners. That's the difference between a meeting that happened and a meeting that moved the needle. Most teams skip this step, which is why they forget what was decided.
+</Callout>
+
+## Common Mistakes to Avoid
+
+**Mistake 1: Trying to capture everything in real-time.**
+New users try to transcript entire calls into ChatGPT during the meeting. Stop. Instead, jot down 5-10 bullet points during the call, then paste them in after. The AI will structure and expand them. You'll be faster and more accurate.
+
+**Fix:** Assign one person (rotates weekly) to take rough notes on a shared Google Doc during the call. Paste that doc into Claude 2 minutes after the call ends.
+
+**Mistake 2: Using the free tier and hitting token limits mid-call.**
+Free ChatGPT has strict limits. If you're processing multiple long meeting summaries per week, you'll hit the cap and have to wait.
+
+**Fix:** Upgrade one person on your team to ChatGPT Plus ($20/mo) or Claude Pro ($20/mo). Share the outputs with the team. It costs less than 10 minutes of hourly labor per week.
+
+**Mistake 3: Not templating your prompts.**
+Every call is different, but your process shouldn't be. If you paste freeform notes into ChatGPT without structure, you get freeform output.
+
+**Fix:** Create 3-4 prompt templates for common meeting types (standup, customer call, internal planning, sales debrief) and save them in a shared Google Doc. Copy-paste the right template, fill in the details, and send. Consistency speeds up everyone's work.
+
+**Mistake 4: Forgetting to set deadlines and owners for action items.**
+Claude and ChatGPT will list action items, but if you don't specify a deadline or owner, they'll guess. Guesses are often wrong.
+
+**Fix:** Always include this in your prompt: "For every action item, specify the owner's name and a specific due date (not 'soon' or 'next week')." The AI will honor it.
+
+## Results to Expect
+
+Here's what happens when your team runs this workflow for 2-4 weeks:
+
+**Week 1:**
+- You'll spend 5-10 extra minutes per meeting learning prompts and pasting text. It feels slower.
+- But you'll have cleaner notes than you've ever taken. No confusion about who owns what.
+
+**Week 2-3:**
+- Muscle memory kicks in. You'll paste notes into Claude or ChatGPT in under 2 minutes.
+- Your team stops asking "what happened in that call?" because the notes are in Slack or your shared doc within 5 minutes of the meeting ending.
+- You'll catch action items you would have missed (because the AI flags them).
+
+**Week 4+:**
+- You save 15-20 minutes per week per person (no more "did we decide that?" Slack threads).
+- Fewer follow-up questions because decisions are documented with context.
+- Sales teams close deals faster because next steps are clear and dated.
+- Product and Support teams have fewer "we didn't know that was a problem" surprises because customer issues are surfaced immediately.
+
+**Real metrics:**
+- Pre-workflow: A 10-person team running 5 standups/week + 8 customer calls/week might spend 10-15 hours/week on meeting follow-up and missing action items.
+- Post-workflow: Same team spends 3-5 hours/week, with zero missed deadlines and 30% fewer "wait, did we agree to that?" conversations.
+
+The time saving isn't flashy, but it's real. More importantly, your team stops losing context and commitments.
+
+---
+
+<FAQBlock
+  faqs={[
+    { question: "Can I use ChatGPT, Claude, and Gemini at the same time for meetings?", answer: "Yes. Most teams use one tool live during calls (ChatGPT or Claude on desktop) and keep another (Gemini) open in a second window for backup or research. You won't need all three running simultaneously, but having them accessible prevents vendor lock-in and lets you pick the best tool for each meeting type." },
+    { question: "Do these AI assistants integrate with Zoom, Google Meet, or Teams?", answer: "ChatGPT and Claude do not have native meeting software integrations. Gemini
